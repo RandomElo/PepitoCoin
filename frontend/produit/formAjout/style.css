@@ -1,0 +1,75 @@
+*,
+::before,
+::after {
+    font-family: "Nunito", sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+#titreIntro {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+form {
+    width: 370px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto 0 auto;
+}
+label {
+    display: inline-block;
+    width: 173px;
+    text-align: right;
+    margin: 10px;
+}
+input {
+    height: 18px;
+    text-align: left;
+    padding: 1px;
+}
+#nomDiv {
+    position: relative;
+    margin-top: 15px;
+    height: 24px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+}
+#prixDiv {
+    position: relative;
+    left: 0px;
+    height: 24px;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+}
+#descDiv {
+    position: relative;
+    left: 0px;
+    margin-top: 15px;
+    padding: 1px;
+    display: flex;
+}
+#descDiv > label {
+    margin-top: 0;
+    height: 22px;
+}
+#descForm {
+    text-align: left;
+    width: 171px;
+    height: 70px;
+    font-size: 14px;
+}
+#imgDiv {
+    position: relative;
+    margin-top: 15px;
+    left: 0px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+}
+#envoiBouton {
+    width: 70px;
+    margin: 30px auto 0 auto;
+    text-align: center;
+}

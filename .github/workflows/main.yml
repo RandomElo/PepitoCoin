@@ -1,0 +1,62 @@
+# name: Build and Deploy
+
+# on:
+#     push:
+#         branches:
+#             - main
+
+# jobs:
+#     build:
+#         runs-on: ubuntu-latest
+
+#         steps:
+#             - name: Checkout code
+#               uses: actions/checkout@v2
+
+#             # - name: Navigate
+#             #   run: cd .\backend
+
+#             - name: Install Dependencies
+#               run: npm install
+
+#             # - name: Build
+#             #   run: npm run build
+
+#             - name: Upload to Server
+#               uses: SamKirkland/FTP-Deploy-Action@4.0.0
+#               with:
+#                   server: ${{ secrets.SERVER }}
+#                   username: ${{ secrets.USERNAME }}
+#                   password: ${{ secrets.PASSWORD }}
+#                   local-dir: /
+#                   server-dir: /www/PepitoCoin/
+
+on: push
+name: 🚀 Deploy website on push
+jobs:
+    web-deploy:
+        name: 🎉 Deploy
+        runs-on: ubuntu-latest
+        steps:
+            - name: 🚚 Get latest code
+              uses: actions/checkout@v3
+
+            - name: Setupe Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 18
+
+            # - name: 🧪 Test 🧪
+            #   run: ls -l /lost+found
+
+            - name: Install Dependencies
+              run: cd backend; npm install;
+
+            - name: 📂 Sync files
+              uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+              with:
+                  server: ${{secrets.SERVER}}
+                  username: ${{secrets.USERNAME}}
+                  password: ${{secrets.PASSWORD}}
+                  local-dir: ./
+                  server-dir: ./www/PepitoCoin/

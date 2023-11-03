@@ -1,0 +1,33 @@
+* {
+    font-family: "Nunito", sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+.gras {
+    font-weight: bold;
+}
+.lien {
+    width: 210px;
+    padding: 10px;
+    margin: 0 auto;
+    color: white;
+    background-color: black;
+    border: 1px solid black;
+    cursor: pointer;
+    text-decoration: none;
+}
+.lien:hover {
+    color: black;
+    background-color: white;
+}
+#accueilLien {
+    margin-bottom: 10px;
+}
+#modificationLien {
+    margin-bottom: 10px;
+}
+
+#imageProduit {
+    width: 150px;
+}

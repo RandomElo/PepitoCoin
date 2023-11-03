@@ -1,0 +1,142 @@
+.navbar {
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+.navbar .logo {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+.navbar a {
+    text-decoration: none;
+    color: black;
+}
+.navbar a:hover {
+    text-decoration: underline;
+    color: blue;
+}
+.navLinks.mobileMenu {
+    margin-left: 0px;
+}
+.navLinks ul {
+    display: flex;
+}
+.navLinks ul li {
+    list-style: none;
+    margin: 0 20px;
+}
+.menuHamburger {
+    display: none;
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    cursor: pointer;
+    width: 30px;
+}
+/* Zone pour le sous menus */
+/*Définition du contenur*/
+.conteneurSousListe {
+    position: relative;
+    width: 109px;
+    margin: 0 auto;
+    font-size: 16px;
+}
+.conteneurSousListe:hover {
+    color: blue;
+    text-decoration: underline;
+}
+@media screen and (min-width: 851px) {
+    .conteneurSousListe:hover > ul {
+        display: block;
+    }
+}
+/*Définiton du sous menus*/
+.navLinks > ul > .conteneurSousListe {
+    cursor: pointer;
+}
+.navbar .sousListe {
+    position: absolute;
+    top: 22px;
+    left: -20px;
+    display: none;
+}
+.sousListe {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/*Définition des items du sous mennus*/
+.itemsSousListe a {
+    display: inline-block;
+    text-align: center;
+    width: 100px;
+    padding: 2px 5px;
+    color: white;
+    background-color: black;
+    border-bottom: 2px solid gray;
+}
+.itemsSousListe a:hover {
+    background-color: rgb(156, 156, 156);
+}
+/* Fin de la zone de définition de  */
+@media screen and (max-width: 850px) {
+    .navbar {
+        padding: 0;
+    }
+    .navbar .logo {
+        display: none;
+    }
+    header {
+        margin-top: 15px;
+    }
+    .menuHamburger {
+        display: block;
+    }
+    .navLinks {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: gray;
+        height: 100vh;
+        width: 100vw;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: -100%;
+        transition: all 0.5s ease;
+    }
+    .navLinks ul {
+        display: flex;
+        flex-direction: column;
+    }
+    .navbar .navLinks ul li {
+        margin: 20px 0;
+    }
+    .navbar .navLinks ul li {
+        margin: 20px 0;
+        font-size: 19.2px;
+    }
+    /* Zone pour le sous menus */
+    .conteneurSousListe {
+        width: 150px;
+    }
+    .navLinks > ul > .conteneurSousListe {
+        cursor: pointer;
+    }
+    .sousListe {
+        width: 180px;
+    }
+    .itemsSousListe a {
+        padding: 0;
+        width: 150px;
+        font-size: 0.9em;
+        color: black;
+        background-color: transparent;
+    }
+    .itemsSousListe a:hover {
+        background-color: transparent;
+    }
+}

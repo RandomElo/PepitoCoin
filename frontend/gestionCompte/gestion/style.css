@@ -1,0 +1,84 @@
+* {
+    font-family: 'Nunito', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+.gras {
+    font-weight: bold;
+}
+.button {
+    width: 110px;
+    margin: 0 auto;
+    padding: 10px;
+    color: white;
+    background-color: black;
+    border: 1px solid black;
+    cursor: pointer;
+
+}
+.button:hover {
+    color: black;
+    background-color: white;
+}
+#titre {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+#optionsDiv {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.compteDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.produitDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+/* Zone de paramètrage du formulaire */
+#form {
+    width: 370px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto 0 auto;
+}
+label {
+    display: inline-block;
+    width: 120px;
+    text-align: right;
+    margin-right: 10px;
+}
+input {
+    height: 18px;
+    text-align: left;
+    padding: 1px;
+}
+#pseudoDiv {
+    position: relative;
+    margin-top: 15px;
+    height: 24px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+
+}
+#passwordDiv {
+    position: relative;
+    margin-top: 15px;
+    height: 24px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+}
+#connexionButton {
+    width: 70px;
+    margin: 30px auto 0 auto;
+    text-align: center;
+}

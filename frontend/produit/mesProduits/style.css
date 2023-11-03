@@ -1,0 +1,23 @@
+* {
+    font-family: 'Nunito', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+.gras {
+    font-weight: bold;
+}
+.paraProduit {
+    margin: 20px;
+}
+.lienProduit {
+    text-decoration: none;
+    padding: 10px;
+    color: white;
+    background-color: black;
+    border: 1px solid black;
+}
+.lienProduit:hover {
+    color: black;
+    background-color: white;
+}

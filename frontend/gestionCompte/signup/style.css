@@ -1,0 +1,37 @@
+*, ::before, ::after {
+    font-family: 'Nunito', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+#titre {
+    padding: 0 50px;
+    margin-bottom: 10px;
+}
+label {
+    display: inline-block;
+    text-align: right;
+    width: 140px;
+    margin-right: 5px;
+}
+input {
+    height: 18px;
+    text-align: left;
+    padding: 1px;
+}
+#pseudoDiv {
+    margin-bottom: 10px;
+}
+#pDispoPseudo {
+    color: red;
+    font-size: 0.95em;
+    margin-top: 5px;
+}
+#loginPhrase {
+    font-size: 0.8em;
+    margin: 8px 0;
+}
+#loginBouton {
+    margin-bottom: 5px;
+    font-size: 14px;
+}

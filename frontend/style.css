@@ -1,0 +1,187 @@
+*,
+::before,
+::after {
+    font-family: "Nunito", sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+header {
+    margin-bottom: 20px;
+}
+#paraIntro {
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+.lien {
+    margin: 10px 0;
+    padding: 10px;
+    color: white;
+    background-color: black;
+    border: 1px solid black;
+    text-decoration: none;
+}
+.lien:hover {
+    color: black;
+    background-color: white;
+}
+.gras {
+    font-weight: bold;
+}
+#aucunElement {
+    margin-top: 30px;
+    color: red;
+}
+/* Zone de paramètrage de l'affichage des éléments | Préfix -> AE (pour Affichage Element)  */
+.AEproduitAff {
+    cursor: pointer;
+    width: 325px;
+    margin: 10px auto 0 auto;
+    padding: 10px;
+}
+.AEproduitAff:hover {
+    background-color: gray;
+}
+.AEproduitNom {
+    margin-bottom: 10px;
+}
+.AEimgProduit {
+    width: 150px;
+}
+/* Fin de la zone d'affichage des élémentts */
+/* Zone de paramètrage du formulaire Préfix -> FA (pour Formulaire Ajout)*/
+#FAform {
+    width: 370px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+.FAlabel {
+    display: inline-block;
+    width: 173px; /* ou toute autre largeur minimale souhaitée */
+    text-align: right; /* aligner le texte à droite de l'étiquette */
+    margin-right: 10px; /* espace entre l'étiquette et l'élément d'entrée */
+}
+
+.FAinput {
+    text-align: left;
+    padding: 1px;
+}
+#FAprixDiv,
+#FAdescDiv,
+#FAimgDiv {
+    margin-top: 10px;
+}
+#FAnomDiv {
+    position: relative;
+    left: 0px;
+}
+#FAprixDiv {
+    position: relative;
+    left: 0px;
+}
+#FAdescDiv {
+    position: relative;
+    left: 0px;
+    padding: 1px;
+    display: flex;
+    justify-content: center;
+}
+#FAdescForm {
+    text-align: left;
+    width: 171px;
+    height: 70px;
+    font-size: 14px;
+}
+#FAimgDiv {
+    position: relative;
+    left: 0px;
+}
+#FAboutonEnvoi {
+    width: 57px;
+    margin: 30px auto 0 auto;
+}
+/* Fin de zone de paramètrage du formulaire */
+/* Zone de paramètrage de l'affichage d'un seul élément | Préfixe -> AOE (Affichage One Element) */
+#AOEdivAutreInfo {
+    display: flex;
+    flex-direction: column;
+    width: 203px;
+    margin: 0 auto;
+}
+
+#AOEimgDiv > img {
+    margin-top: 10px;
+    width: 300px;
+}
+#AOEnomDiv {
+    margin-top: 10px;
+}
+
+#AOEprixDiv {
+    margin-top: 10px;
+}
+
+#AOEdescDiv {
+    margin-top: 10px;
+}
+/* Fin de zone de paramètrage de l'affichage d'un élément */
+/* Zone de paramètrage de l'affichage de formulaire de modification Préfix -> FM (Formulaire Modif One Element)*/
+#FMdivAutre {
+    display: flex;
+    flex-direction: column;
+    width: 180px;
+    margin: 0 auto;
+}
+#FMform {
+    width: 370px;
+    display: flex;
+    flex-direction: column;
+    margin: 30px auto 0 auto;
+}
+.FMlabel {
+    display: inline-block;
+    width: 173px; /* ou toute autre largeur minimale souhaitée */
+    text-align: right; /* aligner le texte à droite de l'étiquette */
+    margin-right: 10px; /* espace entre l'étiquette et l'élément d'entrée */
+}
+
+.FMinput {
+    text-align: left;
+    padding: 1px;
+}
+#FMprixDiv,
+#FMdescDiv,
+#FMimgDiv {
+    margin-top: 10px;
+}
+#FMnomDiv {
+    position: relative;
+    left: 0px;
+}
+#FMprixDiv {
+    position: relative;
+    left: 0px;
+}
+#FMdescDiv {
+    position: relative;
+    left: 0px;
+    padding: 1px;
+    display: flex;
+    justify-content: center;
+}
+#FMdescForm {
+    text-align: left;
+    width: 171px;
+    height: 70px;
+    font-size: 14px;
+}
+#FMimgDiv {
+    position: relative;
+    left: 0px;
+}
+#FMboutonEnvoi {
+    width: 57px;
+    margin: 30px auto 0 auto;
+}
+/* Fin de la zone de paramètrage du formulaire de modification */
