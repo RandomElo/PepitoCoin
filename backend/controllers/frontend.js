@@ -351,7 +351,7 @@ exports.formAjout = (req, res, next) => {
             const html = dom.serialize();
             res.send(html);
         } else {
-            res.redirect("/authentification/login");
+            res.redirect("/login");
         }
     });
     // if (cookie != null) {
