@@ -1,53 +1,31 @@
-on:
-    push:
-        branches:
-            - main
-
+on: push
 name: 🚀 Publication
-
 jobs:
     web-deploy:
-        name: 🎉 Déploiement
+        name: 🎉 Déploiment
         runs-on: ubuntu-latest
-
         steps:
             - name: 🚚 Obtention du dernier code
-              uses: actions/checkout@v2
+              uses: actions/checkout@v3
 
             - name: 💻 Configuration de Node.js
-              uses: actions/setup-node@v2
+              uses: actions/setup-node@v3
               with:
                   node-version: 18
 
-            - name: 💾 Installation des dépendances
+            - name: 💾 Installation des dépendances et copie de node_modules
               run: npm install
               working-directory: backend
-
-            - name: 📦 Création de l'archive node_modules
-              run: tar -czf node_modules.tar.gz -C backend node_modules
-              working-directory: backend
-
-            - name: 🎁 Créer un artefact
-              uses: actions/upload-artifact@v2
-              with:
-                  name: node_modules
-                  path: backend/node_modules.tar.gz
-
-            - name: 📂 Téléchargement et extraction de l'archive sur le serveur FTP
-              uses: actions/download-artifact@v2
-              with:
-                  name: node_modules
-                  path: backend
-
-            - name: 📦 Extraction de l'archive node_modules
-              run: tar -xzf backend/node_modules.tar.gz -C backend
-              working-directory: backend
+            
+            - name: Verfication du contenu de backend
+              run: cd backend; ls -R
+            
 
             - name: 📂 Synchronisation des fichiers
               uses: SamKirkland/FTP-Deploy-Action@v4.3.4
               with:
-                  server: ${{ secrets.SERVER }}
-                  username: ${{ secrets.USERNAME }}
-                  password: ${{ secrets.PASSWORD }}
+                  server: ${{secrets.SERVER}}
+                  username: ${{secrets.USERNAME}}
+                  password: ${{secrets.PASSWORD}}
                   local-dir: ./
                   server-dir: ./
