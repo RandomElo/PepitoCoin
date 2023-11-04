@@ -14,7 +14,7 @@ jobs:
                   node-version: 18
 
             - name: 💾 Installation des dépendances
-              run: cd backend; npm install; ls; cd
+              run: cd backend; npm install; pwd
 
             - name: 📂 Synchronisation des fichiers
               uses: SamKirkland/FTP-Deploy-Action@v4.3.4
