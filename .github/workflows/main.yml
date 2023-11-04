@@ -14,7 +14,7 @@ jobs:
                   node-version: 18
 
             - name: 💾 Installation des dépendances et copie de node_modules
-              run: npm install && cp -r backend/node_modules ../
+              run: npm install && cp -r node_modules ../
               working-directory: backend
 
             - name: 📂 Synchronisation des fichiers
