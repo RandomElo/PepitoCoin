@@ -39,6 +39,6 @@ jobs:
               with:
                   host: ${{secrets.SERVER_SSH}}
                   username: ${{secrets.USERNAME_SSH}}
-                #   password: ${{secrets.PASSWORD_FTP}}
+                  password: ${{secrets.PASSWORD_FTP}}
                   port: 22
                   script: cd backend; npm install
