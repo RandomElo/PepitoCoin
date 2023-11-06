@@ -3,7 +3,7 @@ const express = require("express");
 //Importatation de mongoose
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
-require("dotenv").config();
+// require("dotenv").config();
 
 
 
