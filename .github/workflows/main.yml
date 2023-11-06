@@ -8,18 +8,6 @@ jobs:
             - name: 🚚 Obtention du dernier code
               uses: actions/checkout@v3
 
-            # - name: 💻 Configuration de Node.js
-            #   uses: actions/setup-node@v3
-            #   with:
-            #       node-version: 18
-
-            # - name: 💾 Installation des dépendances et copie de node_modules
-            #   run: npm install
-            #   working-directory: backend
-
-            # - name: Verfication du contenu de backend
-            #   run: cd backend; ls -R
-
             - name: 📂 Synchronisation des fichiers
               uses: SamKirkland/FTP-Deploy-Action@v4.3.4
               with:
@@ -28,8 +16,6 @@ jobs:
                   password: ${{secrets.PASSWORD_FTP}}
                   local-dir: ./
                   server-dir: ./
-            # - name: Installations des dépendances
-            #   run: ssh ${{secrets.USERNAME_SSH}}@${{}}r "cd chemin/vers/votre/projet/backend && npm install"
 
     npm-install:
         name: 📦 Installation des dépendances
@@ -39,7 +25,7 @@ jobs:
             - name: 💻 Configuration de Node.js
               uses: actions/setup-node@v2
               with:
-                node-version: 18
+                  node-version: 18
             - name: 📂 Accès en SSH au serveur et exécution de npm install
               uses: appleboy/ssh-action@v1.0.0
               with:
