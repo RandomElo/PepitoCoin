@@ -9,7 +9,7 @@ const cookieParser = require("cookie-parser");
 
 //Création d'une application Express
 const app = express();
-console.log("Application démarré")
+console.log("Application démarré");
 //Récupération des routes ressources
 const resRoutes = require("./routes/ressource");
 const fichRoutes = require("./routes/fichiers");
@@ -22,13 +22,16 @@ mongoose
     .then(() => console.log("Connexion à la base de données de MongoDB réussie !"))
     .catch((error) => console.error("Erreur de connexion à la BDD: ", error));
 
+app.use((req, res, next) => {
+    console.log("Requête reçue à :", new Date());
+    next(); // Passez à l'étape suivante du pipeline de requête
+});
 //Middleware général 'sans route' | Permet d'ajouter des headears
 app.use((req, res, next) => {
     //Uniquement les requêtes GET avec la route /api/stuff qui sont intercepté par ce middleware
     res.setHeader("Access-Control-Allow-Origin", "*"); //L'origine qui à le droit d'accéder à notre API c'est tous le monde (*)
     res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"); //Autorisation d'utiliser certain header
     res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH, OPTIONS"); //Autorisaton de certaine methodes
-    console.log("Header ajouter");
     next();
 });
 //Permet de pouvoir récupérer les informations de req
