@@ -4,12 +4,11 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 
-//Il faut décommanter la ligne suivante si je suis en local
-// require("dotenv").config();
-
 //Création d'une application Express
 const app = express();
-console.log("Application démarré");
+app.listen(()=>{
+    console.log("Serveur en écoute")
+})
 //Récupération des routes ressources
 const resRoutes = require("./routes/ressource");
 const fichRoutes = require("./routes/fichiers");
@@ -26,6 +25,7 @@ app.use((req, res, next) => {
     console.log("Requête reçue à :", new Date());
     next(); // Passez à l'étape suivante du pipeline de requête
 });
+
 //Middleware général 'sans route' | Permet d'ajouter des headears
 app.use((req, res, next) => {
     //Uniquement les requêtes GET avec la route /api/stuff qui sont intercepté par ce middleware
