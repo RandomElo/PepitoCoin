@@ -6,7 +6,9 @@ const cookieParser = require("cookie-parser");
 // require("dotenv").config();
 
 console.log("Url de la BDD :");
-console.log($BDDURL)
+
+console.log(process.env.BDDURL);
+// console.log($BDDURL)
 
 //Création d'une application Express
 const app = express();
