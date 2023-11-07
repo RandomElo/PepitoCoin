@@ -3,12 +3,10 @@ const express = require("express");
 //Importatation de mongoose
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
+
+//Il faut décommanter la ligne suivante si je suis en local
 // require("dotenv").config();
 
-console.log("Url de la BDD :");
-
-console.log(process.env.BDDURL);
-// console.log($BDDURL)
 
 //Création d'une application Express
 const app = express();
@@ -20,7 +18,7 @@ const userRoutes = require("./routes/user");
 
 //Connexion à la BDD
 mongoose
-    .connect(process.env.bddUrl)
+    .connect(process.env.BDDURL)
     .then(() => console.log("Connexion à la base de données de MongoDB réussie !"))
     .catch((error) => console.error("Erreur de connexion à la BDD: ", error));
 
