@@ -113,6 +113,7 @@ exports.accueil = async (req, res, next) => {
 exports.affHome = (req, res, next) => {
     //Renvoie vers l'accueil
     res.redirect("/accueil");
+    console.log("Redirection vers l'accueil")
 };
 exports.affProduit = async (req, res, next) => {
     //Fonction qui permet de récupérer la navbar
