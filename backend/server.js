@@ -73,10 +73,6 @@
 const http = require("http");
 // //Imporation du package app
 const app = require("./app");
-require("dotenv").config();
-
-// const ip = "fd00::5:c63";
-// const port = 8100;
 
 const server = http.createServer(app);
 const errorHandler = (error) => {

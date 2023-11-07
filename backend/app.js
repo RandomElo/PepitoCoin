@@ -7,9 +7,9 @@ const cookieParser = require("cookie-parser");
 //Il faut décommanter la ligne suivante si je suis en local
 // require("dotenv").config();
 
-
 //Création d'une application Express
 const app = express();
+console.log("Application démarré")
 //Récupération des routes ressources
 const resRoutes = require("./routes/ressource");
 const fichRoutes = require("./routes/fichiers");
@@ -28,7 +28,7 @@ app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*"); //L'origine qui à le droit d'accéder à notre API c'est tous le monde (*)
     res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"); //Autorisation d'utiliser certain header
     res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH, OPTIONS"); //Autorisaton de certaine methodes
-    console.log("Header ajouter")
+    console.log("Header ajouter");
     next();
 });
 //Permet de pouvoir récupérer les informations de req
