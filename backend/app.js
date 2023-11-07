@@ -28,6 +28,7 @@ app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*"); //L'origine qui à le droit d'accéder à notre API c'est tous le monde (*)
     res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"); //Autorisation d'utiliser certain header
     res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH, OPTIONS"); //Autorisaton de certaine methodes
+    console.log("Header ajouter")
     next();
 });
 //Permet de pouvoir récupérer les informations de req
