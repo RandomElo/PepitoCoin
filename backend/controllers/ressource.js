@@ -22,7 +22,7 @@ exports.publiRes = (req, res, next) => {
 
     //Récupération du userId
     var authCookie = req.cookies.auth;
-    const decodToken = jwt.verify(authCookie, process.env.chaineToken);
+    const decodToken = jwt.verify(authCookie, process.env.CHAINETOKEN);
     const userId = decodToken.userId;
 
     //Ajout de userId dans l'objet qui vas aller dans la bdd

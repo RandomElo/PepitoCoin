@@ -6,7 +6,7 @@ const { JSDOM } = jsdom;
 exports.accueil = async (req, res, next) => {
     //Fonction qui permet de récuépérer tous les éléments de la page
     function requeteGetAll() {
-        return fetch("http://localhost:3000/api/pepitocoin/ressource/recuperation", {
+        return fetch(`${process.env.ADRESSESERVEUR}/api/pepitocoin/ressource/recuperation`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -20,7 +20,7 @@ exports.accueil = async (req, res, next) => {
     }
     //Fonction qui permet de récupérer la navbar
     function requeteNavbarUser(cookie) {
-        return fetch(`http://localhost:3000/fichiers/navbar/html/${cookie}`, {
+        return fetch(`${process.env.ADRESSESERVEUR}/fichiers/navbar/html/${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -48,12 +48,12 @@ exports.accueil = async (req, res, next) => {
         var recupNavbar = await requeteNavbarUser(cookie);
     } else {
         var recupNavbar = /*html*/ `
-            <a class="logo" href="http://localhost:3000/accueil">PépitoCoin</a>
+            <a class="logo" href="${process.env.ADRESSESERVEUR}/accueil">PépitoCoin</a>
             <div class="navLinks">
                 <ul>
-                    <li><a href="http://localhost:3000/accueil">Accueil</a></li>
-                    <li><a href="http://localhost:3000/login">Se connecter</a></li>
-                    <li><a href="http://localhost:3000/signup">Crée un compte</a></li>
+                    <li><a href="${process.env.ADRESSESERVEUR}/accueil">Accueil</a></li>
+                    <li><a href="${process.env.ADRESSESERVEUR}/login">Se connecter</a></li>
+                    <li><a href="${process.env.ADRESSESERVEUR}/signup">Crée un compte</a></li>
                 </ul>
             </div>
             <img class="menuHamburger" src="/fichiers/images/menu-hamburger" alt="Menu Hamburger">
@@ -118,7 +118,7 @@ exports.affHome = (req, res, next) => {
 exports.affProduit = async (req, res, next) => {
     //Fonction qui permet de récupérer la navbar
     function requeteNavbarUser(id) {
-        return fetch(`http://localhost:3000/fichiers/navbar/html/${id}`, {
+        return fetch(`${process.env.ADRESSESERVEUR}/fichiers/navbar/html/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -131,7 +131,7 @@ exports.affProduit = async (req, res, next) => {
             .catch((error) => console.error(error));
     }
     function donneesProduit(id, cookie) {
-        return fetch(`http://localhost:3000/fichiers/produit/html?id=${id}&cookieAuth=${cookie}`, {
+        return fetch(`${process.env.ADRESSESERVEUR}/fichiers/produit/html?id=${id}&cookieAuth=${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -159,12 +159,12 @@ exports.affProduit = async (req, res, next) => {
         var recupNavbar = await requeteNavbarUser(cookie);
     } else {
         var recupNavbar = /*html*/ `
-            <a class="logo" href="http://localhost:3000/accueil">PépitoCoin</a>
+            <a class="logo" href="${process.env.ADRESSESERVEUR}/accueil">PépitoCoin</a>
             <div class="navLinks">
                 <ul>
-                    <li><a href="http://localhost:3000/accueil">Accueil</a></li>
-                    <li><a href="http://localhost:3000/login">Se connecter</a></li>
-                    <li><a href="http://localhost:3000/signup">Crée un compte</a></li>
+                    <li><a href="${process.env.ADRESSESERVEUR}/accueil">Accueil</a></li>
+                    <li><a href="${process.env.ADRESSESERVEUR}/login">Se connecter</a></li>
+                    <li><a href="${process.env.ADRESSESERVEUR}/signup">Crée un compte</a></li>
                 </ul>
             </div>
             <img class="menuHamburger" src="/fichiers/images/menu-hamburger" alt="Menu Hamburger">
@@ -200,7 +200,7 @@ exports.affProduit = async (req, res, next) => {
 };
 exports.affProduitProprietaire = async (req, res, next) => {
     function requeteNavbarUser(cookie) {
-        return fetch(`http://localhost:3000/fichiers/navbar/html/${cookie}`, {
+        return fetch(`${process.env.ADRESSESERVEUR}/fichiers/navbar/html/${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -213,7 +213,7 @@ exports.affProduitProprietaire = async (req, res, next) => {
             .catch((error) => console.error(error));
     }
     function requeteGetOne(id) {
-        return fetch(`http://localhost:3000/api/pepitocoin/ressource/recuperation/${id}`, {
+        return fetch(`${process.env.ADRESSESERVEUR}/api/pepitocoin/ressource/recuperation/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -239,12 +239,12 @@ exports.affProduitProprietaire = async (req, res, next) => {
                     var navbar = await requeteNavbarUser(cookie);
                 } else {
                     var navbar = /*html*/ `
-                        <a class="logo" href="http://localhost:3000/accueil">PépitoCoin</a>
+                        <a class="logo" href="${process.env.ADRESSESERVEUR}/accueil">PépitoCoin</a>
                         <div class="navLinks">
                             <ul>
-                                <li><a href="http://localhost:3000/accueil">Accueil</a></li>
-                                <li><a href="http://localhost:3000/login">Se connecter</a></li>
-                                <li><a href="http://localhost:3000/signup">Crée un compte</a></li>
+                                <li><a href="${process.env.ADRESSESERVEUR}/accueil">Accueil</a></li>
+                                <li><a href="${process.env.ADRESSESERVEUR}/login">Se connecter</a></li>
+                                <li><a href="${process.env.ADRESSESERVEUR}/signup">Crée un compte</a></li>
                             </ul>
                         </div>
                         <img class="menuHamburger" src="/fichiers/images/menu-hamburger" alt="Menu Hamburger">
@@ -257,8 +257,8 @@ exports.affProduitProprietaire = async (req, res, next) => {
                         <p>Sur cette page, vous pouvez :</p>
                     </header>
                     <div id="liensDiv">
-                        <a class="lien" href="http://localhost:3000/produit/${produitId}">Retourner à la page du produit</a>
-                        <a class="lien" id="modifProduit" href="http://localhost:3000/produit/${produitId}/modification">Modifier le produit</a>
+                        <a class="lien" href="${process.env.ADRESSESERVEUR}/produit/${produitId}">Retourner à la page du produit</a>
+                        <a class="lien" id="modifProduit" href="${process.env.ADRESSESERVEUR}/produit/${produitId}/modification">Modifier le produit</a>
                         <a class="lien" id="supprProduit">Supprimer le produit</a>
                     </div>
                     <script src="/fichiers/produit/proprietaire/script"></script>
@@ -270,17 +270,17 @@ exports.affProduitProprietaire = async (req, res, next) => {
                 // res.status(200).json({ message: "Page en phase de test" });
             } else {
                 console.log("Les deux valeurs en corresondent pas");
-                res.redirect(`http://localhost:3000/produit/${produitId}`);
+                res.redirect(`${process.env.ADRESSESERVEUR}/produit/${produitId}`);
             }
         } else {
             console.error("Erreur de vérification du token :", err);
-            res.redirect(`http://localhost:3000/produit/${produitId}`);
+            res.redirect(`${process.env.ADRESSESERVEUR}/produit/${produitId}`);
         }
     });
 };
 exports.formAjout = (req, res, next) => {
     function requeteNavbarUser(cookie) {
-        return fetch(`http://localhost:3000/fichiers/navbar/html/${cookie}`, {
+        return fetch(`${process.env.ADRESSESERVEUR}/fichiers/navbar/html/${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -302,12 +302,12 @@ exports.formAjout = (req, res, next) => {
                 var navbar = await requeteNavbarUser(cookie);
             } else {
                 var navbar = /*html*/ `
-                    <a class="logo" href="http://localhost:3000/accueil">PépitoCoin</a>
+                    <a class="logo" href="${process.env.ADRESSESERVEUR}/accueil">PépitoCoin</a>
                     <div class="navLinks">
                         <ul>
-                            <li><a href="http://localhost:3000/accueil">Accueil</a></li>
-                            <li><a href="http://localhost:3000/login">Se connecter</a></li>
-                            <li><a href="http://localhost:3000/signup">Crée un compte</a></li>
+                            <li><a href="${process.env.ADRESSESERVEUR}/accueil">Accueil</a></li>
+                            <li><a href="${process.env.ADRESSESERVEUR}/login">Se connecter</a></li>
+                            <li><a href="${process.env.ADRESSESERVEUR}/signup">Crée un compte</a></li>
                         </ul>
                     </div>
                     <img class="menuHamburger" src="/fichiers/images/menu-hamburger" alt="Menu Hamburger">
@@ -365,7 +365,7 @@ exports.formAjout = (req, res, next) => {
 };
 exports.modifProduit = (req, res, next) => {
     function requeteNavbarUser(cookie) {
-        return fetch(`http://localhost:3000/fichiers/navbar/html/${cookie}`, {
+        return fetch(`${process.env.ADRESSESERVEUR}/fichiers/navbar/html/${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -388,12 +388,12 @@ exports.modifProduit = (req, res, next) => {
                 var navbar = await requeteNavbarUser(cookie);
             } else {
                 var navbar = /*html*/ `
-                    <a class="logo" href="http://localhost:3000/accueil">PépitoCoin</a>
+                    <a class="logo" href="${process.env.ADRESSESERVEUR}/accueil">PépitoCoin</a>
                     <div class="navLinks">
                         <ul>
-                            <li><a href="http://localhost:3000/accueil">Accueil</a></li>
-                            <li><a href="http://localhost:3000/login">Se connecter</a></li>
-                            <li><a href="http://localhost:3000/signup">Crée un compte</a></li>
+                            <li><a href="${process.env.ADRESSESERVEUR}/accueil">Accueil</a></li>
+                            <li><a href="${process.env.ADRESSESERVEUR}/login">Se connecter</a></li>
+                            <li><a href="${process.env.ADRESSESERVEUR}/signup">Crée un compte</a></li>
                         </ul>
                     </div>
                     <img class="menuHamburger" src="/fichiers/images/menu-hamburger" alt="Menu Hamburger">
@@ -434,14 +434,14 @@ exports.modifProduit = (req, res, next) => {
             const html = dom.serialize();
             res.send(html);
         } else {
-            res.redirect = `http://localhost:3000/produit/${produitId}`;
+            res.redirect = `${process.env.ADRESSESERVEUR}/produit/${produitId}`;
         }
     });
     // res.sendFile(path.join(__dirname, "..", "..", "frontend", "produit", "formModif", "form.html"));
 };
 exports.gestionCompte = async (req, res, next) => {
     function requeteNavbarUser(cookie) {
-        return fetch(`http://localhost:3000/fichiers/navbar/html/${cookie}`, {
+        return fetch(`${process.env.ADRESSESERVEUR}/fichiers/navbar/html/${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -459,12 +459,12 @@ exports.gestionCompte = async (req, res, next) => {
         var navbar = await requeteNavbarUser(cookie);
     } else {
         var navbar = /*html*/ `
-            <a class="logo" href="http://localhost:3000/accueil">PépitoCoin</a>
+            <a class="logo" href="${process.env.ADRESSESERVEUR}/accueil">PépitoCoin</a>
             <div class="navLinks">
                 <ul>
-                    <li><a href="http://localhost:3000/accueil">Accueil</a></li>
-                    <li><a href="http://localhost:3000/login">Se connecter</a></li>
-                    <li><a href="http://localhost:3000/signup">Crée un compte</a></li>
+                    <li><a href="${process.env.ADRESSESERVEUR}/accueil">Accueil</a></li>
+                    <li><a href="${process.env.ADRESSESERVEUR}/login">Se connecter</a></li>
+                    <li><a href="${process.env.ADRESSESERVEUR}/signup">Crée un compte</a></li>
                 </ul>
             </div>
             <img class="menuHamburger" src="/fichiers/images/menu-hamburger" alt="Menu Hamburger">
@@ -497,7 +497,7 @@ exports.gestionCompte = async (req, res, next) => {
 };
 exports.signup = async (req, res, next) => {
     function requeteNavbarUser(cookie) {
-        return fetch(`http://localhost:3000/fichiers/navbar/html/${cookie}`, {
+        return fetch(`${process.env.ADRESSESERVEUR}/fichiers/navbar/html/${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -514,12 +514,12 @@ exports.signup = async (req, res, next) => {
         var navbar = await requeteNavbarUser(cookie);
     } else {
         var navbar = /*html*/ `
-            <a class="logo" href="http://localhost:3000/accueil">PépitoCoin</a>
+            <a class="logo" href="${process.env.ADRESSESERVEUR}/accueil">PépitoCoin</a>
             <div class="navLinks">
                 <ul>
-                    <li><a href="http://localhost:3000/accueil">Accueil</a></li>
-                    <li><a href="http://localhost:3000/login">Se connecter</a></li>
-                    <li><a href="http://localhost:3000/signup">Crée un compte</a></li>
+                    <li><a href="${process.env.ADRESSESERVEUR}/accueil">Accueil</a></li>
+                    <li><a href="${process.env.ADRESSESERVEUR}/login">Se connecter</a></li>
+                    <li><a href="${process.env.ADRESSESERVEUR}/signup">Crée un compte</a></li>
                 </ul>
             </div>
             <img class="menuHamburger" src="/fichiers/images/menu-hamburger" alt="Menu Hamburger">
@@ -554,7 +554,7 @@ exports.signup = async (req, res, next) => {
                         <label for="passwordForm">Mot de passe :</label>
                         <input id="passwordForm" type="password" required />
                     </div>
-                    <p id="loginPhrase">Vous avez déjà un compte ? <a href="http://localhost:3000/login">Connectez-vous</a></p>
+                    <p id="loginPhrase">Vous avez déjà un compte ? <a href="${process.env.ADRESSESERVEUR}/login">Connectez-vous</a></p>
                     <button id="loginBouton" type="submit">Création de compte</button>
                 </form>
                 <script src="/fichiers/authentification/signup/script"></script>
@@ -566,7 +566,7 @@ exports.signup = async (req, res, next) => {
 };
 exports.login = async (req, res, next) => {
     function requeteNavbarUser(cookie) {
-        return fetch(`http://localhost:3000/fichiers/navbar/html/${cookie}`, {
+        return fetch(`${process.env.ADRESSESERVEUR}/fichiers/navbar/html/${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -583,12 +583,12 @@ exports.login = async (req, res, next) => {
         var navbar = await requeteNavbarUser(cookie);
     } else {
         var navbar = /*html*/ `
-            <a class="logo" href="http://localhost:3000/accueil">PépitoCoin</a>
+            <a class="logo" href="${process.env.ADRESSESERVEUR}/accueil">PépitoCoin</a>
             <div class="navLinks">
                 <ul>
-                    <li><a href="http://localhost:3000/accueil">Accueil</a></li>
-                    <li><a href="http://localhost:3000/login">Se connecter</a></li>
-                    <li><a href="http://localhost:3000/signup">Crée un compte</a></li>
+                    <li><a href="${process.env.ADRESSESERVEUR}/accueil">Accueil</a></li>
+                    <li><a href="${process.env.ADRESSESERVEUR}/login">Se connecter</a></li>
+                    <li><a href="${process.env.ADRESSESERVEUR}/signup">Crée un compte</a></li>
                 </ul>
             </div>
             <img class="menuHamburger" src="/fichiers/images/menu-hamburger" alt="Menu Hamburger">
@@ -622,7 +622,7 @@ exports.login = async (req, res, next) => {
                     <label for="passwordForm">Mot de passe :</label>
                     <input id="passwordForm" type="password" required />
                 </div>
-                <p id="signupPhrase">Vous n'avez pas de compte ? <a href="http://localhost:3000/signup">Crée-en-un</a></p>
+                <p id="signupPhrase">Vous n'avez pas de compte ? <a href="${process.env.ADRESSESERVEUR}/signup">Crée-en-un</a></p>
                 <p id="loginErreur"></p>
                 <button id="connexionBouton" type="submit">Connexion</button>
             </form>
@@ -637,7 +637,7 @@ exports.login = async (req, res, next) => {
 exports.mesProduits = (req, res, next) => {
     //Création de la fonction de récupération de la navbar
     function requeteNavbarUser(cookie) {
-        return fetch(`http://localhost:3000/fichiers/navbar/html/${cookie}`, {
+        return fetch(`${process.env.ADRESSESERVEUR}/fichiers/navbar/html/${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -662,12 +662,12 @@ exports.mesProduits = (req, res, next) => {
                         var navbar = await requeteNavbarUser(cookie);
                     } else {
                         var navbar = /*html*/ `
-                            <a class="logo" href="http://localhost:3000/accueil">PépitoCoin</a>
+                            <a class="logo" href="${process.env.ADRESSESERVEUR}/accueil">PépitoCoin</a>
                             <div class="navLinks">
                                 <ul>
-                                    <li><a href="http://localhost:3000/accueil">Accueil</a></li>
-                                    <li><a href="http://localhost:3000/login">Se connecter</a></li>
-                                    <li><a href="http://localhost:3000/signup">Crée un compte</a></li>
+                                    <li><a href="${process.env.ADRESSESERVEUR}/accueil">Accueil</a></li>
+                                    <li><a href="${process.env.ADRESSESERVEUR}/login">Se connecter</a></li>
+                                    <li><a href="${process.env.ADRESSESERVEUR}/signup">Crée un compte</a></li>
                                 </ul>
                             </div>
                             <img class="menuHamburger" src="/fichiers/images/menu-hamburger" alt="Menu Hamburger">
@@ -693,7 +693,7 @@ exports.mesProduits = (req, res, next) => {
                         //Création du lien qui vas mener à sa page produit
                         var lienProduit = document.createElement("a");
                         lienProduit.setAttribute("class", "lienProduit");
-                        lienProduit.setAttribute("href", `http://localhost:3000/produit/${idProduit}`);
+                        lienProduit.setAttribute("href", `${process.env.ADRESSESERVEUR}/produit/${idProduit}`);
                         lienProduit.textContent = "Accéder à la page produit ";
                         divProduit.appendChild(lienProduit);
 
@@ -730,7 +730,7 @@ exports.mesProduits = (req, res, next) => {
         } else {
             //Permet de supprimer le cookie
             res.clearCookie("auth");
-            res.redirect("http://localhost:3000/accueil");
+            res.redirect(`${process.env.ADRESSESERVEUR}/accueil`);
         }
     });
 };

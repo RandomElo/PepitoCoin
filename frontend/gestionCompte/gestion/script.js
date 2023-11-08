@@ -1,7 +1,7 @@
 var resultatDiv = document.getElementById("resultatDiv");
 //Création de fonction qui permet d'obtenir la liste de tous les comptes
 function requeteProduit() {
-    return fetch(`http://localhost:3000/api/pepitocoin/ressource/recuperation`, {
+    return fetch(`${process.env.ADRESSESERVEUR}/api/pepitocoin/ressource/recuperation`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -14,7 +14,7 @@ function requeteProduit() {
         .catch((error) => console.error(error));
 }
 function requeteCompte() {
-    return fetch(`http://localhost:3000/api/authentification/compte`, {
+    return fetch(`${process.env.ADRESSESERVEUR}/api/authentification/compte`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -59,7 +59,7 @@ function affProduit() {
             supprButton.forEach((produit) => {
                 produit.addEventListener("click", () => {
                     var id = produit.parentNode.id;
-                    fetch(`http://localhost:3000/api/pepitocoin/ressource/suppression/${id}`, {
+                    fetch(`${process.env.ADRESSESERVEUR}/api/pepitocoin/ressource/suppression/${id}`, {
                         method: "DELETE",
                         headers: {
                             "Content-Type": "application/json",
@@ -117,7 +117,7 @@ function affCompte() {
             allDivCompte.forEach((compte) => {
                 compte.addEventListener("click", () => {
                     var pseudoCompte = compte.parentNode.id;
-                    fetch(`http://localhost:3000/api/authentification/suppr/${pseudoCompte}`, {
+                    fetch(`${process.env.ADRESSESERVEUR}/api/authentification/suppr/${pseudoCompte}`, {
                         method: "DELETE",
                         headers: {
                             "Content-Type": "application/json",
@@ -171,7 +171,7 @@ form.addEventListener("submit", (event) => {
         pseudo: pseudo.value,
         password: password.value,
     };
-    fetch(`http://localhost:3000/api/authentification/compte/login`, {
+    fetch(`${process.env.ADRESSESERVEUR}/api/authentification/compte/login`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -182,7 +182,7 @@ form.addEventListener("submit", (event) => {
             if (reponse.status === 200) {
                 return reponse.json()
             } else {
-                window.location = 'http://localhost:3000/accueil'
+                window.location = `${process.env.ADRESSESERVEUR}/accueil`
             }
         })
         .then((data) => {

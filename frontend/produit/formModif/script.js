@@ -10,7 +10,7 @@ var adresseFichier = window.location.pathname.split('/')
 var nomFichier = adresseFichier[adresseFichier.length -2]
 
 function requeteGetOne(produitId) {
-    return fetch(`http://localhost:3000/api/pepitocoin/ressource/recuperation/${produitId}`,{
+    return fetch(`${process.env.ADRESSESERVEUR}/api/pepitocoin/ressource/recuperation/${produitId}`,{
         method:'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -40,7 +40,7 @@ form.addEventListener('submit',(event)=>{
         'image': imgForm.value,
     }
     //Envoie de la requete à l'api
-    fetch(`http://localhost:3000/api/pepitocoin/ressource/modification/${nomFichier}`,{
+    fetch(`${process.env.ADRESSESERVEUR}/api/pepitocoin/ressource/modification/${nomFichier}`,{
         method:'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -50,7 +50,7 @@ form.addEventListener('submit',(event)=>{
     .then(reponse => reponse.json())
     .then(data => {
         console.log(data)
-        window.location = `http://localhost:3000/produit/${nomFichier}`
+        window.location = `${process.env.ADRESSESERVEUR}/produit/${nomFichier}`
     })
     .catch(error => console.error(error))
 })

@@ -1,5 +1,5 @@
 function login(donnees) {
-    return fetch(`http://localhost:3000/api/authentification/login`,{
+    return fetch(`${process.env.ADRESSESERVEUR}/api/authentification/login`,{
         method:'POST',
         headers: {
             'Content-Type':'application/json'
@@ -28,7 +28,7 @@ form.addEventListener('submit',async(event)=>{
     console.log(pseudoValue, passwordValue)
     var requete = await login(donneesLogin)
     if(requete == true) {
-        window.location = 'http://localhost:3000/accueil'
+        window.location = `${process.env.ADRESSESERVEUR}/accueil`
     } else {
         //Cela veut dire que les identifiants sont incorrect
         const loginErreur = document.getElementById('loginErreur')

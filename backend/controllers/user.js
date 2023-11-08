@@ -20,7 +20,7 @@ exports.signup = (req, res, next) => {
                 .then(() => {
                     var token = jwt.sign(
                         { userId: user.id },
-                        process.env.chaineToken, //Clé de chiffrement à modifier
+                        process.env.CHAINETOKEN, //Clé de chiffrement à modifier
                         { expiresIn: "72h" } //Durée de validité
                     );
                     res.cookie("auth", token, {
@@ -51,7 +51,7 @@ exports.login = (req, res, next) => {
                         } else {
                             var token = jwt.sign(
                                 { userId: user.id },
-                                process.env.chaineToken, //Clé de chiffrement à modifier
+                                process.env.CHAINETOKEN, //Clé de chiffrement à modifier
                                 { expiresIn: "72h" } //Durée de validité
                             );
                             res.cookie("auth", token, {
@@ -140,11 +140,11 @@ exports.cmptHTML = (req, res, next) => {
 //Permet de vérifier si le mdp et le password sont bon et de retourner les deux boutons
 exports.compteLogin = (req, res, next) => {
     bcrypt
-        .compare(req.body.pseudo, process.env.userAdm)
+        .compare(req.body.pseudo, process.env.USERADM)
         .then((validPseudo) => {
             if (validPseudo) {
                 bcrypt
-                    .compare(req.body.password, process.env.mdpAdm)
+                    .compare(req.body.password, process.env.MDPADM)
                     .then((validMdp) => {
                         if (validMdp) {
                             const html = /*html*/ `
@@ -171,12 +171,12 @@ exports.cmptInfos = (req, res, next) => {
 };
 exports.deconnexion = (req, res, next) => {
     res.clearCookie("auth");
-    res.redirect("http://localhost:3000/accueil");
+    res.redirect(`${process.env.ADRESSESERVEUR}/accueil`);
 };
 
 exports.suppressionCompte = (req, res, next) => {
     const cookie = req.cookies.auth;
-    jwt.verify(cookie, process.env.chaineToken, (err, decoded) => {
+    jwt.verify(cookie, process.env.CHAINETOKEN, (err, decoded) => {
         if (!err) {
             const userId = decoded.userId;
             console.log(userId);
@@ -205,7 +205,7 @@ exports.suppressionCompte = (req, res, next) => {
         } else {
             console.log("Erreur dans la résolution du token");
             res.clearCookie("auth");
-            res.redirect("http://localhost:3000/accueil");
+            res.redirect(`${process.env.ADRESSESERVEUR}/accueil`);
         }
     });
 };

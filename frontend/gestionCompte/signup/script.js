@@ -1,5 +1,5 @@
 function dispoPseudo(pseudo) {
-    return fetch(`http://localhost:3000/api/authentification/verif-pseudo/${pseudo}`,{
+    return fetch(`${process.env.ADRESSESERVEUR}/api/authentification/verif-pseudo/${pseudo}`,{
         method:'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -47,7 +47,7 @@ form.addEventListener('submit',(event)=>{
         'password': passwordValue 
     }
     //Envoie de la requete à l'api
-    fetch(`http://localhost:3000/api/authentification/signup`,{
+    fetch(`${process.env.ADRESSESERVEUR}/api/authentification/signup`,{
         method:'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -57,6 +57,6 @@ form.addEventListener('submit',(event)=>{
     .then(reponse => reponse.json())
     .then(data => {
         console.log(data)
-        window.location = 'http://localhost:3000/accueil'
+        window.location = `${process.env.ADRESSESERVEUR}/accueil`
     })
 })

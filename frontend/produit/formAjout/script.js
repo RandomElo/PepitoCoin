@@ -18,14 +18,14 @@ form.addEventListener("submit", (event) => {
     donnneesForm.append("description", descForm.value);
     donnneesForm.append("image", imgForm.files[0]);
     //Envoie de la requete à l'api
-    fetch(`http://localhost:3000/api/pepitocoin/ressource/publication`, {
+    fetch(`${process.env.ADRESSESERVEUR}/api/pepitocoin/ressource/publication`, {
         method: "POST",
         body: donnneesForm,
     })
         .then((reponse) => reponse.json())
         .then((data) => {
             console.log(data.data);
-            window.location = `http://localhost:3000/produit/${data.data._id}`;
+            window.location = `${process.env.ADRESSESERVEUR}/produit/${data.data._id}`;
         })
         .catch((error) => console.error(error));
 });
