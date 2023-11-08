@@ -9,7 +9,7 @@ require("dotenv").config();
 const app = express();
 console.log(`${process.env.ADRESSESERVEUR}${process.env.PORT}`);
 app.listen(process.env.PORT, () => {
-    console.log(`Serveur en écoute sur le port ${process.env.port}`);
+    console.log(`Serveur en écoute sur le port ${process.env.PORT}`);
 });
 //Récupération des routes ressources
 const resRoutes = require("./routes/ressource");
