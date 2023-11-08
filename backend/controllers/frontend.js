@@ -1,7 +1,9 @@
+//Zone d'installation des packages
 const jwt = require("jsonwebtoken");
 const jsdom = require("jsdom");
-const Produit = require("../models/Produit");
+const fetch = require("node-fetch");
 require("dotenv").config();
+const Produit = require("../models/Produit");
 const { JSDOM } = jsdom;
 exports.accueil = async (req, res, next) => {
     //Fonction qui permet de récuépérer tous les éléments de la page
