@@ -6,6 +6,10 @@ const cookieParser = require("cookie-parser");
 
 //Création d'une application Express
 const app = express();
+const port = 8100;
+app.listen(port, () => {
+    console.log(`Serveur en écoute sur le port ${port}`);
+});
 //Récupération des routes ressources
 const resRoutes = require("./routes/ressource");
 const fichRoutes = require("./routes/fichiers");
@@ -39,8 +43,6 @@ app.use((req, res, next) => {
 app.use(express.json());
 //Permet d'utiliser les cookies dans mon site
 app.use(cookieParser());
-
-//express.static permet de servir des fichiers statiqeu sans avoir à configurer des roures
 
 //Gére les routes pour le front
 //Qui permet l'accès au fichier HTML
