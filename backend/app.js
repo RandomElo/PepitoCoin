@@ -3,12 +3,13 @@ const express = require("express");
 //Importatation de mongoose
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
+require("dotenv").config();
 
 //Création d'une application Express
 const app = express();
-const port = 8100;
-app.listen(port, () => {
-    console.log(`Serveur en écoute sur le port ${port}`);
+console.log(`${process.env.ADRESSESERVEUR}${process.env.PORT}`);
+app.listen(process.env.PORT, () => {
+    console.log(`Serveur en écoute sur le port ${process.env.port}`);
 });
 //Récupération des routes ressources
 const resRoutes = require("./routes/ressource");

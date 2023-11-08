@@ -171,7 +171,7 @@ exports.cmptInfos = (req, res, next) => {
 };
 exports.deconnexion = (req, res, next) => {
     res.clearCookie("auth");
-    res.redirect(`${process.env.ADRESSESERVEUR}/accueil`);
+    res.redirect(`${process.env.ADRESSESERVEUR}${process.env.PORT}/accueil`);
 };
 
 exports.suppressionCompte = (req, res, next) => {
@@ -205,7 +205,7 @@ exports.suppressionCompte = (req, res, next) => {
         } else {
             console.log("Erreur dans la résolution du token");
             res.clearCookie("auth");
-            res.redirect(`${process.env.ADRESSESERVEUR}/accueil`);
+            res.redirect(`${process.env.ADRESSESERVEUR}${process.env.PORT}/accueil`);
         }
     });
 };
