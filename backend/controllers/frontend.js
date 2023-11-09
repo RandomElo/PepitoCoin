@@ -9,6 +9,7 @@ exports.accueil = async (req, res, next) => {
     //Fonction qui permet de récuépérer tous les éléments de la page
     function requeteGetAll() {
         // return fetch(`${process.env.IP}${process.env.PORT}/api/pepitocoin/ressource/recuperation`, {
+        console.log(`${process.env.IP}${process.env.PORT}`)
         return fetch(`${process.env.IP}${process.env.PORT}/api/pepitocoin/ressource/recuperation`, {
             method: "GET",
             headers: {
