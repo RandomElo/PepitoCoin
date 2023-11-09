@@ -18,7 +18,7 @@ form.addEventListener("submit", (event) => {
     donnneesForm.append("description", descForm.value);
     donnneesForm.append("image", imgForm.files[0]);
     //Envoie de la requete à l'api
-    fetch(`http://[fd00::5:c63]:8100/api/pepitocoin/ressource/publication`, {
+    fetch(`http://fd00::5:c63:8100/api/pepitocoin/ressource/publication`, {
         method: "POST",
         body: donnneesForm,
         headers: {
