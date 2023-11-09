@@ -654,6 +654,7 @@ exports.mesProduits = (req, res, next) => {
 
     const cookie = req.cookies.auth;
     jwt.verify(cookie, process.env.chaineToken, (err, decoded) => {
+        console.log("Décoder: "+decoded)
         const userId = decoded.userId;
         if (!err) {
             Produit.find({ userID: userId })
