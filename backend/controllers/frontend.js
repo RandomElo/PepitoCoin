@@ -50,7 +50,6 @@ exports.accueil = async (req, res, next) => {
     const cookie = req.cookies.auth;
     if (cookie != undefined) {
         var recupNavbar = await requeteNavbarUser(cookie);
-        console.log("Navbar "+recupNavbar)
     } else {
         var recupNavbar = /*html*/ `
             <a class="logo" href="http://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
@@ -77,7 +76,6 @@ exports.accueil = async (req, res, next) => {
     document.body.appendChild(header);
     //Définition des aperçu produit
     var recupGetAll = await requeteGetAll();
-    console.log(recupGetAll)
     var conteneurProduitsGet = document.createElement("div");
     conteneurProduitsGet.setAttribute("id", "AEproduitGet");
     if (recupGetAll.length == 0) {
@@ -119,7 +117,6 @@ exports.accueil = async (req, res, next) => {
 exports.affHome = (req, res, next) => {
     //Renvoie vers l'accueil
     res.redirect("/accueil");
-    console.log("Redirection vers l'accueil");
 };
 exports.affProduit = async (req, res, next) => {
     //Fonction qui permet de récupérer la navbar
@@ -275,7 +272,6 @@ exports.affProduitProprietaire = async (req, res, next) => {
                 res.send(html);
                 // res.status(200).json({ message: "Page en phase de test" });
             } else {
-                console.log("Les deux valeurs en corresondent pas");
                 res.redirect(`http://eloi-site.alwaysdata.net/produit/${produitId}`);
             }
         } else {
@@ -643,7 +639,7 @@ exports.login = async (req, res, next) => {
 exports.mesProduits = (req, res, next) => {
     //Création de la fonction de récupération de la navbar
     function requeteNavbarUser(cookie) {
-        return fetch(`http:/[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${cookie}`, {
+        return fetch(`http://[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

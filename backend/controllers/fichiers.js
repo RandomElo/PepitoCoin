@@ -176,7 +176,6 @@ exports.userNavbar = async (req, res, next) => {
     const cookie = req.params.id;
     const cookieVerify = jwt.verify(cookie, process.env.CHAINETOKEN, (err, decoded) => {
         if (!err) {
-            console.log("jwt réussi");
             var navbar = /*html*/ `
                         <a class="logo" href="http://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
                         <div class="navLinks">
@@ -196,7 +195,6 @@ exports.userNavbar = async (req, res, next) => {
                 `;
             res.status(200).json(navbar);
         } else {
-            console.log("Problème lors de jwt");
             var navbar = noPemNavbar();
         }
     });
