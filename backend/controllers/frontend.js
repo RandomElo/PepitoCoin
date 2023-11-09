@@ -8,7 +8,7 @@ const { JSDOM } = jsdom;
 exports.accueil = async (req, res, next) => {
     //Fonction qui permet de récuépérer tous les éléments de la page
     function requeteGetAll() {
-        // return fetch(`[${process.env.IP}]:${process.env.PORT}/api/pepitocoin/ressource/recuperation`, {
+        // return fetch(`http:/[${process.env.IP}]:${process.env.PORT}/api/pepitocoin/ressource/recuperation`, {
         console.log(`http://[${process.env.IP}]:${process.env.PORT}`)
         return fetch(`http://[${process.env.IP}]:${process.env.PORT}/api/pepitocoin/ressource/recuperation`, {
             method: "GET",
@@ -24,7 +24,7 @@ exports.accueil = async (req, res, next) => {
     }
     //Fonction qui permet de récupérer la navbar
     function requeteNavbarUser(cookie) {
-        return fetch(`[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${cookie}`, {
+        return fetch(`http://[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -123,7 +123,7 @@ exports.affHome = (req, res, next) => {
 exports.affProduit = async (req, res, next) => {
     //Fonction qui permet de récupérer la navbar
     function requeteNavbarUser(id) {
-        return fetch(`[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${id}`, {
+        return fetch(`http://[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -136,7 +136,7 @@ exports.affProduit = async (req, res, next) => {
             .catch((error) => console.error(error));
     }
     function donneesProduit(id, cookie) {
-        return fetch(`[${process.env.IP}]:${process.env.PORT}/fichiers/produit/html?id=${id}&cookieAuth=${cookie}`, {
+        return fetch(`http://[${process.env.IP}]:${process.env.PORT}/fichiers/produit/html?id=${id}&cookieAuth=${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -205,7 +205,7 @@ exports.affProduit = async (req, res, next) => {
 };
 exports.affProduitProprietaire = async (req, res, next) => {
     function requeteNavbarUser(cookie) {
-        return fetch(`[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${cookie}`, {
+        return fetch(`http://[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -218,7 +218,7 @@ exports.affProduitProprietaire = async (req, res, next) => {
             .catch((error) => console.error(error));
     }
     function requeteGetOne(id) {
-        return fetch(`[${process.env.IP}]:${process.env.PORT}/api/pepitocoin/ressource/recuperation/${id}`, {
+        return fetch(`http://[${process.env.IP}]:${process.env.PORT}/api/pepitocoin/ressource/recuperation/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -370,7 +370,7 @@ exports.formAjout = (req, res, next) => {
 };
 exports.modifProduit = (req, res, next) => {
     function requeteNavbarUser(cookie) {
-        return fetch(`[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${cookie}`, {
+        return fetch(`http:/[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -446,7 +446,7 @@ exports.modifProduit = (req, res, next) => {
 };
 exports.gestionCompte = async (req, res, next) => {
     function requeteNavbarUser(cookie) {
-        return fetch(`[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${cookie}`, {
+        return fetch(`http:/[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -502,7 +502,7 @@ exports.gestionCompte = async (req, res, next) => {
 };
 exports.signup = async (req, res, next) => {
     function requeteNavbarUser(cookie) {
-        return fetch(`[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${cookie}`, {
+        return fetch(`http:/[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -571,7 +571,7 @@ exports.signup = async (req, res, next) => {
 };
 exports.login = async (req, res, next) => {
     function requeteNavbarUser(cookie) {
-        return fetch(`[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${cookie}`, {
+        return fetch(`http:/[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -642,7 +642,7 @@ exports.login = async (req, res, next) => {
 exports.mesProduits = (req, res, next) => {
     //Création de la fonction de récupération de la navbar
     function requeteNavbarUser(cookie) {
-        return fetch(`[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${cookie}`, {
+        return fetch(`http:/[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

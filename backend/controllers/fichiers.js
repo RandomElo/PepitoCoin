@@ -19,7 +19,7 @@ exports.htmlProduit = async (req, res, next) => {
     const cookieAuth = req.query.cookieAuth;
     //Fonction qui permet de faire la requete en await
     function requeteGetOne(id) {
-        return fetch(`[${process.env.IP}]:${process.env.PORT}/api/pepitocoin/ressource/recuperation/${id}`, {
+        return fetch(`http://[${process.env.IP}]:${process.env.PORT}/api/pepitocoin/ressource/recuperation/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -162,7 +162,7 @@ exports.userNavbar = async (req, res, next) => {
     }
     //Création de la fonction qui permet de récuépérer le nom du compte
     function donneesCompte(id) {
-        return fetch(`http://eloi-site.alwaysdata.net/api/authentification/compte/info/${id}`, {
+        return fetch(`http://[${process.env.IP}]:${process.env.PORT}/api/authentification/compte/info/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
