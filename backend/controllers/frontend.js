@@ -50,7 +50,6 @@ exports.accueil = async (req, res, next) => {
     const cookie = req.cookies.auth;
     if (cookie != undefined) {
         var recupNavbar = await requeteNavbarUser(cookie);
-        console.log("Cookie "+cookie)
         console.log("Navbar "+recupNavbar)
     } else {
         var recupNavbar = /*html*/ `

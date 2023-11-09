@@ -215,7 +215,7 @@ exports.userNavbar = async (req, res, next) => {
             <script src="/fichiers/navbar/script"></script>
             `;
         //faire en sorte que si il y a une erreur alors renvoyer la navbar classique
-        res.status(200).json({ navbar });
+        res.status(200).json(navbar);
     }
 };
 exports.cssNavbar = (req, res, next) => {
