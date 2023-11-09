@@ -3,6 +3,6 @@ var produitAll = document.querySelectorAll(".AEproduitAff");
 produitAll.forEach((produit) => {
     produit.addEventListener("click", () => {
         var idProduit = produit.id;
-        window.location = `${process.env.IP}${process.env.PORT}/produit/${idProduit}`;
+        window.location = `http://eloi-site.alwaysdata.net/produit/${idProduit}`;
     });
 });

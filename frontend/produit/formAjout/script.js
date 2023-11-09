@@ -18,14 +18,14 @@ form.addEventListener("submit", (event) => {
     donnneesForm.append("description", descForm.value);
     donnneesForm.append("image", imgForm.files[0]);
     //Envoie de la requete à l'api
-    fetch(`${process.env.IP}${process.env.PORT}/api/pepitocoin/ressource/publication`, {
+    fetch(`http://eloi-site.alwaysdata.net/api/pepitocoin/ressource/publication`, {
         method: "POST",
         body: donnneesForm,
     })
         .then((reponse) => reponse.json())
         .then((data) => {
             console.log(data.data);
-            window.location = `${process.env.IP}${process.env.PORT}/produit/${data.data._id}`;
+            window.location = `http://eloi-site.alwaysdata.net/produit/${data.data._id}`;
         })
         .catch((error) => console.error(error));
 });

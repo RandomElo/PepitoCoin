@@ -19,7 +19,7 @@ exports.htmlProduit = async (req, res, next) => {
     const cookieAuth = req.query.cookieAuth;
     //Fonction qui permet de faire la requete en await
     function requeteGetOne(id) {
-        return fetch(`${process.env.IP}${process.env.PORT}/api/pepitocoin/ressource/recuperation/${id}`, {
+        return fetch(`[${process.env.IP}]:${process.env.PORT}/api/pepitocoin/ressource/recuperation/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -50,7 +50,7 @@ exports.htmlProduit = async (req, res, next) => {
             //Lien page propriétaire
             const pageProprietaire = `http://loclahost:3000//produit/${produitID}/proprietaire`;
             contentHTML = /*html*/ `
-            <a class='lien' id="proprietaireLien" href='${process.env.IP}${process.env.PORT}/produit/${produitID}/proprietaire'>Passez en mode propriétaire</a>
+            <a class='lien' id="proprietaireLien" href='[${process.env.IP}]:${process.env.PORT}/produit/${produitID}/proprietaire'>Passez en mode propriétaire</a>
             <div id="donneesDiv">
                 <img id='imageProduit' src='${recupGetAll.image}' alt="Image d'illustration de ${recupGetAll.nom}">
                 <p id='nomProduit'><span class='gras'>Nom : </span>${recupGetAll.nom}</p>
@@ -148,12 +148,12 @@ exports.scriptCompte = (req, res, next) => {
 exports.userNavbar = async (req, res, next) => {
     function noPemNavbar() {
         var html = /*html*/ `
-        <a class="logo" href="${process.env.IP}${process.env.PORT}/accueil">PépitoCoin</a>
+        <a class="logo" href="http://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
         <div class="navLinks">
             <ul>
-                <li><a href="${process.env.IP}${process.env.PORT}/accueil">Accueil</a></li>
-                <li><a href="${process.env.IP}${process.env.PORT}/login">Se connecter</a></li>
-                <li><a href="${process.env.IP}${process.env.PORT}/signup">Crée un compte</a></li>
+                <li><a href="http://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
+                <li><a href="http://eloi-site.alwaysdata.net/login">Se connecter</a></li>
+                <li><a href="http://eloi-site.alwaysdata.net/signup">Crée un compte</a></li>
             </ul>
         </div>
         <img class="menuHamburger" src="/fichiers/images/menu-hamburger" alt="Menu Hamburger">
@@ -162,7 +162,7 @@ exports.userNavbar = async (req, res, next) => {
     }
     //Création de la fonction qui permet de récuépérer le nom du compte
     function donneesCompte(id) {
-        return fetch(`${process.env.IP}${process.env.PORT}/api/authentification/compte/info/${id}`, {
+        return fetch(`http://eloi-site.alwaysdata.net/api/authentification/compte/info/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -181,14 +181,14 @@ exports.userNavbar = async (req, res, next) => {
         if (!donnees.error) {
             const donneesPseudo = donnees.pseudo;
             var navbar = /*html*/ `
-                    <a class="logo" href="${process.env.IP}${process.env.PORT}/accueil">PépitoCoin</a>
+                    <a class="logo" href="http://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
                     <div class="navLinks">
                         <ul>
-                            <li><a href="${process.env.IP}${process.env.PORT}/accueil">Accueil</a></li>
-                            <li><a href="${process.env.IP}${process.env.PORT}/produit/ajout">Vendre un produit</a></li>
+                            <li><a href="http://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
+                            <li><a href="http://eloi-site.alwaysdata.net/produit/ajout">Vendre un produit</a></li>
                             <li class='conteneurSousListe'>Mon compte &#9660;
                                 <ul class="sousListe">
-                                    <li class='itemsSousListe'><a href="${process.env.IP}${process.env.PORT}/produit/mesproduits">Mes Produits</a></li>
+                                    <li class='itemsSousListe'><a href="http://eloi-site.alwaysdata.net/produit/mesproduits">Mes Produits</a></li>
                                     <li id="lienDeconnexion" class='itemsSousListe'><a style="cursor: pointer;">Déconnexion</a></li>
                                     <li id="lienSuppression" class='itemsSousListe'><a style="cursor: pointer;">Suppression</a></li>
                                 </ul>
@@ -203,12 +203,12 @@ exports.userNavbar = async (req, res, next) => {
         res.status(200).json(navbar);
     } catch (error) {
         var navbar = /*html*/ `
-            <a class="logo" href="${process.env.IP}${process.env.PORT}/accueil">PépitoCoin</a>
+            <a class="logo" href="http://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
             <div class="navLinks">
                 <ul>
-                    <li><a href="${process.env.IP}${process.env.PORT}/accueil">Accueil</a></li>
-                    <li><a href="${process.env.IP}${process.env.PORT}/login">Se connecter</a></li>
-                    <li><a href="${process.env.IP}${process.env.PORT}/signup">Crée un compte</a></li>
+                    <li><a href="http://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
+                    <li><a href="http://eloi-site.alwaysdata.net/login">Se connecter</a></li>
+                    <li><a href="http://eloi-site.alwaysdata.net/signup">Crée un compte</a></li>
                 </ul>
             </div>
             <img class="menuHamburger" src="/fichiers/images/menu-hamburger" alt="Menu Hamburger">
