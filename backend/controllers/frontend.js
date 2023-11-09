@@ -5,11 +5,11 @@ const fetch = require("node-fetch");
 require("dotenv").config();
 const Produit = require("../models/Produit");
 const { JSDOM } = jsdom;
+
 exports.accueil = async (req, res, next) => {
     //Fonction qui permet de récuépérer tous les éléments de la page
     function requeteGetAll() {
         // return fetch(`http:/[${process.env.IP}]:${process.env.PORT}/api/pepitocoin/ressource/recuperation`, {
-        console.log(`http://[${process.env.IP}]:${process.env.PORT}`)
         return fetch(`http://[${process.env.IP}]:${process.env.PORT}/api/pepitocoin/ressource/recuperation`, {
             method: "GET",
             headers: {
@@ -50,6 +50,8 @@ exports.accueil = async (req, res, next) => {
     const cookie = req.cookies.auth;
     if (cookie != undefined) {
         var recupNavbar = await requeteNavbarUser(cookie);
+        console.log("Cookie "+cookie)
+        console.log("Navbar "+recupNavbar)
     } else {
         var recupNavbar = /*html*/ `
             <a class="logo" href="http://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
