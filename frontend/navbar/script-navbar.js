@@ -24,14 +24,14 @@ if (lienDeconnexion != null) {
     lienDeconnexion.addEventListener("click", () => {
         var confirmation = confirm("Étés vous sur vouloir, vous déconnecter ?");
         if (confirmation) {
-            fetch(`${process.env.ADRESSESERVEUR}${process.env.PORT}/api/authentification/deconnexion`, {
+            fetch(`${process.env.IP}${process.env.PORT}/api/authentification/deconnexion`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
                 },
             })
                 .then(() => {
-                    window.location = `${process.env.ADRESSESERVEUR}${process.env.PORT}/accueil`;
+                    window.location = `${process.env.IP}${process.env.PORT}/accueil`;
                 })
                 .catch((error) => console.error(error));
         }
@@ -43,14 +43,14 @@ if (lienSuppression != null) {
     lienSuppression.addEventListener("click", () => {
         var confirmation = confirm("Étés vous sur, vouloir, vous supprimer votre compte ?");
         if (confirmation) {
-            fetch(`${process.env.ADRESSESERVEUR}${process.env.PORT}/api/authentification/suppression`, {
+            fetch(`${process.env.IP}${process.env.PORT}/api/authentification/suppression`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
                 },
             })
                 .then(() => {
-                    window.location = `${process.env.ADRESSESERVEUR}${process.env.PORT}/accueil`;
+                    window.location = `${process.env.IP}${process.env.PORT}/accueil`;
                 })
                 .catch((error) => console.error(error));
         }

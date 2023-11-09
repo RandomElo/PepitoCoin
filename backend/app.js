@@ -1,6 +1,5 @@
-//Imporation de la biblio Express
+//Zone d'installation des packages
 const express = require("express");
-//Importatation de mongoose
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
