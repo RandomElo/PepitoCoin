@@ -21,6 +21,9 @@ form.addEventListener("submit", (event) => {
     fetch(`http://[fd00::5:c63]:8100/api/pepitocoin/ressource/publication`, {
         method: "POST",
         body: donnneesForm,
+        headers: {
+            "Content-Type": "multipart/form-data",
+        },
     })
         .then((reponse) => reponse.json())
         .then((data) => {
