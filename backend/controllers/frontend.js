@@ -232,7 +232,7 @@ exports.affProduitProprietaire = async (req, res, next) => {
     const cookie = req.cookies.auth;
     var donnees = await requeteGetOne(produitId);
     const userDonnees = donnees.userID;
-    jwt.verify(cookie, process.env.chaineToken, async (err, decoded) => {
+    jwt.verify(cookie, process.env.CHAINETOKEN, async (err, decoded) => {
         if (!err) {
             if (userDonnees == decoded.userId) {
                 const dom = new JSDOM('<!DOCTYPE html><html><head><meta charset="UTF-8" /><link rel="stylesheet" href="/fichiers/produit/proprietaire/style" /><link rel="stylesheet" href="/fichiers/navbar/style" /><!-- Définition de la favicon --><link rel="icon" href="/fichiers/favicon" type="image/png" /><!-- Définition de la police --><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>PépitoCoin - Produit Propriétaire</title></head><body></body></html>');
@@ -295,7 +295,7 @@ exports.formAjout = (req, res, next) => {
             .catch((error) => console.error(error));
     }
     var cookie = req.cookies.auth;
-    jwt.verify(cookie, process.env.chaineToken, async (err) => {
+    jwt.verify(cookie, process.env.CHAINETOKEN, async (err) => {
         if (!err) {
             const dom = new JSDOM('<!DOCTYPE html><html><head><meta charset="UTF-8" /><link rel="stylesheet" href="/fichiers/produit/form/ajout/style" /><link rel="stylesheet" href="/fichiers/navbar/style" /><!-- Définition de la favicon --><link rel="icon" href="/fichiers/favicon" type="image/png" /><!-- Définition de la police --><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>PépitoCoin - Produit Propriétaire</title></head><body></body></html>');
 
@@ -381,7 +381,7 @@ exports.modifProduit = (req, res, next) => {
     }
     const produitId = req.params.id;
     const cookie = req.cookies.auth;
-    jwt.verify(cookie, process.env.chaineToken, async (err, decoded) => {
+    jwt.verify(cookie, process.env.CHAINETOKEN, async (err, decoded) => {
         if (!err) {
             const dom = new JSDOM('<!DOCTYPE html><html><head><meta charset="UTF-8" /><link rel="stylesheet" href="/fichiers/produit/form/modif/style" /><link rel="stylesheet" href="/fichiers/navbar/style" /><!-- Définition de la favicon --><link rel="icon" href="/fichiers/favicon" type="image/png" /><!-- Définition de la police --><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>PépitoCoin - Produit Propriétaire</title></head><body></body></html>');
 
@@ -653,7 +653,7 @@ exports.mesProduits = (req, res, next) => {
     }
 
     const cookie = req.cookies.auth;
-    jwt.verify(cookie, process.env.chaineToken, (err, decoded) => {
+    jwt.verify(cookie, process.env.CHAINETOKEN, (err, decoded) => {
         console.log("Décoder: "+decoded)
         const userId = decoded.userId;
         if (!err) {
