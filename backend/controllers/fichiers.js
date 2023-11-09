@@ -173,50 +173,33 @@ exports.userNavbar = async (req, res, next) => {
                 return data;
             });
     }
-    try {
-        const cookie = req.params.id;
-        const cookieVerify = jwt.verify(cookie, process.env.CHAINETOKEN);
-        const cookieUserId = cookieVerify.userId;
-        var donnees = await donneesCompte(cookieUserId);
-        if (!donnees.error) {
-            const donneesPseudo = donnees.pseudo;
+    const cookie = req.params.id;
+    const cookieVerify = jwt.verify(cookie, process.env.CHAINETOKEN, (err, decoded) => {
+        if (!err) {
+            console.log("jwt réussi");
             var navbar = /*html*/ `
-                    <a class="logo" href="http://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
-                    <div class="navLinks">
-                        <ul>
-                            <li><a href="http://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
-                            <li><a href="http://eloi-site.alwaysdata.net/produit/ajout">Vendre un produit</a></li>
-                            <li class='conteneurSousListe'>Mon compte &#9660;
-                                <ul class="sousListe">
-                                    <li class='itemsSousListe'><a href="http://eloi-site.alwaysdata.net/produit/mesproduits">Mes Produits</a></li>
-                                    <li id="lienDeconnexion" class='itemsSousListe'><a style="cursor: pointer;">Déconnexion</a></li>
-                                    <li id="lienSuppression" class='itemsSousListe'><a style="cursor: pointer;">Suppression</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <img class="menuHamburger" src="/fichiers/images/menu-hamburger" alt="Menu Hamburger">
+                        <a class="logo" href="http://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
+                        <div class="navLinks">
+                            <ul>
+                                <li><a href="http://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
+                                <li><a href="http://eloi-site.alwaysdata.net/produit/ajout">Vendre un produit</a></li>
+                                <li class='conteneurSousListe'>Mon compte &#9660;
+                                    <ul class="sousListe">
+                                        <li class='itemsSousListe'><a href="http://eloi-site.alwaysdata.net/produit/mesproduits">Mes Produits</a></li>
+                                        <li id="lienDeconnexion" class='itemsSousListe'><a style="cursor: pointer;">Déconnexion</a></li>
+                                        <li id="lienSuppression" class='itemsSousListe'><a style="cursor: pointer;">Suppression</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <img class="menuHamburger" src="/fichiers/images/menu-hamburger" alt="Menu Hamburger">
                 `;
+            res.status(200).json(navbar);
         } else {
+            console.log("Problème lors de jwt");
             var navbar = noPemNavbar();
         }
-        res.status(200).json(navbar);
-    } catch (error) {
-        var navbar = /*html*/ `
-            <a class="logo" href="http://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
-            <div class="navLinks">
-                <ul>
-                    <li><a href="http://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
-                    <li><a href="http://eloi-site.alwaysdata.net/login">Se connecter</a></li>
-                    <li><a href="http://eloi-site.alwaysdata.net/signup">Crée un compte</a></li>
-                </ul>
-            </div>
-            <img class="menuHamburger" src="/fichiers/images/menu-hamburger" alt="Menu Hamburger">
-            <script src="/fichiers/navbar/script"></script>
-            `;
-        //faire en sorte que si il y a une erreur alors renvoyer la navbar classique
-        res.status(200).json(navbar);
-    }
+    });
 };
 exports.cssNavbar = (req, res, next) => {
     res.sendFile(path.join(__dirname, "..", "..", "frontend", "navbar", "style-navbar.css"), { "Content-Type": "text/css" });
