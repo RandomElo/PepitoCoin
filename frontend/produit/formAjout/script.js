@@ -13,20 +13,19 @@ form.addEventListener("submit", (event) => {
     event.preventDefault();
     //Format à utiliser pour multer, il permet facilement d'associer uen paire clé valeur
     const objet = {
-        "nom":nomForm.value,
-        "prix": prixForm.value,
-        "description":descForm.value,
-        "image":imgForm.files[0]
-    }
-    console.log(objet)
-    const objetStringify = JSON.parse(objet)
+        nom: nomForm.value,
+        prix: prixForm.value,
+        description: descForm.value,
+        image: imgForm.files[0],
+    };
+    console.log(objet);
     //Envoie de la requete à l'api
     fetch(`http://eloi-site.alwaysdata.net/api/pepitocoin/ressource/publication`, {
         method: "POST",
-        body: objetStringify,
+        body: JSON.stringify(objet),
         headers: {
             "Content-Type": "application/json",
-        }
+        },
     })
         .then((reponse) => {
             console.log(reponse);
