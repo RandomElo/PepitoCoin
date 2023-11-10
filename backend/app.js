@@ -20,12 +20,6 @@ mongoose
     .connect(process.env.BDDURL)
     .then(() => console.log("Connexion à la base de données de MongoDB réussie !"))
     .catch((error) => console.error("Erreur de connexion à la BDD: ", error));
-
-app.use((req, res, next) => {
-    console.log("Requête reçue à :", new Date());
-    next(); // Passez à l'étape suivante du pipeline de requête
-});
-
 //Middleware général 'sans route' | Permet d'ajouter des headears
 app.use((req, res, next) => {
     //Uniquement les requêtes GET avec la route /api/stuff qui sont intercepté par ce middleware

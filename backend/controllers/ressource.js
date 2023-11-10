@@ -17,6 +17,7 @@ exports.recupOneRes = (req, res, next) => {
 };
 //Controlleur qui est utiliser pour publier dans le bdd les ressources du formulaires
 exports.publiRes = (req, res, next) => {
+    console.log("Requete  traiter par le middleware publires")
     // //Récupération des donées contenue dans la requete
     var produitObjet = req.body;
 
