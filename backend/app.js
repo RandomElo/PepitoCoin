@@ -1,5 +1,6 @@
 //Zone d'installation des packages
 const express = require("express");
+const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
@@ -29,7 +30,9 @@ app.use((req, res, next) => {
     next();
 });
 //Permet de pouvoir récupérer les informations de req
-app.use(express.json());
+// app.use(express.json());
+app.use(bodyParser.json({ limit: '50mb' })); // Vous pouvez ajuster la limite selon vos besoins
+app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 //Permet d'utiliser les cookies dans mon site
 app.use(cookieParser());
 
