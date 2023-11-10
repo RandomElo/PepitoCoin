@@ -28,8 +28,8 @@ app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH, OPTIONS"); //Autorisaton de certaine methodes
     next();
 });
-app.use(express.json({ limit: "100mb" })); // Vous pouvez ajuster la limite selon vos besoins
-app.use(express.urlencoded({ extended: true, limit: "50mb" }));
+//Permet de pouvoir récupérer les informations de req
+app.use(express.json());
 //Permet d'utiliser les cookies dans mon site
 app.use(cookieParser());
 
