@@ -28,7 +28,7 @@ form.addEventListener("submit", (event) => {
     })
         .then((reponse) => {
             console.log(reponse)
-            reponse.json();
+            return reponse.json();
         })
         .then((data) => {
             console.log(data.data);
