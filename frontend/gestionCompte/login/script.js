@@ -26,6 +26,7 @@ form.addEventListener("submit", async (event) => {
     };
     console.log(pseudoValue, passwordValue);
     var requete = await login(donneesLogin);
+    console.log(requete)
     if (requete == true) {
         window.location = `http://eloi-site.alwaysdata.net/accueil`;
     } else {
