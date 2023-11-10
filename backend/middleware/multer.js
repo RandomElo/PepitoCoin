@@ -1,8 +1,6 @@
 const multer = require("multer");
 const path = require("path");
 
-console.log("Requete recu dans le middleware multer");
-
 const MIME_TYPES = {
     "image/jpg": "jpg",
     "image/jpeg": "jpg",
@@ -11,18 +9,27 @@ const MIME_TYPES = {
 
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
-        callback(null, path.join(__dirname, "..", "..", "frontend", "produit", "images"));
+        const destinationPath = path.join(__dirname, "..", "..", "frontend", "produit", "images");
+        console.log("Destination du fichier:", destinationPath);
+        callback(null, destinationPath);
     },
     filename: (req, file, callback) => {
-        console.log(file);
+        console.log("Original File Name:", file.originalname);
+
         var name = file.originalname.split(".")[0];
         name = name.split(" ").join("_");
-        console.log(name);
+        console.log("Nom modifier:", name);
+
         const extension = MIME_TYPES[file.mimetype];
+        console.log("Extension du fichier:", extension);
+
         const fichier = name + Date.now() + "." + extension;
-        console.log(fichier);
+        console.log("Nom du fichier finale:", fichier);
+
         callback(null, fichier);
     },
 });
 
-module.exports = multer({ storage: storage }).single("image");
+module.exports = multer({
+    storage: storage,
+}).single("image");
