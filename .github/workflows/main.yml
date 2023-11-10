@@ -33,4 +33,4 @@ jobs:
                   username: ${{secrets.USERNAME_SSH}}
                   password: ${{secrets.PASSWORD_SSH}}
                   port: 22
-                  script: cd backend ; npm install; cd ../frontend/produit; mkdir images
+                  script: cd backend ; npm install; cd ../frontend/produit; touch images
