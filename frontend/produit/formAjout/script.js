@@ -19,7 +19,7 @@ form.addEventListener("submit", (event) => {
         "image":imgForm.files[0]
     }
     console.log(objet)
-    const objetStringify = JSON.stringify(objet)
+    const objetStringify = JSON.parse(objet)
     //Envoie de la requete à l'api
     fetch(`http://eloi-site.alwaysdata.net/api/pepitocoin/ressource/publication`, {
         method: "POST",
