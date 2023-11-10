@@ -24,9 +24,7 @@ form.addEventListener("submit", async (event) => {
         pseudo: pseudoValue,
         password: passwordValue,
     };
-    console.log(pseudoValue, passwordValue);
     var requete = await login(donneesLogin);
-    console.log(requete)
     if (requete == true) {
         window.location = `http://eloi-site.alwaysdata.net/accueil`;
     } else {
@@ -34,5 +32,4 @@ form.addEventListener("submit", async (event) => {
         const loginErreur = document.getElementById("loginErreur");
         loginErreur.innerText = "Identifiant ou mot de passe incorrect";
     }
-    console.log(requete);
 });

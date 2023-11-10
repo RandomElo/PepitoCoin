@@ -12,22 +12,23 @@ authCookie = authCookie.split("auth=")[1];
 form.addEventListener("submit", (event) => {
     event.preventDefault();
     //Format à utiliser pour multer, il permet facilement d'associer uen paire clé valeur
-    const donnneesForm = new FormData();
-    donnneesForm.append("nom", nomForm.value);
-    donnneesForm.append("prix", prixForm.value);
-    donnneesForm.append("description", descForm.value);
-    donnneesForm.append("image", imgForm.files[0]);
+    const objetPost = {
+        "nom":nomForm.value,
+        "prix": prixForm.value,
+        "description":descForm.value,
+        "image":imgForm.files[0]
+    }
+    console.log(objetPost)
     //Envoie de la requete à l'api
-    fetch(`http://[fd00::5:c63]:8100/api/pepitocoin/ressource/publication`, {
+    fetch(`http://eloi-site.alwaysdata.net/api/pepitocoin/ressource/publication`, {
         method: "POST",
-        body: donnneesForm,
+        body: objetPost,
         headers: {
-            "Content-Type": "multipart/form-data",
-        },
-        credentials: "include",
+            "Content-Type": "application/json",
+        }
     })
         .then((reponse) => {
-            console.log(reponse)
+            console.log(reponse);
             return reponse.json();
         })
         .then((data) => {
