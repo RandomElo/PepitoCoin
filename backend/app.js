@@ -28,10 +28,6 @@ app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH, OPTIONS"); //Autorisaton de certaine methodes
     next();
 });
-app.use((req, res, next) => {
-    console.log("Requête reçue à :", new Date());
-    next();
-});
 //Permet de pouvoir récupérer les informations de req
 app.use(express.json());
 //Permet d'utiliser les cookies dans mon site

@@ -26,7 +26,10 @@ form.addEventListener("submit", (event) => {
         },
         credentials: "include",
     })
-        .then((reponse) => reponse.json())
+        .then((reponse) => {
+            console.log(reponse)
+            reponse.json();
+        })
         .then((data) => {
             console.log(data.data);
             window.location = `http://eloi-site.alwaysdata.net/produit/${data.data._id}`;

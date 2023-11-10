@@ -7,6 +7,7 @@ const Produit = require("../models/Produit");
 const { JSDOM } = jsdom;
 
 exports.accueil = async (req, res, next) => {
+    console.log("accueil afficher")
     //Fonction qui permet de récuépérer tous les éléments de la page
     function requeteGetAll() {
         // return fetch(`http:/[${process.env.IP}]:${process.env.PORT}/api/pepitocoin/ressource/recuperation`, {
