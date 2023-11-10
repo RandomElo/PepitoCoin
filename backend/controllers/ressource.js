@@ -27,7 +27,7 @@ exports.publiRes = (req, res, next) => {
 
     //Ajout de userId dans l'objet qui vas aller dans la bdd
     produitObjet.userID = userId;
-
+    console.log("Filename: "+req.file.filename)
     const produit = new Produit({
         ...produitObjet,
         image: `/fichiers/produit/images/${req.file.filename}`,
