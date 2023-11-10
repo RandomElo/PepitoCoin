@@ -24,6 +24,7 @@ form.addEventListener("submit", (event) => {
         headers: {
             "Content-Type": "multipart/form-data",
         },
+        credentials: "include",
     })
         .then((reponse) => reponse.json())
         .then((data) => {
