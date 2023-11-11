@@ -31,8 +31,8 @@ app.use((req, res, next) => {
 });
 //Permet de pouvoir récupérer les informations de req
 // app.use(express.json());
-app.use(bodyParser.json({ limit: '50mb' })); // Vous pouvez ajuster la limite selon vos besoins
-app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
+app.use(bodyParser.json({ limit: "200mb" })); // Vous pouvez ajuster la limite selon vos besoins
+app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 //Permet d'utiliser les cookies dans mon site
 app.use(cookieParser());
 
