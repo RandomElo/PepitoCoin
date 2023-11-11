@@ -7,6 +7,13 @@ require("dotenv").config();
 
 //Création d'une application Express
 const app = express();
+
+app.use((err, req, res, next) => {
+    console.error("Erreur de parsing JSON :", err);
+    // Envoyer une réponse d'erreur appropriée
+    res.status(400).json({ error: "Erreur de parsing JSON" });
+});
+
 app.listen(process.env.PORT, () => {
     console.log(`Serveur en écoute sur le port ${process.env.PORT}`);
 });
