@@ -1,7 +1,7 @@
 //Récupération de l'id de la page
 var idProduit = window.location.href;
-idProduit = idProduit.split("/");
-idProduit = idProduit.pop();
+idProduit = idProduit.split("/")
+idProduit = idProduit[idProduit.length -2]
 console.log(idProduit);
 var supprProduit = document.getElementById("supprProduit");
 supprProduit.addEventListener("click", () => {
