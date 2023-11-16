@@ -9,8 +9,8 @@ const MIME_TYPES = {
 
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
-        // const destinationPath = path.join(__dirname, "..", "..", "frontend", "produit", "images");
-        const destinationPath = path.join(__dirname, "..", "..", "frontend");
+        const destinationPath = path.join(__dirname, "..", "..", "frontend", "produit", "images");
+        // const destinationPath = path.join(__dirname, "..", "..", "frontend");
         console.log("Destination du fichier:", destinationPath);
         callback(null, destinationPath);
     },
