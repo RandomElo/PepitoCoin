@@ -1,9 +1,13 @@
-// supprProduit
+//Récupération de l'id de la page
+var idProduit = window.location
+idProduit = idProduit.split("/")
+idProduit = idProduit.pop()
+console.log(idProduit)
 var supprProduit = document.getElementById("supprProduit");
 supprProduit.addEventListener("click", () => {
     var confirmation = confirm("Êtes-vous sûr de vouloir supprimer ce produit ?");
     if (confirmation) {
-        fetch(`http://eloi-site.alwaysdata.net/api/pepitocoin/ressource/suppression/${nomFichier}`, {
+        fetch(`http://eloi-site.alwaysdata.net/api/pepitocoin/ressource/suppression/${idProduit}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
