@@ -22,9 +22,6 @@ form.addEventListener("submit", (event) => {
     fetch(`http://eloi-site.alwaysdata.net/api/pepitocoin/ressource/publication`, {
         method: "POST",
         body: objet,
-        headers: {
-            "Content-Type": "application/json",
-        },
     })
         .then((reponse) => {
             console.log(reponse);
