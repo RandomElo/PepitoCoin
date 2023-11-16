@@ -1,5 +1,5 @@
 //Récupération de l'id de la page
-var idProduit = window.location
+var idProduit = window.location.href
 idProduit = idProduit.split("/")
 idProduit = idProduit.pop()
 console.log(idProduit)
