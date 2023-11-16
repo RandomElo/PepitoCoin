@@ -61,6 +61,7 @@ input {
     font-size: 14px;
 }
 #imgDiv {
+    width: 21px;
     position: relative;
     margin-top: 15px;
     left: 0px;
