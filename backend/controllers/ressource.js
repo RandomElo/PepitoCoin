@@ -54,8 +54,7 @@ exports.modifRes = (req, res, next) => {
 };
 //Controlleur qui permet de supprimer des ressource
 exports.supprRes = (req, res, next) => {
-    const ressourceId = req.params.id;
-    Produit.findOne({ _id: ressourceId })
+    Produit.findOne({ _id: req.params.id })
         .then((data) => {
             var nomFichier = data.image;
             nomFichier = nomFichier.split("/");

@@ -1,8 +1,8 @@
 //Récupération de l'id de la page
-var idProduit = window.location.href
-idProduit = idProduit.split("/")
-idProduit = idProduit.pop()
-console.log(idProduit)
+var idProduit = window.location.href;
+idProduit = idProduit.split("/");
+idProduit = idProduit.pop();
+console.log(idProduit);
 var supprProduit = document.getElementById("supprProduit");
 supprProduit.addEventListener("click", () => {
     var confirmation = confirm("Êtes-vous sûr de vouloir supprimer ce produit ?");
@@ -15,8 +15,7 @@ supprProduit.addEventListener("click", () => {
         })
             .then((reponse) => reponse.json())
             .then((data) => {
-                console.log(data);
-                window.location = `http://eloi-site.alwaysdata.net/accueil`;
+                // window.location = `http://eloi-site.alwaysdata.net/accueil`;
             })
             .catch((error) => console.error(error));
     }
