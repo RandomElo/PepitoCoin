@@ -7,11 +7,10 @@ const Produit = require("../models/Produit");
 const { JSDOM } = jsdom;
 
 exports.accueil = async (req, res, next) => {
-    console.log("accueil afficher")
     //Fonction qui permet de récuépérer tous les éléments de la page
     function requeteGetAll() {
         // return fetch(`http:/[${process.env.IP}]:${process.env.PORT}/api/pepitocoin/ressource/recuperation`, {
-        return fetch(`http://[${process.env.IP}]:${process.env.PORT}/api/pepitocoin/ressource/recuperation`, {
+        return fetch(`http://eloi-site.alwaysdata.net/api/pepitocoin/ressource/recuperation`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -25,7 +24,7 @@ exports.accueil = async (req, res, next) => {
     }
     //Fonction qui permet de récupérer la navbar
     function requeteNavbarUser(cookie) {
-        return fetch(`http://[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${cookie}`, {
+        return fetch(`http://eloi-site.alwaysdata.net/fichiers/navbar/html/${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -122,7 +121,7 @@ exports.affHome = (req, res, next) => {
 exports.affProduit = async (req, res, next) => {
     //Fonction qui permet de récupérer la navbar
     function requeteNavbarUser(id) {
-        return fetch(`http://[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${id}`, {
+        return fetch(`http://eloi-site.alwaysdata.net/fichiers/navbar/html/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -135,7 +134,7 @@ exports.affProduit = async (req, res, next) => {
             .catch((error) => console.error(error));
     }
     function donneesProduit(id, cookie) {
-        return fetch(`http://[${process.env.IP}]:${process.env.PORT}/fichiers/produit/html?id=${id}&cookieAuth=${cookie}`, {
+        return fetch(`http://eloi-site.alwaysdata.net/fichiers/produit/html?id=${id}&cookieAuth=${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -204,7 +203,7 @@ exports.affProduit = async (req, res, next) => {
 };
 exports.affProduitProprietaire = async (req, res, next) => {
     function requeteNavbarUser(cookie) {
-        return fetch(`http://[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${cookie}`, {
+        return fetch(`http://eloi-site.alwaysdata.net/fichiers/navbar/html/${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -217,7 +216,7 @@ exports.affProduitProprietaire = async (req, res, next) => {
             .catch((error) => console.error(error));
     }
     function requeteGetOne(id) {
-        return fetch(`http://[${process.env.IP}]:${process.env.PORT}/api/pepitocoin/ressource/recuperation/${id}`, {
+        return fetch(`http://eloi-site.alwaysdata.net/api/pepitocoin/ressource/recuperation/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -640,7 +639,7 @@ exports.login = async (req, res, next) => {
 exports.mesProduits = (req, res, next) => {
     //Création de la fonction de récupération de la navbar
     function requeteNavbarUser(cookie) {
-        return fetch(`http://[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${cookie}`, {
+        return fetch(`http://eloi-site.alwaysdata.net/fichiers/navbar/html/${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
