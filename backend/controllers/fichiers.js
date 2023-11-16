@@ -19,7 +19,7 @@ exports.htmlProduit = async (req, res, next) => {
     const cookieAuth = req.query.cookieAuth;
     //Fonction qui permet de faire la requete en await
     function requeteGetOne(id) {
-        return fetch(`http://[${process.env.IP}]:${process.env.PORT}/api/pepitocoin/ressource/recuperation/${id}`, {
+        return fetch(`http://eloi-site.alwaysdata.net/api/pepitocoin/ressource/recuperation/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -48,9 +48,9 @@ exports.htmlProduit = async (req, res, next) => {
         if (userIdCookie === userIdRequete) {
             //Mode propriétaire
             //Lien page propriétaire
-            const pageProprietaire = `http://loclahost:3000//produit/${produitID}/proprietaire`;
+            const pageProprietaire = `http://eloi-site.alwaysdata.net/produit/${produitID}/proprietaire`;
             contentHTML = /*html*/ `
-            <a class='lien' id="proprietaireLien" href='[${process.env.IP}]:${process.env.PORT}/produit/${produitID}/proprietaire'>Passez en mode propriétaire</a>
+            <a class='lien' id="proprietaireLien" href='http://eloi-site.alwaysdata.net/produit/${produitID}/proprietaire'>Passez en mode propriétaire</a>
             <div id="donneesDiv">
                 <img id='imageProduit' src='${recupGetAll.image}' alt="Image d'illustration de ${recupGetAll.nom}">
                 <p id='nomProduit'><span class='gras'>Nom : </span>${recupGetAll.nom}</p>
