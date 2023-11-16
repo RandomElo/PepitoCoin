@@ -1,6 +1,7 @@
 const path = require("path");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const fetch = require("node-fetch");
 
 exports.favicon = (req, res, next) => {
     res.sendFile(path.join(__dirname, "..", "..", "frontend", "favicon.png"));
@@ -27,7 +28,6 @@ exports.htmlProduit = async (req, res, next) => {
         })
             .then((reponse) => reponse.json())
             .then((data) => {
-                console.log(data)
                 return data;
             })
             .catch((error) => console.error(error));
