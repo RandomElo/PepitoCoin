@@ -342,7 +342,6 @@ exports.formAjout = (req, res, next) => {
                         <!-- Zone pour l'illustration du produit -->
                         <label for="imgForm">Image du produit :</label>
                         <input type="file" id="imgForm" name="imgForm" accept="image/png, image/jpeg, image/jpg" required/>
-                        <!-- <input id="imgForm" type="text" required> -->
                     </div>
                     <button id="envoiBouton" type="submit">Enregistrer</button>
                 </form>
@@ -654,7 +653,7 @@ exports.mesProduits = (req, res, next) => {
 
     const cookie = req.cookies.auth;
     jwt.verify(cookie, process.env.CHAINETOKEN, (err, decoded) => {
-        console.log("Décoder: "+decoded)
+        console.log("Décoder: " + decoded);
         const userId = decoded.userId;
         if (!err) {
             Produit.find({ userID: userId })
