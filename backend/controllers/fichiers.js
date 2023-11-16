@@ -27,6 +27,7 @@ exports.htmlProduit = async (req, res, next) => {
         })
             .then((reponse) => reponse.json())
             .then((data) => {
+                console.log(data)
                 return data;
             })
             .catch((error) => console.error(error));
