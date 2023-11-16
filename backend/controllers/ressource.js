@@ -59,7 +59,7 @@ exports.supprRes = (req, res, next) => {
             var nomFichier = data.image;
             nomFichier = nomFichier.split("/");
             nomFichier = nomFichier.pop();
-            nomFichier = `../../frontend/produit/images/${nomFichier}`;
+            nomFichier = `../../frontend/produit/images/${nomFichier}.jpg`;
             fs.unlink(nomFichier, (err) => {
                 if (!err) {
                     Produit.deleteOne({ _id: req.params.id })
