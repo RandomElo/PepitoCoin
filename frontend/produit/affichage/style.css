@@ -34,3 +34,6 @@ p {
 #imageProduit {
     width: 150px;
 }
+#descProduit {
+    margin-bottom: 20px;
+}
