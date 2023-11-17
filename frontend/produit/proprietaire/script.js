@@ -15,7 +15,7 @@ supprProduit.addEventListener("click", () => {
         })
             .then((reponse) => reponse.json())
             .then((data) => {
-                // window.location = `http://eloi-site.alwaysdata.net/accueil`;
+                window.location = `http://eloi-site.alwaysdata.net/accueil`;
             })
             .catch((error) => console.error(error));
     }
