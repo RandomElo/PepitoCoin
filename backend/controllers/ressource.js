@@ -61,9 +61,7 @@ exports.supprRes = (req, res, next) => {
             nomFichier = nomFichier.split("/");
             nomFichier = nomFichier.pop();
             console.log(nomFichier)
-            //Faire en sorte de ne pas afficher le vrain chemin
-            nomFichier = `../../frontend/produit/images/${nomFichier}`;
-            fs.unlink(nomFichier, (err) => {
+            fs.unlink(`../../frontend/produit/images/${nomFichier}`, (err) => {
                 if (!err) {
                     Produit.deleteOne({ _id: req.params.id })
                         .then(res.status(201).json({ message: "Objet supprimé !" }))
