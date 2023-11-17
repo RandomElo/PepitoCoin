@@ -95,7 +95,6 @@ exports.htmlProduit = async (req, res, next) => {
                     `;
             }
         });
-        userIdCookie = userIdCookie.userId; //Une fois que le token est décoder je peut récupérer le userid
     }
     res.status(200).json(contentHTML);
 };
