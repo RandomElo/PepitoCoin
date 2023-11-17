@@ -58,8 +58,9 @@ exports.supprRes = (req, res, next) => {
         .then((data) => {
             var nomFichier = data.image;
             console.log(nomFichier)
-            // nomFichier = nomFichier.split("/");
-            // nomFichier = nomFichier.pop();
+            nomFichier = nomFichier.split("/");
+            nomFichier = nomFichier.pop();
+            console.log(nomFichier)
             //Faire en sorte de ne pas afficher le vrain chemin
             nomFichier = `../../frontend/produit/images/${nomFichier}`;
             fs.unlink(nomFichier, (err) => {
