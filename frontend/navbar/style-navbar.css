@@ -82,9 +82,6 @@
 }
 /* Fin de la zone de définition de  */
 @media screen and (max-width: 850px) {
-    header {
-        margin-top: 70px;
-    }
     .navbar {
         padding: 0;
     }
@@ -92,7 +89,7 @@
         display: none;
     }
     header {
-        margin-top: 15px;
+        margin-top: 70px;
     }
     .menuHamburger {
         display: block;
