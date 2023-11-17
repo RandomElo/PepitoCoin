@@ -64,6 +64,9 @@ exports.htmlProduit = async (req, res, next) => {
         `;
         } else {
             contentHTML = /*html*/ `
+                <header>
+                    <h1>Bienvenue sur la page produit !</h1>
+                </header>
                 <div id="donneesDiv">
                     <img id='imageProduit' src='${recupGetAll.image}' alt="Image d'illustration de " +recupGetAll.nom>
                     <p id='nomProduit'><span class='gras'>Nom : </span>${recupGetAll.nom}</p>
