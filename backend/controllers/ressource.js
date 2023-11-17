@@ -57,8 +57,9 @@ exports.supprRes = (req, res, next) => {
     Produit.findOne({ _id: req.params.id })
         .then((data) => {
             var nomFichier = data.image;
-            nomFichier = nomFichier.split("/");
-            nomFichier = nomFichier.pop();
+            console.log(nomFichier)
+            // nomFichier = nomFichier.split("/");
+            // nomFichier = nomFichier.pop();
             //Faire en sorte de ne pas afficher le vrain chemin
             nomFichier = `../../frontend/produit/images/${nomFichier}`;
             fs.unlink(nomFichier, (err) => {
