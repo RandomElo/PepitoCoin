@@ -82,6 +82,9 @@
 }
 /* Fin de la zone de définition de  */
 @media screen and (max-width: 850px) {
+    header {
+        margin-top: 70px;
+    }
     .navbar {
         padding: 0;
     }
