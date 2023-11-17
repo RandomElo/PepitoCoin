@@ -60,7 +60,7 @@ exports.supprRes = (req, res, next) => {
             nomFichier = nomFichier.split("/");
             nomFichier = nomFichier.pop();
             console.log(nomFichier)
-            fs.unlink(`${nomFichier}`, (err) => {
+            fs.unlink(nomFichier, (err) => {
                 if (!err) {
                     Produit.deleteOne({ _id: req.params.id })
                         .then(res.status(201).json({ message: "Objet supprimé !" }))
