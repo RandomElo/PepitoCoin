@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const fs = require("fs");
+const path = require('path')
 const Produit = require("../models/Produit");
 //Controleur qui est utiliser au chargement de la page
 exports.recupAllRes = (req, res, next) => {
@@ -59,8 +60,10 @@ exports.supprRes = (req, res, next) => {
             var nomFichier = data.image;
             nomFichier = nomFichier.split("/");
             nomFichier = nomFichier.pop();
-            console.log(nomFichier)
-            fs.unlink(nomFichier, (err) => {
+            const cheminImage = path.join(__dirname, '..','..','frontend','produit','images', `${nomFichier}`)
+            console.log(cheminImage)
+
+            fs.unlink(cheminImage, (err) => {
                 if (!err) {
                     Produit.deleteOne({ _id: req.params.id })
                         .then(res.status(201).json({ message: "Objet supprimé !" }))
