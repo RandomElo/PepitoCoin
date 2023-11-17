@@ -57,7 +57,6 @@ exports.supprRes = (req, res, next) => {
     Produit.findOne({ _id: req.params.id })
         .then((data) => {
             var nomFichier = data.image;
-            console.log(nomFichier)
             nomFichier = nomFichier.split("/");
             nomFichier = nomFichier.pop();
             console.log(nomFichier)
