@@ -33,37 +33,10 @@ exports.htmlProduit = async (req, res, next) => {
             .catch((error) => console.error(error));
     }
     var contentHTML;
-    //Utilisation de try/catch pour la gestion des erreurs
-    try {
-        var recupGetAll = await requeteGetOne(produitID);
-
-        if (cookieAuth == null) {
-            console.log("il y a pas de cookie d auth");
-        } else {
-            var userIdCookie = jwt.verify(cookieAuth, process.env.CHAINETOKEN);
-            userIdCookie = userIdCookie.userId; //Une fois que le token est décoder je peut récupérer le userid
-        }
-
-        //Récuépration du userID depuis la requete à la bdd
-        const userIdRequete = recupGetAll.userID;
-        if (userIdCookie === userIdRequete) {
-            //Mode propriétaire
-            //Lien page propriétaire
-            const pageProprietaire = `http://eloi-site.alwaysdata.net/produit/${produitID}/proprietaire`;
-            contentHTML = /*html*/ `
-            <header>
-                <h1>Bienvenue sur la page produit !</h1>
-            </header>
-            <div id="donneesDiv">
-                <img id='imageProduit' src='${recupGetAll.image}' alt="Image d'illustration de ${recupGetAll.nom}">
-                <p id='nomProduit'><span class='gras'>Nom : </span>${recupGetAll.nom}</p>
-                <p id='prixProduit'><span class='gras'>Prix : </span>${recupGetAll.prix}</p>
-                <p id='descProduit'><span class='gras'>Description : </span>${recupGetAll.description}</p>
-            </div>
-            <a class='lien' id="proprietaireLien" href='http://eloi-site.alwaysdata.net/produit/${produitID}/proprietaire'>Passez en mode propriétaire</a>
-        `;
-        } else {
-            contentHTML = /*html*/ `
+    //Récupération des informations du produit
+    var recupGetAll = await requeteGetOne(produitID);
+    if (cookieAuth == null) {
+        contentHTML = /*html*/ `
                 <header>
                     <h1>Bienvenue sur la page produit !</h1>
                 </header>
@@ -74,18 +47,55 @@ exports.htmlProduit = async (req, res, next) => {
                     <p id='descProduit'><span class='gras'>Description : </span>${recupGetAll.description}</p>
                 </div>
             `;
-        }
-    } catch (error) {
-        //Si il y a une erreur alors ->
-        console.error(error);
-        contentHTML = /*html*/ `
-            <div id="donneesDiv">
-                <img id='imageProduit' src='${recupGetAll.image}' alt="Image d'illustration de " +recupGetAll.nom>
-                <p id='nomProduit'><span class='gras'>Nom : </span>${recupGetAll.nom}</p>
-                <p id='prixProduit'><span class='gras'>Prix : </span>${recupGetAll.prix}</p>
-                <p id='descProduit'><span class='gras'>Description : </span>${recupGetAll.description}</p>
-            </div>
-        `;
+    } else {
+        jwt.verify(cookieAuth, process.env.CHAINETOKEN, (err, decoded) => {
+            if (!err) {
+                //Récuépration du userID depuis la requete à la bdd
+                const userIdRequete = recupGetAll.userID;
+                if (decoded === userIdRequete) {
+                    //Mode propriétaire
+                    contentHTML = /*html*/ `
+                        <header>
+                            <h1>Bienvenue sur la page produit !</h1>
+                        </header>
+                        <div id="donneesDiv">
+                            <img id='imageProduit' src='${recupGetAll.image}' alt="Image d'illustration de ${recupGetAll.nom}">
+                            <p id='nomProduit'><span class='gras'>Nom : </span>${recupGetAll.nom}</p>
+                            <p id='prixProduit'><span class='gras'>Prix : </span>${recupGetAll.prix}</p>
+                            <p id='descProduit'><span class='gras'>Description : </span>${recupGetAll.description}</p>
+                        </div>
+                        <a class='lien' id="proprietaireLien" href='http://eloi-site.alwaysdata.net/produit/${produitID}/proprietaire'>Passez en mode propriétaire</a>
+                    `;
+                } else {
+                    contentHTML = /*html*/ `
+                            <header>
+                                <h1>Bienvenue sur la page produit !</h1>
+                            </header>
+                            <div id="donneesDiv">
+                                <img id='imageProduit' src='${recupGetAll.image}' alt="Image d'illustration de " +recupGetAll.nom>
+                                <p id='nomProduit'><span class='gras'>Nom : </span>${recupGetAll.nom}</p>
+                                <p id='prixProduit'><span class='gras'>Prix : </span>${recupGetAll.prix}</p>
+                                <p id='descProduit'><span class='gras'>Description : </span>${recupGetAll.description}</p>
+                            </div>
+                        `;
+                }
+                //Si jamais il y a une erreur
+            } else {
+                res.clearCookie('auth');
+                contentHTML = /*html*/ `
+                        <header>
+                            <h1>Bienvenue sur la page produit !</h1>
+                        </header>
+                        <div id="donneesDiv">
+                            <img id='imageProduit' src='${recupGetAll.image}' alt="Image d'illustration de " +recupGetAll.nom>
+                            <p id='nomProduit'><span class='gras'>Nom : </span>${recupGetAll.nom}</p>
+                            <p id='prixProduit'><span class='gras'>Prix : </span>${recupGetAll.prix}</p>
+                            <p id='descProduit'><span class='gras'>Description : </span>${recupGetAll.description}</p>
+                        </div>
+                    `;
+            }
+        });
+        userIdCookie = userIdCookie.userId; //Une fois que le token est décoder je peut récupérer le userid
     }
     res.status(200).json(contentHTML);
 };
