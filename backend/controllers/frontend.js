@@ -61,7 +61,6 @@ exports.accueil = async (req, res, next) => {
                 </ul>
             </div>
             <img class="menuHamburger" src="/fichiers/images/menu-hamburger" alt="Menu Hamburger">
-            <script src="/fichiers/navbar/script"></script>
             `;
     }
     navbar.innerHTML = recupNavbar;

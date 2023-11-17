@@ -81,7 +81,7 @@ exports.htmlProduit = async (req, res, next) => {
                 }
                 //Si jamais il y a une erreur
             } else {
-                res.clearCookie('auth');
+                res.clearCookie("auth");
                 contentHTML = /*html*/ `
                         <header>
                             <h1>Bienvenue sur la page produit !</h1>
@@ -162,35 +162,8 @@ exports.scriptCompte = (req, res, next) => {
 };
 //Zone de génération de la navbar avec compte
 exports.userNavbar = async (req, res, next) => {
-    function noPemNavbar() {
-        var html = /*html*/ `
-        <a class="logo" href="http://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
-        <div class="navLinks">
-            <ul>
-                <li><a href="http://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
-                <li><a href="http://eloi-site.alwaysdata.net/login">Se connecter</a></li>
-                <li><a href="http://eloi-site.alwaysdata.net/signup">Crée un compte</a></li>
-            </ul>
-        </div>
-        <img class="menuHamburger" src="/fichiers/images/menu-hamburger" alt="Menu Hamburger">
-        `;
-        return html;
-    }
-    //Création de la fonction qui permet de récuépérer le nom du compte
-    function donneesCompte(id) {
-        return fetch(`http://[${process.env.IP}]:${process.env.PORT}/api/authentification/compte/info/${id}`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        })
-            .then((reponse) => reponse.json())
-            .then((data) => {
-                return data;
-            });
-    }
     const cookie = req.params.id;
-    const cookieVerify = jwt.verify(cookie, process.env.CHAINETOKEN, (err, decoded) => {
+    jwt.verify(cookie, process.env.CHAINETOKEN, (err, decoded) => {
         if (!err) {
             var navbar = /*html*/ `
                         <a class="logo" href="http://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
@@ -211,7 +184,19 @@ exports.userNavbar = async (req, res, next) => {
                 `;
             res.status(200).json(navbar);
         } else {
-            var navbar = noPemNavbar();
+            var navbar = /*html*/ `
+            <a class="logo" href="http://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
+            <div class="navLinks">
+                <ul>
+                    <li><a href="http://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
+                    <li><a href="http://eloi-site.alwaysdata.net/login">Se connecter</a></li>
+                    <li><a href="http://eloi-site.alwaysdata.net/signup">Crée un compte</a></li>
+                </ul>
+            </div>
+            <img class="menuHamburger" src="/fichiers/images/menu-hamburger" alt="Menu Hamburger">
+            `;
+            res.clearCookie("auth");
+            res.status(200).json(navbar);
         }
     });
 };
