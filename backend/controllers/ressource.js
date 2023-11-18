@@ -49,7 +49,7 @@ exports.modifRes = (req, res, next) => {
             //Récupération des données de le requete
             const produitObjet = req.body;
             console.log(req.file)
-            if (req.file.filename === undefined) {
+            if (req.file === undefined) {
                 const produit = new Produit({
                     ...produitObjet,
                     _id: req.params.id,
