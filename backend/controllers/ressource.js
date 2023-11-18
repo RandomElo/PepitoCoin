@@ -44,9 +44,9 @@ exports.publiRes = (req, res, next) => {
 };
 //Controleur qui permet de modfiier une ressource de la BDD
 exports.modifRes = (req, res, next) => {
+    console.log("_id " + req.params.id);
     Produit.findOne({ _id: req.params.id })
         .then((data) => {
-            // Ré
             var image = data.image;
             image = image.split("/");
             image = image.pop();
