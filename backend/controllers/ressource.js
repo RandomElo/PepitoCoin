@@ -48,8 +48,8 @@ exports.modifRes = (req, res, next) => {
         .then((data) => {
             //Récupération des données de le requete
             const produitObjet = req.body;
-            console.log(produitObjet);
-            if (req.file.filename == undefined) {
+            console.log(req.file)
+            if (req.file.filename === undefined) {
                 const produit = new Produit({
                     ...produitObjet,
                     _id: req.params.id,

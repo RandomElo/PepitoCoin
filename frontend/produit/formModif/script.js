@@ -27,11 +27,11 @@ async function remplissageForm(produitId) {
     nomForm.value = requete.nom;
     prixForm.value = requete.prix;
     descForm.value = requete.description;
-    // imgForm.value = requete.image;
 }
 remplissageForm(nomFichier);
 //Création de l'événement sur le clique du bouton envoyer
 form.addEventListener("submit", (event) => {
+
     event.preventDefault();
     const objet = new FormData();
     objet.append("nom", nomForm.value);
