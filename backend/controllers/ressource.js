@@ -57,7 +57,7 @@ exports.modifRes = (req, res, next) => {
 
                     //Récupération des données de le requete
                     const produitObjet = req.body;
-                    console.log("Produit body " + produitObjet);
+                    console.log(produitObjet);
                     const produit = new Produit({
                         ...produitObjet,
                         image: `/fichiers/produit/images/${req.file.filename}`,
