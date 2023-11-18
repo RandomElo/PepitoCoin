@@ -44,47 +44,38 @@ exports.publiRes = (req, res, next) => {
 };
 //Controleur qui permet de modfiier une ressource de la BDD
 exports.modifRes = (req, res, next) => {
-    function requeteGetOne(id) {
-        return fetch(`http://eloi-site.alwaysdata.net/api/pepitocoin/ressource/recuperation/${id}`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            },
+    Produit.findOne(req.params.id)
+        .then((data) => {
+            // Ré
+            var image = data.image;
+            image = image.split("/");
+            image = image.pop();
+            console.log(image);
+
+            const cheminImage = path.join(__dirname, "..", "..", "frontend", "produit", "images", `${image}`);
+            console.log(cheminImage);
+
+            fs.unlink(cheminImage, (err) => {
+                if (!err) {
+                    console.log("Fichier supprimé avec succés");
+                } else {
+                    console.error("Problème lors de la suppresion du fichier : ", err);
+                    res.status(500).json(err);
+                }
+            });
+
+            //Récupération des données de le requete
+            const produitObjet = req.body;
+            const produit = new Produit({
+                ...produitObjet,
+                image: `/fichiers/produit/images/${req.file.filename}`,
+            });
+            //La fonction updateOne, prend ddeux éléments, l'id de l'élément et par quoi il faut modifier la ressrouce
+            Produit.updateOne({ _id: req.params.id }, produit)
+                .then(() => res.status(201).json({ produit }))
+                .catch((error) => res.status(401).json({ error }));
         })
-            .then((reponse) => reponse.json())
-            .then((data) => {
-                return data;
-            })
-            .catch((error) => console.error(error));
-    }
-    const requete = requeteGetOne(req.params.id);
-    var image = requete.image;
-    image = image.split("/");
-    image = image.pop();
-    console.log(image);
-
-    const cheminImage = path.join(__dirname, "..", "..", "frontend", "produit", "images", `${image}`);
-    console.log(cheminImage);
-
-    fs.unlink(cheminImage, (err) => {
-        if (!err) {
-            console.log("Fichier supprimé avec succés");
-        } else {
-            console.error("Problème lors de la suppresion du fichier : ", err);
-            res.status(500).json(err);
-        }
-    });
-
-    //Récupération des données de le requete
-    const produitObjet = req.body;
-    const produit = new Produit({
-        ...produitObjet,
-        image: `/fichiers/produit/images/${req.file.filename}`,
-    });
-    //La fonction updateOne, prend ddeux éléments, l'id de l'élément et par quoi il faut modifier la ressrouce
-    Produit.updateOne({ _id: req.params.id }, produit)
-        .then(() => res.status(201).json({ produit }))
-        .catch((error) => res.status(401).json({ error }));
+        .catch((error) => res.status(500).json({ error }));
 };
 //Controlleur qui permet de supprimer des ressource
 exports.supprRes = (req, res, next) => {
