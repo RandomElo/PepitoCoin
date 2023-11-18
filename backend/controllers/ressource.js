@@ -48,9 +48,10 @@ exports.modifRes = (req, res, next) => {
         .then((data) => {
             //Récupération des données de le requete
             const produitObjet = req.body;
-            console.log(req.file)
+            console.log(req.file);
+            var produit;
             if (req.file === undefined) {
-                const produit = new Produit({
+                produit = new Produit({
                     ...produitObjet,
                     _id: req.params.id,
                 });
@@ -61,7 +62,7 @@ exports.modifRes = (req, res, next) => {
                 const cheminImage = path.join(__dirname, "..", "..", "frontend", "produit", "images", `${image}`);
                 fs.unlink(cheminImage, (err) => {
                     if (!err) {
-                        const produit = new Produit({
+                        produit = new Produit({
                             ...produitObjet,
                             _id: req.params.id,
                             image: `/fichiers/produit/images/${req.file.filename}`,
@@ -72,6 +73,11 @@ exports.modifRes = (req, res, next) => {
                     }
                 });
             }
+            console.log(produit)
+            //La fonction updateOne, prend ddeux éléments, l'id de l'élément et par quoi il faut modifier la ressrouce
+            Produit.updateOne({ _id: req.params.id }, produit)
+                .then(() => res.status(201).json({ produit }))
+                .catch((error) => res.status(401).json({ message: "Problème dans la mise à jour du fchier" }));
         })
         .catch((error) => res.status(500).json({ message: `Problème de la recherche dans la BDD ${error}` }));
 };
