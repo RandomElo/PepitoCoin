@@ -54,10 +54,10 @@ exports.htmlProduit = async (req, res, next) => {
             if (!err) { //Si jamais il y a pas d'erreur
                 //Récuépration du userID depuis la requete à la bdd
                 const userIdRequete = recupGetAll.userID;
-                console.log("Decoded: "+decoded)
+                console.log("Decoded: "+decoded.userId)
                 console.log("useridRequete: "+userIdRequete)
 
-                if (decoded === userIdRequete) {
+                if (decoded.userId === userIdRequete) {
                     //Mode propriétaire
                     contentHTML = /*html*/ `
                         <header>
