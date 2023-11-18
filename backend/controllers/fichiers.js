@@ -36,6 +36,7 @@ exports.htmlProduit = async (req, res, next) => {
     //Récupération des informations du produit
     var recupGetAll = await requeteGetOne(produitID);
     if (cookieAuth == null) {
+        //Si jamasi il y a pas de cookie d'auth
         contentHTML = /*html*/ `
                 <header>
                     <h1>Bienvenue sur la page produit !</h1>
@@ -48,10 +49,14 @@ exports.htmlProduit = async (req, res, next) => {
                 </div>
             `;
     } else {
+        // Si jamais il y a un cookie d'auth alors on le décode
         jwt.verify(cookieAuth, process.env.CHAINETOKEN, (err, decoded) => {
-            if (!err) {
+            if (!err) { //Si jamais il y a pas d'erreur
                 //Récuépration du userID depuis la requete à la bdd
                 const userIdRequete = recupGetAll.userID;
+                console.log("Decoded: "+decoded)
+                console.log("useridRequete: "+userIdRequete)
+
                 if (decoded === userIdRequete) {
                     //Mode propriétaire
                     contentHTML = /*html*/ `
@@ -81,6 +86,7 @@ exports.htmlProduit = async (req, res, next) => {
                 }
                 //Si jamais il y a une erreur
             } else {
+                console.log('Erreur lors de la verification du token')
                 res.clearCookie("auth");
                 contentHTML = /*html*/ `
                         <header>

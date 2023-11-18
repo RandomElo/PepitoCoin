@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const fs = require("fs");
-const path = require('path')
+const path = require("path");
 const Produit = require("../models/Produit");
 //Controleur qui est utiliser au chargement de la page
 exports.recupAllRes = (req, res, next) => {
@@ -18,7 +18,7 @@ exports.recupOneRes = (req, res, next) => {
 };
 //Controlleur qui est utiliser pour publier dans le bdd les ressources du formulaires
 exports.publiRes = (req, res, next) => {
-    // //Récupération des donées contenue dans la requete
+    // //Récupération des données contenue dans la requete
     var produitObjet = req.body;
 
     //Récupération du userId
@@ -28,7 +28,7 @@ exports.publiRes = (req, res, next) => {
 
     //Ajout de userId dans l'objet qui vas aller dans la bdd
     produitObjet.userID = userId;
-    console.log("Filename: "+req.file.filename)
+    console.log("Filename: " + req.file.filename);
     const produit = new Produit({
         ...produitObjet,
         image: `/fichiers/produit/images/${req.file.filename}`,
@@ -43,14 +43,31 @@ exports.publiRes = (req, res, next) => {
 };
 //Controleur qui permet de modfiier une ressource de la BDD
 exports.modifRes = (req, res, next) => {
+    function requeteGetOne(id) {
+        return fetch(`http://eloi-site.alwaysdata.net/api/pepitocoin/ressource/recuperation/${id}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((reponse) => reponse.json())
+            .then((data) => {
+                return data;
+            })
+            .catch((error) => console.error(error));
+    }
+    const requete = requeteGetOne(req.params.id)
+    const image = requete.image
+
     //Récupération des données de le requete
     const produitObjet = req.body;
     const produit = new Produit({
         ...produitObjet,
+        image: `/fichiers/produit/images/${req.file.filename}`,
     });
     //La fonction updateOne, prend ddeux éléments, l'id de l'élément et par quoi il faut modifier la ressrouce
-    Produit.updateOne({ _id: req.params.id }, produitObjet)
-        .then(() => res.status(201).json({ produitObjet }))
+    Produit.updateOne({ _id: req.params.id }, produit)
+        .then(() => res.status(201).json({ produit }))
         .catch((error) => res.status(401).json({ error }));
 };
 //Controlleur qui permet de supprimer des ressource
@@ -60,8 +77,8 @@ exports.supprRes = (req, res, next) => {
             var nomFichier = data.image;
             nomFichier = nomFichier.split("/");
             nomFichier = nomFichier.pop();
-            const cheminImage = path.join(__dirname, '..','..','frontend','produit','images', `${nomFichier}`)
-            console.log(cheminImage)
+            const cheminImage = path.join(__dirname, "..", "..", "frontend", "produit", "images", `${nomFichier}`);
+            console.log(cheminImage);
 
             fs.unlink(cheminImage, (err) => {
                 if (!err) {
