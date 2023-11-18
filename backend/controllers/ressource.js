@@ -50,10 +50,10 @@ exports.modifRes = (req, res, next) => {
             var image = data.image;
             image = image.split("/");
             image = image.pop();
-            console.log(image);
+            console.log("Nom de l'image " + image);
 
             const cheminImage = path.join(__dirname, "..", "..", "frontend", "produit", "images", `${image}`);
-            console.log(cheminImage);
+            console.log("Chemon de l'image à supprimer " + cheminImage);
 
             fs.unlink(cheminImage, (err) => {
                 if (!err) {
