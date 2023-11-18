@@ -56,8 +56,23 @@ exports.modifRes = (req, res, next) => {
             })
             .catch((error) => console.error(error));
     }
-    const requete = requeteGetOne(req.params.id)
-    const image = requete.image
+    const requete = requeteGetOne(req.params.id);
+    var image = requete.image;
+    image = image.split("/");
+    image = image.pop();
+    console.log(image);
+
+    const cheminImage = path.join(__dirname, "..", "..", "frontend", "produit", "images", `${image}`);
+    console.log(cheminImage);
+
+    fs.unlink(cheminImage, (err) => {
+        if (!err) {
+            console.log("Fichier supprimé avec succés");
+        } else {
+            console.error("Problème lors de la suppresion du fichier : ", err);
+            res.status(500).json(err);
+        }
+    });
 
     //Récupération des données de le requete
     const produitObjet = req.body;

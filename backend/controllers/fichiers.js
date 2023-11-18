@@ -52,12 +52,7 @@ exports.htmlProduit = async (req, res, next) => {
         // Si jamais il y a un cookie d'auth alors on le décode
         jwt.verify(cookieAuth, process.env.CHAINETOKEN, (err, decoded) => {
             if (!err) { //Si jamais il y a pas d'erreur
-                //Récuépration du userID depuis la requete à la bdd
-                const userIdRequete = recupGetAll.userID;
-                console.log("Decoded: "+decoded.userId)
-                console.log("useridRequete: "+userIdRequete)
-
-                if (decoded.userId === userIdRequete) {
+                if (decoded.userId === recupGetAll.userID) {
                     //Mode propriétaire
                     contentHTML = /*html*/ `
                         <header>

@@ -355,13 +355,6 @@ exports.formAjout = (req, res, next) => {
             res.redirect("/login");
         }
     });
-    // if (cookie != null) {
-    //     //Il y a des cookies
-    //     res.sendFile(path.join(__dirname, "..", "..", "frontend", "produit", "formAjout", "form.html"));
-    // } else {
-    //     //Il n'y a pas de cookie
-    //     res.redirect("/authentification/login");
-    // }
 };
 exports.modifProduit = (req, res, next) => {
     function requeteNavbarUser(cookie) {
@@ -423,7 +416,7 @@ exports.modifProduit = (req, res, next) => {
                 <div id="imgDiv">
                     <!-- Zone pour l'illustration du produit -->
                     <label for="imgForm">Image du produit :</label>
-                    <input id="imgForm" type="text" required>
+                    <input type="file" id="imgForm" name="imgForm" accept="image/png, image/jpeg, image/jpg" required/>
                 </div>
                 <button id="envoiBouton" type="submit">Enregistrer</button>
             </form>

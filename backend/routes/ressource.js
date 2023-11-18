@@ -10,7 +10,7 @@ router.get('/recuperation/:id', resCtrl.recupOneRes)
 
 router.post('/publication', multer, resCtrl.publiRes)
 
-router.put('/modification/:id', resCtrl.modifRes)
+router.put('/modification/:id', multer, resCtrl.modifRes)
 
 router.delete('/suppression/:id', resCtrl.supprRes)
 
