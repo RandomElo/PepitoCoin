@@ -60,6 +60,7 @@ exports.modifRes = (req, res, next) => {
                     console.log(produitObjet);
                     const produit = new Produit({
                         ...produitObjet,
+                        _id:req.params.id,
                         image: `/fichiers/produit/images/${req.file.filename}`,
                     });
                     console.log("Produit : " + produit);
