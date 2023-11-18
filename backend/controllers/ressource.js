@@ -76,7 +76,7 @@ exports.modifRes = (req, res, next) => {
                 .then(() => res.status(201).json({ produit }))
                 .catch((error) => res.status(401).json({ message: `Problème dans la mise à jour de l'élement dans la bdd ${error}` }));
         })
-        .catch((error) => res.status(500).json({ message: "Problème de la recherche dans la BDD" }));
+        .catch((error) => res.status(500).json({ message: `Problème de la recherche dans la BDD ${error}` }));
 };
 //Controlleur qui permet de supprimer des ressource
 exports.supprRes = (req, res, next) => {
