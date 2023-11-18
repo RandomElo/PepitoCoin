@@ -44,7 +44,7 @@ exports.publiRes = (req, res, next) => {
 };
 //Controleur qui permet de modfiier une ressource de la BDD
 exports.modifRes = (req, res, next) => {
-    Produit.findOne({_id:req.params.id})
+    Produit.findOne({ _id: req.params.id })
         .then((data) => {
             // Ré
             var image = data.image;
@@ -66,6 +66,7 @@ exports.modifRes = (req, res, next) => {
 
             //Récupération des données de le requete
             const produitObjet = req.body;
+            console.log("Produi Objet " + produitObjet);
             const produit = new Produit({
                 ...produitObjet,
                 image: `/fichiers/produit/images/${req.file.filename}`,
@@ -73,7 +74,7 @@ exports.modifRes = (req, res, next) => {
             //La fonction updateOne, prend ddeux éléments, l'id de l'élément et par quoi il faut modifier la ressrouce
             Produit.updateOne({ _id: req.params.id }, produit)
                 .then(() => res.status(201).json({ produit }))
-                .catch((error) => res.status(401).json({ message: "Problème dans la mise à jour du fchier" }));
+                .catch((error) => res.status(401).json({ message: `Problème dans la mise à jour de l'élement dans la bdd ${error}` }));
         })
         .catch((error) => res.status(500).json({ message: "Problème de la recherche dans la BDD" }));
 };
