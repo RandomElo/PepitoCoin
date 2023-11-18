@@ -54,24 +54,24 @@ exports.modifRes = (req, res, next) => {
             fs.unlink(cheminImage, (err) => {
                 if (!err) {
                     console.log("Fichier supprimé avec succés");
+
+                    //Récupération des données de le requete
+                    const produitObjet = req.body;
+                    console.log("Produit body " + produitObjet);
+                    const produit = new Produit({
+                        ...produitObjet,
+                        image: `/fichiers/produit/images/${req.file.filename}`,
+                    });
+                    console.log("Produit : " + produit);
+                    //La fonction updateOne, prend ddeux éléments, l'id de l'élément et par quoi il faut modifier la ressrouce
+                    Produit.updateOne({ _id: req.params.id }, produit)
+                        .then(() => res.status(201).json({ produit }))
+                        .catch((error) => res.status(401).json({ message: `Problème dans la mise à jour de l'élement dans la bdd ${error}` }));
                 } else {
                     console.error("Problème lors de la suppresion du fichier : ", err);
                     res.status(500).json({ message: "Problème loir de la suppression du fichier" });
                 }
             });
-
-            //Récupération des données de le requete
-            const produitObjet = req.body;
-            console.log("Produit body " + produitObjet);
-            const produit = new Produit({
-                ...produitObjet,
-                image: `/fichiers/produit/images/${req.file.filename}`,
-            });
-            console.log("Produit : " + produit);
-            //La fonction updateOne, prend ddeux éléments, l'id de l'élément et par quoi il faut modifier la ressrouce
-            Produit.updateOne({ _id: req.params.id }, produit)
-                .then(() => res.status(201).json({ produit }))
-                .catch((error) => res.status(401).json({ message: `Problème dans la mise à jour de l'élement dans la bdd ${error}` }));
         })
         .catch((error) => res.status(500).json({ message: `Problème de la recherche dans la BDD ${error}` }));
 };
