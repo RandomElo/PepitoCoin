@@ -13,11 +13,13 @@ const storage = multer.diskStorage({
         callback(null, destinationPath);
     },
     filename: (req, file, callback) => {
-        var name = file.originalname.split(".")[0];
-        name = name.split(" ").join("_");
-        const extension = MIME_TYPES[file.mimetype];
-        const fichier = name + Date.now() + "." + extension;
-        callback(null, fichier);
+        if (req.body.image) {
+            var name = file.originalname.split(".")[0];
+            name = name.split(" ").join("_");
+            const extension = MIME_TYPES[file.mimetype];
+            const fichier = name + Date.now() + "." + extension;
+            callback(null, fichier);
+        }
     },
 });
 
