@@ -46,39 +46,32 @@ exports.publiRes = (req, res, next) => {
 exports.modifRes = (req, res, next) => {
     Produit.findOne({ _id: req.params.id })
         .then((data) => {
-            var image = data.image;
-            image = image.split("/");
-            image = image.pop();
-            const cheminImage = path.join(__dirname, "..", "..", "frontend", "produit", "images", `${image}`);
-            fs.unlink(cheminImage, (err) => {
-                if (!err) {
-                    console.log("Fichier supprimé avec succés");
-
-                    //Récupération des données de le requete
-                    const produitObjet = req.body;
-                    console.log(produitObjet);
-                    if (req.file.filename == undefined) {
-                        const produit = new Produit({
-                            ...produitObjet,
-                            _id: req.params.id,
-                        });
-                    } else {
+            //Récupération des données de le requete
+            const produitObjet = req.body;
+            console.log(produitObjet);
+            if (req.file.filename == undefined) {
+                const produit = new Produit({
+                    ...produitObjet,
+                    _id: req.params.id,
+                });
+            } else {
+                var image = data.image;
+                image = image.split("/");
+                image = image.pop();
+                const cheminImage = path.join(__dirname, "..", "..", "frontend", "produit", "images", `${image}`);
+                fs.unlink(cheminImage, (err) => {
+                    if (!err) {
                         const produit = new Produit({
                             ...produitObjet,
                             _id: req.params.id,
                             image: `/fichiers/produit/images/${req.file.filename}`,
                         });
+                    } else {
+                        console.error("Problème lors de la suppresion du fichier : ", err);
+                        res.status(500).json({ message: "Problème loir de la suppression du fichier" });
                     }
-                    console.log("Produit : " + produit);
-                    //La fonction updateOne, prend ddeux éléments, l'id de l'élément et par quoi il faut modifier la ressrouce
-                    Produit.updateOne({ _id: req.params.id }, produit)
-                        .then(() => res.status(201).json({ produit }))
-                        .catch((error) => res.status(401).json({ message: `Problème dans la mise à jour de l'élement dans la bdd ${error}` }));
-                } else {
-                    console.error("Problème lors de la suppresion du fichier : ", err);
-                    res.status(500).json({ message: "Problème loir de la suppression du fichier" });
-                }
-            });
+                });
+            }
         })
         .catch((error) => res.status(500).json({ message: `Problème de la recherche dans la BDD ${error}` }));
 };
