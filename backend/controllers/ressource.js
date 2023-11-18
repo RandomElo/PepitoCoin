@@ -50,11 +50,7 @@ exports.modifRes = (req, res, next) => {
             var image = data.image;
             image = image.split("/");
             image = image.pop();
-            console.log("Nom de l'image " + image);
-
             const cheminImage = path.join(__dirname, "..", "..", "frontend", "produit", "images", `${image}`);
-            console.log("Chemon de l'image à supprimer " + cheminImage);
-
             fs.unlink(cheminImage, (err) => {
                 if (!err) {
                     console.log("Fichier supprimé avec succés");
@@ -66,11 +62,12 @@ exports.modifRes = (req, res, next) => {
 
             //Récupération des données de le requete
             const produitObjet = req.body;
-            console.log("Produi Objet " + produitObjet);
+            console.log("Produit body " + produitObjet);
             const produit = new Produit({
                 ...produitObjet,
                 image: `/fichiers/produit/images/${req.file.filename}`,
             });
+            console.log("Produit : " + produit);
             //La fonction updateOne, prend ddeux éléments, l'id de l'élément et par quoi il faut modifier la ressrouce
             Produit.updateOne({ _id: req.params.id }, produit)
                 .then(() => res.status(201).json({ produit }))
