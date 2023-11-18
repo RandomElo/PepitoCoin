@@ -46,7 +46,7 @@ form.addEventListener("submit", (event) => {
         .then((reponse) => reponse.json())
         .then((data) => {
             console.log(data);
-            // window.location = `http://eloi-site.alwaysdata.net/produit/${nomFichier}`;
+            window.location = `http://eloi-site.alwaysdata.net/produit/${nomFichier}`;
         })
         .catch((error) => console.error(error));
 });

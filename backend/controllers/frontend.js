@@ -416,7 +416,7 @@ exports.modifProduit = (req, res, next) => {
                 <div id="imgDiv">
                     <!-- Zone pour l'illustration du produit -->
                     <label for="imgForm">Image du produit :</label>
-                    <input type="file" id="imgForm" name="imgForm" accept="image/png, image/jpeg, image/jpg" required/>
+                    <input type="file" id="imgForm" name="imgForm" accept="image/png, image/jpeg, image/jpg"/>
                 </div>
                 <button id="envoiBouton" type="submit">Enregistrer</button>
             </form>

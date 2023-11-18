@@ -1,14 +1,20 @@
-*, ::before, ::after {
-    font-family: 'Nunito', sans-serif;
+*,
+::before,
+::after {
+    font-family: "Nunito", sans-serif;
     text-align: center;
     margin: 0;
     padding: 0;
+}
+#titreIntro {
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 form {
     width: 370px;
     display: flex;
     flex-direction: column;
-    margin: 30px auto 0 auto;
+    margin: 0 auto 0 auto;
 }
 label {
     display: inline-block;
@@ -58,10 +64,13 @@ input {
     position: relative;
     margin-top: 15px;
     left: 0px;
+    width: 430px;
     height: 24px;
     display: flex;
     align-items: center;
-
+}
+#imgForm {
+    height: 22px;
 }
 #envoiBouton {
     width: 70px;
