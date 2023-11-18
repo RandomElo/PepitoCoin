@@ -60,7 +60,7 @@ exports.modifRes = (req, res, next) => {
                     console.log("Fichier supprimé avec succés");
                 } else {
                     console.error("Problème lors de la suppresion du fichier : ", err);
-                    res.status(500).json(err);
+                    res.status(500).json({ message: "Problème loir de la suppression du fichier" });
                 }
             });
 
@@ -73,9 +73,9 @@ exports.modifRes = (req, res, next) => {
             //La fonction updateOne, prend ddeux éléments, l'id de l'élément et par quoi il faut modifier la ressrouce
             Produit.updateOne({ _id: req.params.id }, produit)
                 .then(() => res.status(201).json({ produit }))
-                .catch((error) => res.status(401).json({ error }));
+                .catch((error) => res.status(401).json({ message: "Problème dans la mise à jour du fchier" }));
         })
-        .catch((error) => res.status(500).json({ error }));
+        .catch((error) => res.status(500).json({ message: "Problème de la recherche dans la BDD" }));
 };
 //Controlleur qui permet de supprimer des ressource
 exports.supprRes = (req, res, next) => {
