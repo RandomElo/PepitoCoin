@@ -32,8 +32,8 @@ remplissageForm(nomFichier);
 //Création de l'événement sur le clique du bouton envoyer
 form.addEventListener("submit", (event) => {
     event.preventDefault();
-    const objet = new FormData();
-    if (imgForm.files[0]) {
+    var objet = new FormData();
+    if (imgForm.files[0] != undefined) {
         objet.append("nom", nomForm.value);
         objet.append("prix", prixForm.value);
         objet.append("description", descForm.value);
@@ -43,6 +43,7 @@ form.addEventListener("submit", (event) => {
         objet.append("prix", prixForm.value);
         objet.append("description", descForm.value);
     }
+    console.log(objet)
     //Envoie de la requete à l'api
     fetch(`http://eloi-site.alwaysdata.net/api/pepitocoin/ressource/modification/${nomFichier}`, {
         method: "PUT",
