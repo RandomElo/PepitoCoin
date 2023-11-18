@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const fs = require("fs");
 const path = require("path");
+const fetch = require("node-fetch");
 const Produit = require("../models/Produit");
 //Controleur qui est utiliser au chargement de la page
 exports.recupAllRes = (req, res, next) => {
