@@ -100,7 +100,7 @@ exports.accueil = async (req, res, next) => {
     //Défintion du footer
     var footer = document.createElement("footer");
     var fictifP = document.createElement("p");
-    fictifP.innerHTML = '<p>Ce site est fictif <a href="fictif">En savoir plus</a></p>';
+    fictifP.innerHTML = '<p>Ce site est fictif <a href="fictif">Le projet</a></p>';
     footer.appendChild(fictifP);
     var footerA = document.createElement("a");
     footerA.setAttribute("href", "Mentions légales");
@@ -200,7 +200,7 @@ exports.affProduit = async (req, res, next) => {
     //Défintion du footer
     var footer = document.createElement("footer");
     var fictifP = document.createElement("p");
-    fictifP.innerHTML = '<p>Ce site est fictif <a href="fictif">En savoir plus</a></p>';
+    fictifP.innerHTML = '<p>Ce site est fictif <a href="fictif">Le projet</a></p>';
     footer.appendChild(fictifP);
     var footerA = document.createElement("a");
     footerA.setAttribute("href", "Mentions légales");
@@ -284,7 +284,7 @@ exports.affProduitProprietaire = async (req, res, next) => {
                         <a class="lien" id="supprProduit">Supprimer le produit</a>
                     </div>
                     <footer>
-                        <p>Ce site est fictif <a href="fictif">En savoir plus</a></p>
+                        <p>Ce site est fictif <a href="fictif">Le projet</a></p>
                         <a href="Mentions légales">Mentions légales</a>
                     </footer>
                     <script src="/fichiers/produit/proprietaire/script"></script>
@@ -369,7 +369,7 @@ exports.formAjout = (req, res, next) => {
                     <button id="envoiBouton" type="submit">Enregistrer</button>
                 </form>
                 <footer>
-                    <p>Ce site est fictif <a href="fictif">En savoir plus</a></p>
+                    <p>Ce site est fictif <a href="fictif">Le projet</a></p>
                     <a href="Mentions légales">Mentions légales</a>
                 </footer>
                 
@@ -449,7 +449,7 @@ exports.modifProduit = (req, res, next) => {
                 <button id="envoiBouton" type="submit">Enregistrer</button>
             </form>
             <footer>
-                <p>Ce site est fictif <a href="fictif">En savoir plus</a></p>
+                <p>Ce site est fictif <a href="fictif">Le projet</a></p>
                 <a href="Mentions légales">Mentions légales</a>
             </footer>
             
@@ -583,7 +583,7 @@ exports.signup = async (req, res, next) => {
                     <button id="loginBouton" type="submit">Création de compte</button>
                 </form>
                 <footer>
-                    <p>Ce site est fictif <a href="fictif">En savoir plus</a></p>
+                    <p>Ce site est fictif <a href="fictif">Le projet</a></p>
                     <a href="Mentions légales">Mentions légales</a>
                 </footer>
                 <script src="/fichiers/authentification/signup/script"></script>
@@ -656,7 +656,7 @@ exports.login = async (req, res, next) => {
                 <button id="connexionBouton" type="submit">Connexion</button>
             </form>
             <footer>
-                <p>Ce site est fictif <a href="fictif">En savoir plus</a></p>
+                <p>Ce site est fictif <a href="fictif">Le projet</a></p>
                 <a href="Mentions légales">Mentions légales</a>
             </footer>
     
@@ -745,7 +745,7 @@ exports.mesProduits = (req, res, next) => {
                     //Défintion du footer
                     var footer = document.createElement("footer");
                     var fictifP = document.createElement("p");
-                    fictifP.innerHTML = '<p>Ce site est fictif <a href="fictif">En savoir plus</a></p>'
+                    fictifP.innerHTML = '<p>Ce site est fictif <a href="fictif">Le projet</a></p>'
                     footer.appendChild(fictifP);
                     var footerA = document.createElement("a");
                     footerA.setAttribute("href", "Mentions légales");

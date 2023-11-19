@@ -14,7 +14,7 @@
 }
 .navbar a:hover {
     text-decoration: underline;
-    color: blue;
+    color:  #DAF7A6 ;
 }
 .navLinks.mobileMenu {
     margin-left: 0px;
