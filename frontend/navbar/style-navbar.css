@@ -43,8 +43,18 @@
     font-size: 16px;
 }
 .conteneurSousListe:hover {
-    color: blue;
+    color:  #DAF7A6 ;
     text-decoration: underline;
+}
+/* Zone pour le footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
+    height: 40px;
+    background-color:  #DAF7A6 ;
 }
 @media screen and (min-width: 851px) {
     .conteneurSousListe:hover > ul {

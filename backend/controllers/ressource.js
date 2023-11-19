@@ -73,7 +73,7 @@ exports.modifRes = (req, res, next) => {
                     }
                 });
             }
-            console.log(produit)
+            console.log(produit);
             //La fonction updateOne, prend ddeux éléments, l'id de l'élément et par quoi il faut modifier la ressrouce
             Produit.updateOne({ _id: req.params.id }, produit)
                 .then(() => res.status(201).json({ produit }))

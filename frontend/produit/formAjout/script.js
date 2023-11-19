@@ -17,9 +17,6 @@ form.addEventListener("submit", (event) => {
     objet.append("prix", prixForm.value);
     objet.append("description", descForm.value);
     objet.append("image", imgForm.files[0]);
-
-    console.log(imgForm.files[0])
-
     //Envoie de la requete à l'api
     fetch(`http://eloi-site.alwaysdata.net/api/pepitocoin/ressource/publication`, {
         method: "POST",

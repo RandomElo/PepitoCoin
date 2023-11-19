@@ -97,8 +97,22 @@ exports.accueil = async (req, res, next) => {
         }
         document.body.appendChild(conteneurProduitsGet);
     }
-    //Définition des scripts JScript src="/fichiers/accueil/script"></script><script src="/fichiers/navbar/script"></script>
+    //Défintion du footer
+    var footer = document.createElement("footer");
+    var fictifP = document.createElement("p");
+    fictifP.innerHTML = (
+        <p>
+            Ce site est fictif <a href="fictif">En savoir plus</a>
+        </p>
+    );
+    footer.appendChild(fictifP);
+    var footerA = document.createElement("a");
+    footerA.setAttribute("href", "Mentions légales");
+    footerA.textContent = "Mentions légales";
+    footer.appendChild(footerA);
+    document.body.appendChild(footer);
 
+    //Définition des scripts JScript src="/fichiers/accueil/script"></script><script src="/fichiers/navbar/script"></script>
     var scriptAccueilJs = document.createElement("script");
     scriptAccueilJs.setAttribute("src", "/fichiers/accueil/script");
     document.body.appendChild(scriptAccueilJs);
@@ -187,6 +201,20 @@ exports.affProduit = async (req, res, next) => {
     produitDiv.innerHTML = recupProduit;
 
     document.body.appendChild(produitDiv);
+    //Défintion du footer
+    var footer = document.createElement("footer");
+    var fictifP = document.createElement("p");
+    fictifP.innerHTML = (
+        <p>
+            Ce site est fictif <a href="fictif">En savoir plus</a>
+        </p>
+    );
+    footer.appendChild(fictifP);
+    var footerA = document.createElement("a");
+    footerA.setAttribute("href", "Mentions légales");
+    footerA.textContent = "Mentions légales";
+    footer.appendChild(footerA);
+    document.body.appendChild(footer);
 
     //Définition des scripts js
     //Script js de la navbar
@@ -263,6 +291,10 @@ exports.affProduitProprietaire = async (req, res, next) => {
                         <a class="lien" id="modifProduit" href="http://eloi-site.alwaysdata.net/produit/${produitId}/modification">Modifier le produit</a>
                         <a class="lien" id="supprProduit">Supprimer le produit</a>
                     </div>
+                    <footer>
+                        <p>Ce site est fictif <a href="fictif">En savoir plus</a></p>
+                        <a href="Mentions légales">Mentions légales</a>
+                    </footer>
                     <script src="/fichiers/produit/proprietaire/script"></script>
                     <script src="/fichiers/navbar/script"></script>
 
@@ -344,6 +376,10 @@ exports.formAjout = (req, res, next) => {
                     </div>
                     <button id="envoiBouton" type="submit">Enregistrer</button>
                 </form>
+                <footer>
+                    <p>Ce site est fictif <a href="fictif">En savoir plus</a></p>
+                    <a href="Mentions légales">Mentions légales</a>
+                </footer>
                 
                 <script src="/fichiers/produit/form/ajout/script"></script>
                 <script src="/fichiers/navbar/script"></script>
@@ -420,6 +456,10 @@ exports.modifProduit = (req, res, next) => {
                 </div>
                 <button id="envoiBouton" type="submit">Enregistrer</button>
             </form>
+            <footer>
+                <p>Ce site est fictif <a href="fictif">En savoir plus</a></p>
+                <a href="Mentions légales">Mentions légales</a>
+            </footer>
             
             <script src="/fichiers/produit/form/modif/script"></script>
             <script src="/fichiers/navbar/script"></script>                    
@@ -550,6 +590,10 @@ exports.signup = async (req, res, next) => {
                     <p id="loginPhrase">Vous avez déjà un compte ? <a href="http://eloi-site.alwaysdata.net/login">Connectez-vous</a></p>
                     <button id="loginBouton" type="submit">Création de compte</button>
                 </form>
+                <footer>
+                    <p>Ce site est fictif <a href="fictif">En savoir plus</a></p>
+                    <a href="Mentions légales">Mentions légales</a>
+                </footer>
                 <script src="/fichiers/authentification/signup/script"></script>
                 <script src="/fichiers/navbar/script"></script>
             </body>
@@ -619,6 +663,10 @@ exports.login = async (req, res, next) => {
                 <p id="loginErreur"></p>
                 <button id="connexionBouton" type="submit">Connexion</button>
             </form>
+            <footer>
+                <p>Ce site est fictif <a href="fictif">En savoir plus</a></p>
+                <a href="Mentions légales">Mentions légales</a>
+            </footer>
     
             <script src="/fichiers/authentification/login/script"></script>
             <script src="/fichiers/navbar/script"></script>
@@ -702,6 +750,21 @@ exports.mesProduits = (req, res, next) => {
                     `;
                     //Ajout de la div au différent produit à body
                     document.body.appendChild(mesProduitsDiv);
+                    //Défintion du footer
+                    var footer = document.createElement("footer");
+                    var fictifP = document.createElement("p");
+                    fictifP.innerHTML = (
+                        <p>
+                            Ce site est fictif <a href="fictif">En savoir plus</a>
+                        </p>
+                    );
+                    footer.appendChild(fictifP);
+                    var footerA = document.createElement("a");
+                    footerA.setAttribute("href", "Mentions légales");
+                    footerA.textContent = "Mentions légales";
+                    footer.appendChild(footerA);
+                    document.body.appendChild(footer);
+
                     //Ajout des script à body
                     //Script mesProduits
                     const mesProduitsJS = document.createElement("script");

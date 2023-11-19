@@ -13,8 +13,6 @@ const storage = multer.diskStorage({
         callback(null, destinationPath);
     },
     filename: (req, file, callback) => {
-        console.log("File")
-        console.log(file)
         if (file) {
             var name = file.originalname.split(".")[0];
             name = name.split(" ").join("_");
