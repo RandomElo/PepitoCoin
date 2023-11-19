@@ -2,7 +2,6 @@
 var menuHamburger = document.querySelector(".menuHamburger");
 var navLinks = document.querySelector(".navLinks");
 menuHamburger.addEventListener("click", () => {
-    console.log("Le menu hamburger à étais cliquer")
     navLinks.classList.toggle("mobileMenu");
 });
 
@@ -12,10 +11,11 @@ var conteneurSousListe = document.querySelector(".conteneurSousListe");
 var sousListe = document.querySelector(".sousListe");
 if (conteneurSousListe != null) {
     conteneurSousListe.addEventListener("click", () => {
-        console.log("Le conteneur de la sous liste à étais cliquer")
         if (sousListe.style.display === "none") {
+            console.log("La sous list n'est aps afficher donc je l'affiche");
             sousListe.style.display = "block";
         } else {
+            console.log("La sous liste est afficher donc je la masque");
             sousListe.style.display = "none";
         }
     });
