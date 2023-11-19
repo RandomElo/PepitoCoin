@@ -793,7 +793,7 @@ exports.projet = async (req, res, next) => {
             })
             .catch((error) => console.error(error));
     }
-    const cookie = req.cookie.auth;
+    const cookie = req.cookies.auth;
     if (cookie != null) {
         var navbar = await requeteNavbarUser(cookie);
     } else {
@@ -860,7 +860,7 @@ exports.mentionsLegales = async (req, res, next) => {
             })
             .catch((error) => console.error(error));
     }
-    const cookie = req.cookie.auth;
+    const cookie = req.cookies.auth;
     if (cookie != null) {
         var navbar = await requeteNavbarUser(cookie);
     } else {
