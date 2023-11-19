@@ -100,11 +100,7 @@ exports.accueil = async (req, res, next) => {
     //Défintion du footer
     var footer = document.createElement("footer");
     var fictifP = document.createElement("p");
-    fictifP.innerHTML = (
-        <p>
-            Ce site est fictif <a href="fictif">En savoir plus</a>
-        </p>
-    );
+    fictifP.innerHTML = '<p>Ce site est fictif <a href="fictif">En savoir plus</a></p>';
     footer.appendChild(fictifP);
     var footerA = document.createElement("a");
     footerA.setAttribute("href", "Mentions légales");
@@ -204,11 +200,7 @@ exports.affProduit = async (req, res, next) => {
     //Défintion du footer
     var footer = document.createElement("footer");
     var fictifP = document.createElement("p");
-    fictifP.innerHTML = (
-        <p>
-            Ce site est fictif <a href="fictif">En savoir plus</a>
-        </p>
-    );
+    fictifP.innerHTML = '<p>Ce site est fictif <a href="fictif">En savoir plus</a></p>';
     footer.appendChild(fictifP);
     var footerA = document.createElement("a");
     footerA.setAttribute("href", "Mentions légales");
@@ -753,11 +745,7 @@ exports.mesProduits = (req, res, next) => {
                     //Défintion du footer
                     var footer = document.createElement("footer");
                     var fictifP = document.createElement("p");
-                    fictifP.innerHTML = (
-                        <p>
-                            Ce site est fictif <a href="fictif">En savoir plus</a>
-                        </p>
-                    );
+                    fictifP.innerHTML = '<p>Ce site est fictif <a href="fictif">En savoir plus</a></p>'
                     footer.appendChild(fictifP);
                     var footerA = document.createElement("a");
                     footerA.setAttribute("href", "Mentions légales");
