@@ -464,7 +464,7 @@ exports.modifProduit = (req, res, next) => {
     });
     // res.sendFile(path.join(__dirname, "..", "..", "frontend", "produit", "formModif", "form.html"));
 };
-exports.gestionCompte = async (req, res, next) => {
+exports.affAdmin = async (req, res, next) => {
     function requeteNavbarUser(cookie) {
         return fetch(`http:/[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${cookie}`, {
             method: "GET",
@@ -685,9 +685,8 @@ exports.mesProduits = (req, res, next) => {
 
     const cookie = req.cookies.auth;
     jwt.verify(cookie, process.env.CHAINETOKEN, (err, decoded) => {
-        console.log("Décoder: " + decoded);
-        const userId = decoded.userId;
         if (!err) {
+            const userId = decoded.userId;
             Produit.find({ userID: userId })
                 .then(async (listesMesProduits) => {
                     const dom = new JSDOM('<!DOCTYPE html><html><head><meta charset="UTF-8" /><link rel="stylesheet" href="/fichiers/produit/mesproduits/style" /><link rel="stylesheet" href="/fichiers/navbar/style" /><!-- Définition de la favicon --><link rel="icon" href="/fichiers/favicon" type="image/png" /><!-- Définition de la police --><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>PépitoCoin - Produit Propriétaire</title></head><body></body></html>');
@@ -745,7 +744,7 @@ exports.mesProduits = (req, res, next) => {
                     //Défintion du footer
                     var footer = document.createElement("footer");
                     var fictifP = document.createElement("p");
-                    fictifP.innerHTML = '<p>Ce site est fictif <a href="fictif">Le projet</a></p>'
+                    fictifP.innerHTML = '<p>Ce site est fictif <a href="fictif">Le projet</a></p>';
                     footer.appendChild(fictifP);
                     var footerA = document.createElement("a");
                     footerA.setAttribute("href", "Mentions légales");
@@ -769,7 +768,7 @@ exports.mesProduits = (req, res, next) => {
                     // res.status(200).json({ message: mesProduitsDiv });
                 })
                 .catch((error) => {
-                    console.log(error);
+                    console.error(error);
                     res.status(500);
                 });
         } else {
@@ -779,4 +778,141 @@ exports.mesProduits = (req, res, next) => {
         }
     });
 };
-//Insérer dasn eloi test, mes produits, suppression du compte, modification du compte ?
+exports.projet = async (req, res, next) => {
+    //Création de la fonction de récupération de la navbar
+    function requeteNavbarUser(cookie) {
+        return fetch(`http://eloi-site.alwaysdata.net/fichiers/navbar/html/${cookie}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((reponse) => reponse.json())
+            .then((data) => {
+                return data;
+            })
+            .catch((error) => console.error(error));
+    }
+    const cookie = req.cookie.auth;
+    if (cookie != null) {
+        var navbar = await requeteNavbarUser(cookie);
+    } else {
+        var navbar = /*html*/ `
+            <a class="logo" href="http://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
+            <div class="navLinks">
+                <ul>
+                    <li><a href="http://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
+                    <li><a href="http://eloi-site.alwaysdata.net/login">Se connecter</a></li>
+                    <li><a href="http://eloi-site.alwaysdata.net/signup">Crée un compte</a></li>
+                </ul>
+            </div>
+            <img class="menuHamburger" src="/fichiers/images/menu-hamburger" alt="Menu Hamburger">
+        `;
+    }
+    const html = /*html*/ `
+    <!DOCTYPE html>
+    <html lang="fr">
+        <head>
+            <meta charset="UTF-8" />
+            <link rel="stylesheet" href="/fichiers/projet/style" />
+            <link rel="stylesheet" href="/fichiers/navbar/style" />
+            <link rel="icon" href="/fichiers/favicon" type="image/png" />
+            <!-- Définition de la police -->
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+            <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>PépitoCoin - Le Projet</title>
+        </head>
+        <body>
+            <nav class="navbar">${navbar}</nav>
+            <header><h1 id="titre">Pourquoi ce site ?</h1></header>
+            <main>
+                <p>J'ai créé ce site dans le but d'apprendre a lié mon backend et mon frontend avec Express.</p>
+                <p>J'avais suivi un cours sur <a href="https://openclassrooms.com/fr/courses/6390246-passez-au-full-stack-avec-node-js-express-et-mongodb">OpenClassrooms</a> qui ne t'apprenait uniquement à créer son backend, sans aborder comment faire la liaison entre les deux.</p>
+                <p>Voici le code source de mon site : </p>
+                <p>Ce site est fictif, n'a pas pour but de publier des produits dans un réel but de vente.</p>
+            </main>
+            <footer>
+                <p>Ce site est fictif <a href="fictif">Le projet</a></p>
+                <a href="Mentions légales">Mentions légales</a>
+            </footer>
+            <script src="/fichiers/navbar/script"></script>
+        </body>
+        </html>
+
+    `;
+
+    res.send(html);
+};
+exports.mentionsLegales = async (req, res, next) => {
+    //Création de la fonction de récupération de la navbar
+    function requeteNavbarUser(cookie) {
+        return fetch(`http://eloi-site.alwaysdata.net/fichiers/navbar/html/${cookie}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((reponse) => reponse.json())
+            .then((data) => {
+                return data;
+            })
+            .catch((error) => console.error(error));
+    }
+    const cookie = req.cookie.auth;
+    if (cookie != null) {
+        var navbar = await requeteNavbarUser(cookie);
+    } else {
+        var navbar = /*html*/ `
+            <a class="logo" href="http://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
+            <div class="navLinks">
+                <ul>
+                    <li><a href="http://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
+                    <li><a href="http://eloi-site.alwaysdata.net/login">Se connecter</a></li>
+                    <li><a href="http://eloi-site.alwaysdata.net/signup">Crée un compte</a></li>
+                </ul>
+            </div>
+            <img class="menuHamburger" src="/fichiers/images/menu-hamburger" alt="Menu Hamburger">
+        `;
+    }
+    const html = /*html*/ `
+    <!DOCTYPE html>
+    <html lang="fr">
+        <head>
+            <meta charset="UTF-8" />
+            <link rel="stylesheet" href="/fichiers/mentionslegales/style" />
+            <link rel="stylesheet" href="/fichiers/navbar/style" />
+            <link rel="icon" href="/fichiers/favicon" type="image/png" />
+            <!-- Définition de la police -->
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+            <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>PépitoCoin - Mentions Légales</title>
+        </head>
+        <body>
+            <nav class="navbar">${navbar}</nav>
+            <header><h1 id="titre">Les mentions légales</h1></header>
+            <div id="mentionsLégalesDiv">
+                <div id="infosGeneraleDiv">
+                    <h1>Informations légales</h1>
+                    <p><span class="gras">Identité de l'éditeur : </span>Éloi B</p>
+                    <p><span class="gras">Adresse mail de contact : </span><a href="mailto:eloi.random@gmail.com">Mail</a></p>
+                </div>
+                <div id="hebergeurDiv">
+                    <h1>L'hébergeur</h1>
+                    <p><span class="gras">Identité de l'hébergeur : </span>ALWAYSDATA</p>
+                    <p><span class="gras">Formulaire de contact : </span>Uniquement à partir d'un ordinateur : cliquer sur "Contact" sur la barre de navigation en haut de la fenêtre, à partir de ce <a href="https://www.alwaysdata.com">site</a></p>
+                    <p><span class="grass">Numéro de téléphone de contact : </span><a href="tel:+33184162340">Numéro de téléphone</a></p>
+                </div>
+            <footer>
+                <p>Ce site est fictif <a href="fictif">Le projet</a></p>
+                <a href="Mentions légales">Mentions légales</a>
+            </footer>
+            <script src="/fichiers/navbar/script"></script>
+        </body>
+        </html>
+    `;
+    res.send(html);
+};

@@ -19,9 +19,13 @@ router.get("/produit/:id/modification", frontCtrl.modifProduit);
 //Route qui permet d'affihcer la liste des produits d'un user
 router.get("/produit/mesproduits", frontCtrl.mesProduits);
 //Permet de renvoyer la paeg HTML de gesion de compte
-router.get("/compte", frontCtrl.gestionCompte);
+router.get("/admin", frontCtrl.affAdmin);
 //Permet de retourner le fichier HTML de création de compte
 router.get("/signup", frontCtrl.signup);
 //Permet de retourner le fichier HTML de connexion
 router.get("/login", frontCtrl.login);
+//Route qui permet d'accéder à la page projet
+router.get('/projet',frontCtrl.projet)
+//Route qui permet d'accéder aux mentions légales
+router.get('/mentionslegales', frontCtrl.mentionsLegales)
 module.exports = router;

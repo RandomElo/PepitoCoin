@@ -51,7 +51,8 @@ exports.htmlProduit = async (req, res, next) => {
     } else {
         // Si jamais il y a un cookie d'auth alors on le décode
         jwt.verify(cookieAuth, process.env.CHAINETOKEN, (err, decoded) => {
-            if (!err) { //Si jamais il y a pas d'erreur
+            if (!err) {
+                //Si jamais il y a pas d'erreur
                 if (decoded.userId === recupGetAll.userID) {
                     //Mode propriétaire
                     contentHTML = /*html*/ `
@@ -81,7 +82,7 @@ exports.htmlProduit = async (req, res, next) => {
                 }
                 //Si jamais il y a une erreur
             } else {
-                console.log('Erreur lors de la verification du token')
+                console.log("Erreur lors de la verification du token");
                 res.clearCookie("auth");
                 contentHTML = /*html*/ `
                         <header>
@@ -209,4 +210,10 @@ exports.jsNavbar = (req, res, next) => {
 };
 exports.imageMenuHamburger = (req, res, next) => {
     res.sendFile(path.join(__dirname, "..", "..", "frontend", "images", "Menu_Hamburger_Noir.png"));
+};
+exports.cssProjet = (req, res, next) => {
+    res.sendFile(path.join(__dirname, "..", "..", "frontend", "projet", "style.css"), { "Content-Type": "text/css" });
+};
+exports.cssMentionsLegales = (req, res, next) => {
+    res.sendFile(path.join(__dirname, "..", "..", "frontend", "mentionsLegales", "style.css"), { "Content-Type": "text/css" });
 };
