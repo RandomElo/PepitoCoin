@@ -6,3 +6,16 @@
     margin: 0;
     padding: 0;
 }
+.gras {
+    font-weight: bold;
+    color: #94e800;
+}
+#titre {
+    margin-bottom: 10px;
+}
+h2 {
+    margin-bottom: 5px;
+}
+p {
+    margin-bottom: 5px;
+}

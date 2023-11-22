@@ -896,15 +896,15 @@ exports.mentionsLegales = async (req, res, next) => {
             <header><h1 id="titre">Les mentions légales</h1></header>
             <div id="mentionsLégalesDiv">
                 <div id="infosGeneraleDiv">
-                    <h1>Informations légales</h1>
+                    <h2>Informations légales</h2>
                     <p><span class="gras">Identité de l'éditeur : </span>Éloi B</p>
                     <p><span class="gras">Adresse mail de contact : </span><a href="mailto:eloi.random@gmail.com">Mail</a></p>
                 </div>
                 <div id="hebergeurDiv">
-                    <h1>L'hébergeur</h1>
+                    <h2>L'hébergeur</h2>
                     <p><span class="gras">Identité de l'hébergeur : </span>ALWAYSDATA</p>
                     <p><span class="gras">Formulaire de contact : </span>Uniquement à partir d'un ordinateur : cliquer sur "Contact" sur la barre de navigation en haut de la fenêtre, à partir de ce <a href="https://www.alwaysdata.com">site</a></p>
-                    <p><span class="grass">Numéro de téléphone de contact : </span><a href="tel:+33184162340">Numéro de téléphone</a></p>
+                    <p><span class="gras">Numéro de téléphone de contact : </span><a href="tel:+33184162340">Numéro de téléphone</a></p>
                 </div>
             <footer>
                 <p>Ce site est fictif <a href="fictif">Le projet</a></p>
