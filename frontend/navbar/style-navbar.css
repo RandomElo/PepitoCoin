@@ -14,7 +14,7 @@
 }
 .navbar a:hover {
     text-decoration: underline;
-    color:  #94e800 ;
+    color: #94e800;
 }
 .navLinks.mobileMenu {
     margin-left: 0px;
@@ -43,7 +43,7 @@
     font-size: 16px;
 }
 .conteneurSousListe:hover {
-    color:  #94e800 ;
+    color: #94e800;
     text-decoration: underline;
 }
 /* Zone pour le footer */
@@ -54,9 +54,9 @@ footer {
     text-align: center;
     width: 100%;
     height: 20px;
-    background-color:  #94e800 ;
+    background-color: #94e800;
 }
-footer > a {
+footer > p > a {
     color: blue;
 }
 @media screen and (min-width: 851px) {
