@@ -100,12 +100,8 @@ exports.accueil = async (req, res, next) => {
     //Défintion du footer
     var footer = document.createElement("footer");
     var fictifP = document.createElement("p");
-    fictifP.innerHTML = '<p>Ce site est fictif <a href="fictif">Le projet</a></p>';
+    fictifP.innerHTML = 'Ce site est fictif <a href="/projet">Le projet</a> | <a href="/mentionslegales">Mentions légales</a>';
     footer.appendChild(fictifP);
-    var footerA = document.createElement("a");
-    footerA.setAttribute("href", "Mentions légales");
-    footerA.textContent = "Mentions légales";
-    footer.appendChild(footerA);
     document.body.appendChild(footer);
 
     //Définition des scripts JScript src="/fichiers/accueil/script"></script><script src="/fichiers/navbar/script"></script>
@@ -200,12 +196,8 @@ exports.affProduit = async (req, res, next) => {
     //Défintion du footer
     var footer = document.createElement("footer");
     var fictifP = document.createElement("p");
-    fictifP.innerHTML = '<p>Ce site est fictif <a href="fictif">Le projet</a></p>';
+    fictifP.innerHTML = 'Ce site est fictif <a href="/projet">Le projet</a> | <a href="/mentionslegales">Mentions légales</a>';
     footer.appendChild(fictifP);
-    var footerA = document.createElement("a");
-    footerA.setAttribute("href", "Mentions légales");
-    footerA.textContent = "Mentions légales";
-    footer.appendChild(footerA);
     document.body.appendChild(footer);
 
     //Définition des scripts js
@@ -284,8 +276,7 @@ exports.affProduitProprietaire = async (req, res, next) => {
                         <a class="lien" id="supprProduit">Supprimer le produit</a>
                     </div>
                     <footer>
-                        <p>Ce site est fictif <a href="fictif">Le projet</a></p>
-                        <a href="Mentions légales">Mentions légales</a>
+                        <p>Ce site est fictif <a href="/projet">Le projet</a> | <a href="/mentionslegales">Mentions légales</a></p>
                     </footer>
                     <script src="/fichiers/produit/proprietaire/script"></script>
                     <script src="/fichiers/navbar/script"></script>
@@ -368,9 +359,8 @@ exports.formAjout = (req, res, next) => {
                     </div>
                     <button id="envoiBouton" type="submit">Enregistrer</button>
                 </form>
-                <footer>
-                    <p>Ce site est fictif <a href="fictif">Le projet</a></p>
-                    <a href="Mentions légales">Mentions légales</a>
+                <footer>                    
+                    <p>Ce site est fictif <a href="/projet">Le projet</a> | <a href="/mentionslegales">Mentions légales</a></p>
                 </footer>
                 
                 <script src="/fichiers/produit/form/ajout/script"></script>
@@ -449,8 +439,7 @@ exports.modifProduit = (req, res, next) => {
                 <button id="envoiBouton" type="submit">Enregistrer</button>
             </form>
             <footer>
-                <p>Ce site est fictif <a href="fictif">Le projet</a></p>
-                <a href="Mentions légales">Mentions légales</a>
+                <p>Ce site est fictif <a href="/projet">Le projet</a> | <a href="/mentionslegales">Mentions légales</a></p>
             </footer>
             
             <script src="/fichiers/produit/form/modif/script"></script>
@@ -583,8 +572,7 @@ exports.signup = async (req, res, next) => {
                     <button id="loginBouton" type="submit">Création de compte</button>
                 </form>
                 <footer>
-                    <p>Ce site est fictif <a href="fictif">Le projet</a></p>
-                    <a href="Mentions légales">Mentions légales</a>
+                    <p>Ce site est fictif <a href="/projet">Le projet</a> | <a href="/mentionslegales">Mentions légales</a></p>
                 </footer>
                 <script src="/fichiers/authentification/signup/script"></script>
                 <script src="/fichiers/navbar/script"></script>
@@ -656,8 +644,7 @@ exports.login = async (req, res, next) => {
                 <button id="connexionBouton" type="submit">Connexion</button>
             </form>
             <footer>
-                <p>Ce site est fictif <a href="fictif">Le projet</a></p>
-                <a href="Mentions légales">Mentions légales</a>
+                <p>Ce site est fictif <a href="/projet">Le projet</a> | <a href="/mentionslegales">Mentions légales</a></p>
             </footer>
     
             <script src="/fichiers/authentification/login/script"></script>
@@ -744,12 +731,8 @@ exports.mesProduits = (req, res, next) => {
                     //Défintion du footer
                     var footer = document.createElement("footer");
                     var fictifP = document.createElement("p");
-                    fictifP.innerHTML = '<p>Ce site est fictif <a href="fictif">Le projet</a></p>';
+                    fictifP.innerHTML = 'Ce site est fictif <a href="/projet">Le projet</a> | <a href="/mentionslegales">Mentions légales</a>';
                     footer.appendChild(fictifP);
-                    var footerA = document.createElement("a");
-                    footerA.setAttribute("href", "Mentions légales");
-                    footerA.textContent = "Mentions légales";
-                    footer.appendChild(footerA);
                     document.body.appendChild(footer);
 
                     //Ajout des script à body
@@ -834,8 +817,7 @@ exports.projet = async (req, res, next) => {
                 <p>Ce site est fictif, n'a pas pour but de publier des produits dans un réel but de vente.</p>
             </main>
             <footer>
-                <p>Ce site est fictif <a href="fictif">Le projet</a></p>
-                <a href="Mentions légales">Mentions légales</a>
+                <p>Ce site est fictif <a href="/projet">Le projet</a> | <a href="/mentionslegales">Mentions légales</a></p>
             </footer>
             <script src="/fichiers/navbar/script"></script>
         </body>
@@ -897,7 +879,7 @@ exports.mentionsLegales = async (req, res, next) => {
             <div id="mentionsLégalesDiv">
                 <div id="infosGeneraleDiv">
                     <h2>Informations légales</h2>
-                    <p><span class="gras">Identité de l'éditeur : </span>Éloi B</p>
+                    <p><span class="gras">Identité de l'éditeur : </span>Éloi B.</p>
                     <p><span class="gras">Adresse mail de contact : </span><a href="mailto:eloi.random@gmail.com">Mail</a></p>
                 </div>
                 <div id="hebergeurDiv">
@@ -907,8 +889,7 @@ exports.mentionsLegales = async (req, res, next) => {
                     <p><span class="gras">Numéro de téléphone de contact : </span><a href="tel:+33184162340">Numéro de téléphone</a></p>
                 </div>
             <footer>
-                <p>Ce site est fictif <a href="fictif">Le projet</a> | <a href="Mentions légales">Mentions légales</a></p>
-                <!-- <a href="Mentions légales">Mentions légales</a> -->
+                <p>Ce site est fictif <a href="/projet">Le projet</a> | <a href="/mentionslegales">Mentions légales</a></p>
             </footer>
             <script src="/fichiers/navbar/script"></script>
         </body>
