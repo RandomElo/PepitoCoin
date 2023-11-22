@@ -56,6 +56,9 @@ footer {
     height: 20px;
     background-color:  #94e800 ;
 }
+footer > a {
+    color: blue;
+}
 @media screen and (min-width: 851px) {
     .conteneurSousListe:hover > ul {
         display: block;
