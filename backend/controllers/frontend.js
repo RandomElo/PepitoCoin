@@ -876,20 +876,20 @@ exports.mentionsLegales = async (req, res, next) => {
         <body>
             <nav class="navbar">${navbar}</nav>
             <header><h1 id="titre">Les mentions légales</h1></header>
-            <div id="mentionsLégalesDiv">
+            <div id="mentionsLegalesDiv">
                 <div id="infosGeneraleDiv">
                     <h2>Informations légales</h2>
                     <p><span class="gras">Identité de l'éditeur : </span>Éloi B.</p>
-                    <p><span class="gras">Adresse mail de contact : </span><a href="mailto:eloi.random@gmail.com">Mail</a></p>
+                    <p><span class="gras">Adresse mail de contact : </span><a class="mlLien" href="mailto:eloi.random@gmail.com">Mail</a></p>
                 </div>
                 <div id="hebergeurDiv">
                     <h2 id="titreHebergeur">L'hébergeur</h2>
                     <p><span class="gras">Identité de l'hébergeur : </span>ALWAYSDATA</p>
-                    <p><span class="gras">Formulaire de contact : </span>Uniquement à partir d'un ordinateur : cliquer sur "Contact" sur la barre de navigation en haut de la fenêtre, à partir de ce <a href="https://www.alwaysdata.com">site</a></p>
-                    <p><span class="gras">Numéro de téléphone de contact : </span><a href="tel:+33184162340">Numéro de téléphone</a></p>
+                    <p><span class="gras">Formulaire de contact : </span>Uniquement à partir d'un ordinateur : cliquer sur "Contact" sur la barre de navigation en haut de la fenêtre, à partir de ce <a class="mlLien" href="https://www.alwaysdata.com">site</a></p>
+                    <p><span class="gras">Numéro de téléphone de contact : </span><a class="mlLien" href="tel:+33184162340">Numéro de téléphone</a></p>
                 </div>
             <footer>
-                <p>Ce site est fictif <a href="/projet">Le projet</a> | <a href="/mentionslegales">Mentions légales</a></p>
+                <p>Ce site est fictif <a href="/projet">Le projet</a> | <a class="mlLien" href="/mentionslegales">Mentions légales</a></p>
             </footer>
             <script src="/fichiers/navbar/script"></script>
         </body>

@@ -13,6 +13,10 @@
 #titre {
     margin-bottom: 10px;
 }
+#mentionsLegalesDiv {
+    margin-right: 10px;
+    margin-left: 10px;
+}
 h2 {
     margin-bottom: 5px;
 }
@@ -21,4 +25,7 @@ h2 {
 }
 p {
     margin-bottom: 5px;
+}
+.mlLine {
+    color: blue;
 }

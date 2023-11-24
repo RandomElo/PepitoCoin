@@ -6,6 +6,13 @@
     margin: 0;
     padding: 0;
 }
+main {
+    margin-right: 15px;
+    margin-left: 15px;
+}
 main > p {
     margin-top: 10px;
 } 
+main > p > a {
+    color: blue;
+}
