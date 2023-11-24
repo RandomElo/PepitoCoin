@@ -49,6 +49,7 @@
 /* Zone pour le footer */
 footer {
     position: fixed;
+    right: 0;
     bottom: 0;
     padding: 10px 0;
     text-align: center;
