@@ -112,7 +112,7 @@ footer > p > a {
         position: absolute;
         top: 0;
         left: 0;
-        background-color: gray;
+        background-color: #94e800;
         height: 100vh;
         width: 100vw;
         text-align: center;
@@ -128,11 +128,13 @@ footer > p > a {
     }
     .navbar .navLinks ul li {
         margin: 20px 0;
-    }
-    .navbar .navLinks ul li {
-        margin: 20px 0;
         font-size: 19.2px;
     }
+    .conteneurSousListe:hover {
+        color: black;
+        text-decoration: underline;
+    }
+    
     /* Zone pour le sous menus */
     .conteneurSousListe {
         width: 150px;

@@ -813,7 +813,7 @@ exports.projet = async (req, res, next) => {
             <main>
                 <p>J'ai créé ce site dans le but d'apprendre a lié mon backend et mon frontend avec Express.</p>
                 <p>J'avais suivi un cours sur <a href="https://openclassrooms.com/fr/courses/6390246-passez-au-full-stack-avec-node-js-express-et-mongodb">OpenClassrooms</a> qui ne t'apprenait uniquement à créer son backend, sans aborder comment faire la liaison entre les deux.</p>
-                <p>Voici le code source de mon site : </p>
+                <p>Voici le code source de mon site : <a href="https://github.com/RandomElo/PepitoCoin">GitHub</a></p>
                 <p>Ce site est fictif, n'a pas pour but de publier des produits dans un réel but de vente.</p>
             </main>
             <footer>
