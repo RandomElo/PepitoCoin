@@ -6,7 +6,10 @@ const Produit = require("../models/Produit");
 //Controleur qui est utiliser au chargement de la page
 exports.recupAllRes = (req, res, next) => {
     Produit.find()
-        .then((produit) => res.status(200).json(produit))
+        .then((produit) => {
+            console.log("Produit "+produit)
+            res.status(200).json(produit)
+        })
         .catch((error) => {
             res.status(400).json({ error });
         });

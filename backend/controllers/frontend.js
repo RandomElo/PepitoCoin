@@ -75,6 +75,7 @@ exports.accueil = async (req, res, next) => {
     document.body.appendChild(header);
     //Définition des aperçu produit
     var recupGetAll = await requeteGetAll();
+    console.log(recupGetAll)
     var conteneurProduitsGet = document.createElement("div");
     conteneurProduitsGet.setAttribute("id", "AEproduitGet");
     if (recupGetAll.length == 0) {
