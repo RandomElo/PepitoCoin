@@ -18,6 +18,7 @@ exports.accueil = async (req, res, next) => {
         })
             .then((reponse) => reponse.json())
             .then((data) => {
+                console.log("Requete "+data)
                 return data;
             })
             .catch((error) => console.error(error));
