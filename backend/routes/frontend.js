@@ -28,10 +28,10 @@ router.get("/login", frontCtrl.login);
 router.get('/projet',frontCtrl.projet)
 //Route qui permet d'accéder aux mentions légales
 router.get('/mentionslegales', frontCtrl.mentionsLegales)
-// router.use((req, res, next) => {
-//     res.status(404).send(/*html*/ `
-//         <h1>Erreur 404</h1>
-//         <p>La page demandée n'existe pas.</p>
-//     `);
-// });
+router.use((req, res, next) => {
+    res.status(404).send(/*html*/ `
+        <h1>Erreur 404</h1>
+        <p>La page demandée n'existe pas.</p>
+    `);
+});
 module.exports = router;
