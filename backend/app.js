@@ -57,5 +57,8 @@ app.use("/api/pepitocoin/ressource", resRoutes);
 //Gére les routes d'authentification
 app.use("/api/authentification", userRoutes);
 
+app.use((req, res, next) => {
+    res.status(404).send("Page non trouvée");
+});
 // Exporation du serveur pour la rendre disponible auprès du serveur
 module.exports = app;
