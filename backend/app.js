@@ -31,12 +31,16 @@ mongoose
     .catch((error) => console.error("Erreur de connexion à la BDD: ", error));
 //Middleware général 'sans route' | Permet d'ajouter des headears
 app.use((req, res, next) => {
-    //Uniquement les requêtes GET avec la route /api/stuff qui sont intercepté par ce middleware
-    res.setHeader("Access-Control-Allow-Origin", "*"); //L'origine qui à le droit d'accéder à notre API c'est tous le monde (*)
-    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"); //Autorisation d'utiliser certain header
-    res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH, OPTIONS"); //Autorisaton de certaine methodes
-    next();
+    res.setHeader("Access-Control-Allow-Origin", "https://eloi-site.alwaysdata.net"); // Autorise l'accès à votre API depuis ce domaine
+    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"); // Autorise certains en-têtes
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH, OPTIONS"); // Autorise certaines méthodes HTTP
+    // Prise en charge de la requête OPTIONS pour les pré-vérifications CORS
+    if (req.method === "OPTIONS") {
+        return res.sendStatus(200); // Répond avec un statut 200 pour les requêtes OPTIONS
+    }
+    next(); // Passe au middleware suivant
 });
+
 //Permet de pouvoir récupérer les informations de req
 // app.use(express.json());
 app.use(bodyParser.json({ limit: "200mb" })); // Vous pouvez ajuster la limite selon vos besoins
