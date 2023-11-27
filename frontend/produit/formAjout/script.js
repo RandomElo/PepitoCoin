@@ -23,11 +23,9 @@ form.addEventListener("submit", (event) => {
         body: objet,
     })
         .then((reponse) => {
-            console.log(reponse);
             return reponse.json();
         })
         .then((data) => {
-            console.log(data.data);
             window.location = `http://eloi-site.alwaysdata.net/produit/${data.data._id}`;
         })
         .catch((error) => console.error(error));

@@ -67,7 +67,6 @@ function affProduit() {
                     })
                         .then((reponse) => reponse.json())
                         .then((data) => {
-                            console.log(data);
                             suppression()
                             // window.location = 'http://localhost:3000/accueil'
                         })
@@ -125,7 +124,6 @@ function affCompte() {
                     })
                         .then((reponse) => reponse.json())
                         .then((data) => {
-                            console.log(data);
                             suppression()
                             // window.location = 'http://localhost:3000/accueil'
                         })

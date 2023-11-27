@@ -25,7 +25,6 @@ pseudoForm.addEventListener('keyup',async(event) => {
             pDispoPseudo.innerText = 'Pseudo Indisponible'
         } else {
             pDispoPseudo.innerText = ''
-            console.log("Pseudo Disponible")
         }
     }
 })
@@ -41,7 +40,6 @@ form.addEventListener('submit',(event)=>{
     var pseudoValue = pseudoForm.value;
     pseudoValue = pseudoValue.toLowerCase();
     var passwordValue = passwordForm.value;
-    console.log(pseudoValue,passwordValue)
     var donneeUser = {
         'pseudo': pseudoValue,
         'password': passwordValue 
@@ -56,7 +54,6 @@ form.addEventListener('submit',(event)=>{
     })
     .then(reponse => reponse.json())
     .then(data => {
-        console.log(data)
         window.location = `http://eloi-site.alwaysdata.net/accueil`
     })
 })

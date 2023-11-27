@@ -18,7 +18,6 @@ exports.accueil = async (req, res, next) => {
         })
             .then((reponse) => reponse.json())
             .then((data) => {
-                console.log("Requete " + data);
                 return data;
             })
             .catch((error) => console.error(error));
@@ -76,7 +75,6 @@ exports.accueil = async (req, res, next) => {
     document.body.appendChild(header);
     //Définition des aperçu produit
     var recupGetAll = await requeteGetAll();
-    console.log(recupGetAll);
     var conteneurProduitsGet = document.createElement("div");
     conteneurProduitsGet.setAttribute("id", "AEproduitGet");
     if (recupGetAll.length == 0) {
@@ -210,9 +208,7 @@ exports.affProduit = async (req, res, next) => {
 
     //serialize est une fonction qui permet de convertir l'élement qui continet les éléments html en une chaine de caractère utilisable
     html = dom.serialize();
-    // console.log(html)
     res.send(html);
-    // res.sendFile(path.join(__dirname, "..", "..", "frontend", "produit", "affichage", `index.html`));
 };
 exports.affProduitProprietaire = async (req, res, next) => {
     function requeteNavbarUser(cookie) {

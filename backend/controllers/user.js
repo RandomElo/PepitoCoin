@@ -103,7 +103,6 @@ exports.suppr = (req, res, next) => {
             var idData = data._id;
             //Permet de transformer la donnée en une chaine de caractère (donnée utilisable)
             var idString = idData.toString();
-            console.log(idString);
             //On cherche tous les produits qui on comme userID, celui récéper par user find One
             Produit.find({ userID: idString })
                 .then((produit) => {
@@ -179,7 +178,6 @@ exports.suppressionCompte = (req, res, next) => {
     jwt.verify(cookie, process.env.CHAINETOKEN, (err, decoded) => {
         if (!err) {
             const userId = decoded.userId;
-            console.log(userId);
             Produit.find({ userID: userId })
                 .then((data) => {
                     for (let i = 0; i < data.length; i++) {

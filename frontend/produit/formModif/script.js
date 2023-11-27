@@ -43,7 +43,6 @@ form.addEventListener("submit", (event) => {
         objet.append("prix", prixForm.value);
         objet.append("description", descForm.value);
     }
-    console.log(objet)
     //Envoie de la requete à l'api
     fetch(`http://eloi-site.alwaysdata.net/api/pepitocoin/ressource/modification/${nomFichier}`, {
         method: "PUT",
@@ -51,7 +50,6 @@ form.addEventListener("submit", (event) => {
     })
         .then((reponse) => reponse.json())
         .then((data) => {
-            console.log(data);
             window.location = `http://eloi-site.alwaysdata.net/produit/${nomFichier}`;
         })
         .catch((error) => console.error(error));

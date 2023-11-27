@@ -7,8 +7,7 @@ const Produit = require("../models/Produit");
 exports.recupAllRes = (req, res, next) => {
     Produit.find()
         .then((produit) => {
-            console.log("Produit "+produit)
-            res.status(200).json(produit)
+            res.status(200).json(produit);
         })
         .catch((error) => {
             res.status(400).json({ error });
@@ -32,7 +31,6 @@ exports.publiRes = (req, res, next) => {
 
     //Ajout de userId dans l'objet qui vas aller dans la bdd
     produitObjet.userID = userId;
-    console.log("Filename: " + req.file.filename);
     const produit = new Produit({
         ...produitObjet,
         image: `/fichiers/produit/images/${req.file.filename}`,
@@ -51,7 +49,6 @@ exports.modifRes = (req, res, next) => {
         .then((data) => {
             //Récupération des données de le requete
             const produitObjet = req.body;
-            console.log(req.file);
             var produit;
             if (req.file === undefined) {
                 produit = new Produit({
@@ -76,7 +73,6 @@ exports.modifRes = (req, res, next) => {
                     }
                 });
             }
-            console.log(produit);
             //La fonction updateOne, prend ddeux éléments, l'id de l'élément et par quoi il faut modifier la ressrouce
             Produit.updateOne({ _id: req.params.id }, produit)
                 .then(() => res.status(201).json({ produit }))
@@ -92,7 +88,6 @@ exports.supprRes = (req, res, next) => {
             nomFichier = nomFichier.split("/");
             nomFichier = nomFichier.pop();
             const cheminImage = path.join(__dirname, "..", "..", "frontend", "produit", "images", `${nomFichier}`);
-            console.log(cheminImage);
 
             fs.unlink(cheminImage, (err) => {
                 if (!err) {

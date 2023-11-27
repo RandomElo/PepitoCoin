@@ -2,7 +2,6 @@
 var idProduit = window.location.href;
 idProduit = idProduit.split("/")
 idProduit = idProduit[idProduit.length -2]
-console.log(idProduit);
 var supprProduit = document.getElementById("supprProduit");
 supprProduit.addEventListener("click", () => {
     var confirmation = confirm("Êtes-vous sûr de vouloir supprimer ce produit ?");
