@@ -20,7 +20,7 @@ exports.htmlProduit = async (req, res, next) => {
     const cookieAuth = req.query.cookieAuth;
     //Fonction qui permet de faire la requete en await
     function requeteGetOne(id) {
-        return fetch(`http://eloi-site.alwaysdata.net/api/pepitocoin/ressource/recuperation/${id}`, {
+        return fetch(`https://eloi-site.alwaysdata.net/api/pepitocoin/ressource/recuperation/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -65,7 +65,7 @@ exports.htmlProduit = async (req, res, next) => {
                             <p id='prixProduit'><span class='gras'>Prix : </span>${recupGetAll.prix}</p>
                             <p id='descProduit'><span class='gras'>Description : </span>${recupGetAll.description}</p>
                         </div>
-                        <a class='lien' id="proprietaireLien" href='http://eloi-site.alwaysdata.net/produit/${produitID}/proprietaire'>Passez en mode propriétaire</a>
+                        <a class='lien' id="proprietaireLien" href='https://eloi-site.alwaysdata.net/produit/${produitID}/proprietaire'>Passez en mode propriétaire</a>
                     `;
                 } else {
                     contentHTML = /*html*/ `
@@ -168,14 +168,14 @@ exports.userNavbar = async (req, res, next) => {
     jwt.verify(cookie, process.env.CHAINETOKEN, (err, decoded) => {
         if (!err) {
             var navbar = /*html*/ `
-                        <a class="logo" href="http://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
+                        <a class="logo" href="https://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
                         <div class="navLinks">
                             <ul>
-                                <li><a href="http://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
-                                <li><a href="http://eloi-site.alwaysdata.net/produit/ajout">Vendre un produit</a></li>
+                                <li><a href="https://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
+                                <li><a href="https://eloi-site.alwaysdata.net/produit/ajout">Vendre un produit</a></li>
                                 <li class='conteneurSousListe'>Mon compte &#9660;
                                     <ul class="sousListe">
-                                        <li class='itemsSousListe'><a href="http://eloi-site.alwaysdata.net/produit/mesproduits">Mes Produits</a></li>
+                                        <li class='itemsSousListe'><a href="https://eloi-site.alwaysdata.net/produit/mesproduits">Mes Produits</a></li>
                                         <li id="lienDeconnexion" class='itemsSousListe'><a style="cursor: pointer;">Déconnexion</a></li>
                                         <li id="lienSuppression" class='itemsSousListe'><a style="cursor: pointer;">Suppression</a></li>
                                     </ul>
@@ -187,12 +187,12 @@ exports.userNavbar = async (req, res, next) => {
             res.status(200).json(navbar);
         } else {
             var navbar = /*html*/ `
-            <a class="logo" href="http://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
+            <a class="logo" href="https://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
             <div class="navLinks">
                 <ul>
-                    <li><a href="http://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
-                    <li><a href="http://eloi-site.alwaysdata.net/login">Se connecter</a></li>
-                    <li><a href="http://eloi-site.alwaysdata.net/signup">Crée un compte</a></li>
+                    <li><a href="https://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
+                    <li><a href="https://eloi-site.alwaysdata.net/login">Se connecter</a></li>
+                    <li><a href="https://eloi-site.alwaysdata.net/signup">Crée un compte</a></li>
                 </ul>
             </div>
             <img class="menuHamburger" src="/fichiers/images/menu-hamburger" alt="Menu Hamburger">

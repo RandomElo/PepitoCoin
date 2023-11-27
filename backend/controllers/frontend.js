@@ -9,8 +9,8 @@ const { JSDOM } = jsdom;
 exports.accueil = async (req, res, next) => {
     //Fonction qui permet de récuépérer tous les éléments de la page
     function requeteGetAll() {
-        // return fetch(`http:/[${process.env.IP}]:${process.env.PORT}/api/pepitocoin/ressource/recuperation`, {
-        return fetch(`http://eloi-site.alwaysdata.net/api/pepitocoin/ressource/recuperation`, {
+        // return fetch(`https:/[${process.env.IP}]:${process.env.PORT}/api/pepitocoin/ressource/recuperation`, {
+        return fetch(`https://eloi-site.alwaysdata.net/api/pepitocoin/ressource/recuperation`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -24,7 +24,7 @@ exports.accueil = async (req, res, next) => {
     }
     //Fonction qui permet de récupérer la navbar
     function requeteNavbarUser(cookie) {
-        return fetch(`http://eloi-site.alwaysdata.net/fichiers/navbar/html/${cookie}`, {
+        return fetch(`https://eloi-site.alwaysdata.net/fichiers/navbar/html/${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -52,12 +52,12 @@ exports.accueil = async (req, res, next) => {
         var recupNavbar = await requeteNavbarUser(cookie);
     } else {
         var recupNavbar = /*html*/ `
-            <a class="logo" href="http://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
+            <a class="logo" href="https://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
             <div class="navLinks">
                 <ul>
-                    <li><a href="http://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
-                    <li><a href="http://eloi-site.alwaysdata.net/login">Se connecter</a></li>
-                    <li><a href="http://eloi-site.alwaysdata.net/signup">Crée un compte</a></li>
+                    <li><a href="https://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
+                    <li><a href="https://eloi-site.alwaysdata.net/login">Se connecter</a></li>
+                    <li><a href="https://eloi-site.alwaysdata.net/signup">Crée un compte</a></li>
                 </ul>
             </div>
             <img class="menuHamburger" src="/fichiers/images/menu-hamburger" alt="Menu Hamburger">
@@ -126,7 +126,7 @@ exports.affHome = (req, res, next) => {
 exports.affProduit = async (req, res, next) => {
     //Fonction qui permet de récupérer la navbar
     function requeteNavbarUser(id) {
-        return fetch(`http://eloi-site.alwaysdata.net/fichiers/navbar/html/${id}`, {
+        return fetch(`https://eloi-site.alwaysdata.net/fichiers/navbar/html/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -139,7 +139,7 @@ exports.affProduit = async (req, res, next) => {
             .catch((error) => console.error(error));
     }
     function donneesProduit(id, cookie) {
-        return fetch(`http://eloi-site.alwaysdata.net/fichiers/produit/html?id=${id}&cookieAuth=${cookie}`, {
+        return fetch(`https://eloi-site.alwaysdata.net/fichiers/produit/html?id=${id}&cookieAuth=${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -167,12 +167,12 @@ exports.affProduit = async (req, res, next) => {
         var recupNavbar = await requeteNavbarUser(cookie);
     } else {
         var recupNavbar = /*html*/ `
-            <a class="logo" href="http://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
+            <a class="logo" href="https://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
             <div class="navLinks">
                 <ul>
-                    <li><a href="http://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
-                    <li><a href="http://eloi-site.alwaysdata.net/login">Se connecter</a></li>
-                    <li><a href="http://eloi-site.alwaysdata.net/signup">Crée un compte</a></li>
+                    <li><a href="https://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
+                    <li><a href="https://eloi-site.alwaysdata.net/login">Se connecter</a></li>
+                    <li><a href="https://eloi-site.alwaysdata.net/signup">Crée un compte</a></li>
                 </ul>
             </div>
             <img class="menuHamburger" src="/fichiers/images/menu-hamburger" alt="Menu Hamburger">
@@ -212,7 +212,7 @@ exports.affProduit = async (req, res, next) => {
 };
 exports.affProduitProprietaire = async (req, res, next) => {
     function requeteNavbarUser(cookie) {
-        return fetch(`http://eloi-site.alwaysdata.net/fichiers/navbar/html/${cookie}`, {
+        return fetch(`https://eloi-site.alwaysdata.net/fichiers/navbar/html/${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -225,7 +225,7 @@ exports.affProduitProprietaire = async (req, res, next) => {
             .catch((error) => console.error(error));
     }
     function requeteGetOne(id) {
-        return fetch(`http://eloi-site.alwaysdata.net/api/pepitocoin/ressource/recuperation/${id}`, {
+        return fetch(`https://eloi-site.alwaysdata.net/api/pepitocoin/ressource/recuperation/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -251,12 +251,12 @@ exports.affProduitProprietaire = async (req, res, next) => {
                     var navbar = await requeteNavbarUser(cookie);
                 } else {
                     var navbar = /*html*/ `
-                        <a class="logo" href="http://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
+                        <a class="logo" href="https://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
                         <div class="navLinks">
                             <ul>
-                                <li><a href="http://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
-                                <li><a href="http://eloi-site.alwaysdata.net/login">Se connecter</a></li>
-                                <li><a href="http://eloi-site.alwaysdata.net/signup">Crée un compte</a></li>
+                                <li><a href="https://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
+                                <li><a href="https://eloi-site.alwaysdata.net/login">Se connecter</a></li>
+                                <li><a href="https://eloi-site.alwaysdata.net/signup">Crée un compte</a></li>
                             </ul>
                         </div>
                         <img class="menuHamburger" src="/fichiers/images/menu-hamburger" alt="Menu Hamburger">
@@ -269,8 +269,8 @@ exports.affProduitProprietaire = async (req, res, next) => {
                         <p>Sur cette page, vous pouvez :</p>
                     </header>
                     <div id="liensDiv">
-                        <a class="lien" href="http://eloi-site.alwaysdata.net/produit/${produitId}">Retourner à la page du produit</a>
-                        <a class="lien" id="modifProduit" href="http://eloi-site.alwaysdata.net/produit/${produitId}/modification">Modifier le produit</a>
+                        <a class="lien" href="https://eloi-site.alwaysdata.net/produit/${produitId}">Retourner à la page du produit</a>
+                        <a class="lien" id="modifProduit" href="https://eloi-site.alwaysdata.net/produit/${produitId}/modification">Modifier le produit</a>
                         <a class="lien" id="supprProduit">Supprimer le produit</a>
                     </div>
                     <footer>
@@ -284,17 +284,17 @@ exports.affProduitProprietaire = async (req, res, next) => {
                 res.send(html);
                 // res.status(200).json({ message: "Page en phase de test" });
             } else {
-                res.redirect(`http://eloi-site.alwaysdata.net/produit/${produitId}`);
+                res.redirect(`https://eloi-site.alwaysdata.net/produit/${produitId}`);
             }
         } else {
             console.error("Erreur de vérification du token :", err);
-            res.redirect(`http://eloi-site.alwaysdata.net/produit/${produitId}`);
+            res.redirect(`https://eloi-site.alwaysdata.net/produit/${produitId}`);
         }
     });
 };
 exports.formAjout = (req, res, next) => {
     function requeteNavbarUser(cookie) {
-        return fetch(`http://eloi-site.alwaysdata.net/fichiers/navbar/html/${cookie}`, {
+        return fetch(`https://eloi-site.alwaysdata.net/fichiers/navbar/html/${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -316,12 +316,12 @@ exports.formAjout = (req, res, next) => {
                 var navbar = await requeteNavbarUser(cookie);
             } else {
                 var navbar = /*html*/ `
-                    <a class="logo" href="http://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
+                    <a class="logo" href="https://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
                     <div class="navLinks">
                         <ul>
-                            <li><a href="http://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
-                            <li><a href="http://eloi-site.alwaysdata.net/login">Se connecter</a></li>
-                            <li><a href="http://eloi-site.alwaysdata.net/signup">Crée un compte</a></li>
+                            <li><a href="https://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
+                            <li><a href="https://eloi-site.alwaysdata.net/login">Se connecter</a></li>
+                            <li><a href="https://eloi-site.alwaysdata.net/signup">Crée un compte</a></li>
                         </ul>
                     </div>
                     <img class="menuHamburger" src="/fichiers/images/menu-hamburger" alt="Menu Hamburger">
@@ -374,7 +374,7 @@ exports.formAjout = (req, res, next) => {
 };
 exports.modifProduit = (req, res, next) => {
     function requeteNavbarUser(cookie) {
-        return fetch(`http:/[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${cookie}`, {
+        return fetch(`https:/[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -397,12 +397,12 @@ exports.modifProduit = (req, res, next) => {
                 var navbar = await requeteNavbarUser(cookie);
             } else {
                 var navbar = /*html*/ `
-                    <a class="logo" href="http://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
+                    <a class="logo" href="https://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
                     <div class="navLinks">
                         <ul>
-                            <li><a href="http://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
-                            <li><a href="http://eloi-site.alwaysdata.net/login">Se connecter</a></li>
-                            <li><a href="http://eloi-site.alwaysdata.net/signup">Crée un compte</a></li>
+                            <li><a href="https://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
+                            <li><a href="https://eloi-site.alwaysdata.net/login">Se connecter</a></li>
+                            <li><a href="https://eloi-site.alwaysdata.net/signup">Crée un compte</a></li>
                         </ul>
                     </div>
                     <img class="menuHamburger" src="/fichiers/images/menu-hamburger" alt="Menu Hamburger">
@@ -446,14 +446,14 @@ exports.modifProduit = (req, res, next) => {
             const html = dom.serialize();
             res.send(html);
         } else {
-            res.redirect = `http://eloi-site.alwaysdata.net/produit/${produitId}`;
+            res.redirect = `https://eloi-site.alwaysdata.net/produit/${produitId}`;
         }
     });
     // res.sendFile(path.join(__dirname, "..", "..", "frontend", "produit", "formModif", "form.html"));
 };
 exports.affAdmin = async (req, res, next) => {
     function requeteNavbarUser(cookie) {
-        return fetch(`http:/[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${cookie}`, {
+        return fetch(`https:/[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -471,12 +471,12 @@ exports.affAdmin = async (req, res, next) => {
         var navbar = await requeteNavbarUser(cookie);
     } else {
         var navbar = /*html*/ `
-            <a class="logo" href="http://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
+            <a class="logo" href="https://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
             <div class="navLinks">
                 <ul>
-                    <li><a href="http://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
-                    <li><a href="http://eloi-site.alwaysdata.net/login">Se connecter</a></li>
-                    <li><a href="http://eloi-site.alwaysdata.net/signup">Crée un compte</a></li>
+                    <li><a href="https://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
+                    <li><a href="https://eloi-site.alwaysdata.net/login">Se connecter</a></li>
+                    <li><a href="https://eloi-site.alwaysdata.net/signup">Crée un compte</a></li>
                 </ul>
             </div>
             <img class="menuHamburger" src="/fichiers/images/menu-hamburger" alt="Menu Hamburger">
@@ -509,7 +509,7 @@ exports.affAdmin = async (req, res, next) => {
 };
 exports.signup = async (req, res, next) => {
     function requeteNavbarUser(cookie) {
-        return fetch(`http:/[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${cookie}`, {
+        return fetch(`https:/[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -526,12 +526,12 @@ exports.signup = async (req, res, next) => {
         var navbar = await requeteNavbarUser(cookie);
     } else {
         var navbar = /*html*/ `
-            <a class="logo" href="http://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
+            <a class="logo" href="https://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
             <div class="navLinks">
                 <ul>
-                    <li><a href="http://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
-                    <li><a href="http://eloi-site.alwaysdata.net/login">Se connecter</a></li>
-                    <li><a href="http://eloi-site.alwaysdata.net/signup">Crée un compte</a></li>
+                    <li><a href="https://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
+                    <li><a href="https://eloi-site.alwaysdata.net/login">Se connecter</a></li>
+                    <li><a href="https://eloi-site.alwaysdata.net/signup">Crée un compte</a></li>
                 </ul>
             </div>
             <img class="menuHamburger" src="/fichiers/images/menu-hamburger" alt="Menu Hamburger">
@@ -566,7 +566,7 @@ exports.signup = async (req, res, next) => {
                         <label for="passwordForm">Mot de passe :</label>
                         <input id="passwordForm" type="password" required />
                     </div>
-                    <p id="loginPhrase">Vous avez déjà un compte ? <a href="http://eloi-site.alwaysdata.net/login">Connectez-vous</a></p>
+                    <p id="loginPhrase">Vous avez déjà un compte ? <a href="https://eloi-site.alwaysdata.net/login">Connectez-vous</a></p>
                     <button id="loginBouton" type="submit">Création de compte</button>
                 </form>
                 <footer>
@@ -581,7 +581,7 @@ exports.signup = async (req, res, next) => {
 };
 exports.login = async (req, res, next) => {
     function requeteNavbarUser(cookie) {
-        return fetch(`http:/[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${cookie}`, {
+        return fetch(`https:/[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -598,12 +598,12 @@ exports.login = async (req, res, next) => {
         var navbar = await requeteNavbarUser(cookie);
     } else {
         var navbar = /*html*/ `
-            <a class="logo" href="http://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
+            <a class="logo" href="https://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
             <div class="navLinks">
                 <ul>
-                    <li><a href="http://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
-                    <li><a href="http://eloi-site.alwaysdata.net/login">Se connecter</a></li>
-                    <li><a href="http://eloi-site.alwaysdata.net/signup">Crée un compte</a></li>
+                    <li><a href="https://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
+                    <li><a href="https://eloi-site.alwaysdata.net/login">Se connecter</a></li>
+                    <li><a href="https://eloi-site.alwaysdata.net/signup">Crée un compte</a></li>
                 </ul>
             </div>
             <img class="menuHamburger" src="/fichiers/images/menu-hamburger" alt="Menu Hamburger">
@@ -637,7 +637,7 @@ exports.login = async (req, res, next) => {
                     <label for="passwordForm">Mot de passe :</label>
                     <input id="passwordForm" type="password" required />
                 </div>
-                <p id="signupPhrase">Vous n'avez pas de compte ? <a href="http://eloi-site.alwaysdata.net/signup">Crée-en-un</a></p>
+                <p id="signupPhrase">Vous n'avez pas de compte ? <a href="https://eloi-site.alwaysdata.net/signup">Crée-en-un</a></p>
                 <p id="loginErreur"></p>
                 <button id="connexionBouton" type="submit">Connexion</button>
             </form>
@@ -655,7 +655,7 @@ exports.login = async (req, res, next) => {
 exports.mesProduits = (req, res, next) => {
     //Création de la fonction de récupération de la navbar
     function requeteNavbarUser(cookie) {
-        return fetch(`http://eloi-site.alwaysdata.net/fichiers/navbar/html/${cookie}`, {
+        return fetch(`https://eloi-site.alwaysdata.net/fichiers/navbar/html/${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -680,12 +680,12 @@ exports.mesProduits = (req, res, next) => {
                         var navbar = await requeteNavbarUser(cookie);
                     } else {
                         var navbar = /*html*/ `
-                            <a class="logo" href="http://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
+                            <a class="logo" href="https://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
                             <div class="navLinks">
                                 <ul>
-                                    <li><a href="http://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
-                                    <li><a href="http://eloi-site.alwaysdata.net/login">Se connecter</a></li>
-                                    <li><a href="http://eloi-site.alwaysdata.net/signup">Crée un compte</a></li>
+                                    <li><a href="https://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
+                                    <li><a href="https://eloi-site.alwaysdata.net/login">Se connecter</a></li>
+                                    <li><a href="https://eloi-site.alwaysdata.net/signup">Crée un compte</a></li>
                                 </ul>
                             </div>
                             <img class="menuHamburger" src="/fichiers/images/menu-hamburger" alt="Menu Hamburger">
@@ -711,7 +711,7 @@ exports.mesProduits = (req, res, next) => {
                         //Création du lien qui vas mener à sa page produit
                         var lienProduit = document.createElement("a");
                         lienProduit.setAttribute("class", "lienProduit");
-                        lienProduit.setAttribute("href", `http://eloi-site.alwaysdata.net/produit/${idProduit}`);
+                        lienProduit.setAttribute("href", `https://eloi-site.alwaysdata.net/produit/${idProduit}`);
                         lienProduit.textContent = "Accéder à la page produit ";
                         divProduit.appendChild(lienProduit);
 
@@ -755,14 +755,14 @@ exports.mesProduits = (req, res, next) => {
         } else {
             //Permet de supprimer le cookie
             res.clearCookie("auth");
-            res.redirect(`http://eloi-site.alwaysdata.net/accueil`);
+            res.redirect(`https://eloi-site.alwaysdata.net/accueil`);
         }
     });
 };
 exports.projet = async (req, res, next) => {
     //Création de la fonction de récupération de la navbar
     function requeteNavbarUser(cookie) {
-        return fetch(`http://eloi-site.alwaysdata.net/fichiers/navbar/html/${cookie}`, {
+        return fetch(`https://eloi-site.alwaysdata.net/fichiers/navbar/html/${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -779,12 +779,12 @@ exports.projet = async (req, res, next) => {
         var navbar = await requeteNavbarUser(cookie);
     } else {
         var navbar = /*html*/ `
-            <a class="logo" href="http://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
+            <a class="logo" href="https://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
             <div class="navLinks">
                 <ul>
-                    <li><a href="http://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
-                    <li><a href="http://eloi-site.alwaysdata.net/login">Se connecter</a></li>
-                    <li><a href="http://eloi-site.alwaysdata.net/signup">Crée un compte</a></li>
+                    <li><a href="https://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
+                    <li><a href="https://eloi-site.alwaysdata.net/login">Se connecter</a></li>
+                    <li><a href="https://eloi-site.alwaysdata.net/signup">Crée un compte</a></li>
                 </ul>
             </div>
             <img class="menuHamburger" src="/fichiers/images/menu-hamburger" alt="Menu Hamburger">
@@ -828,7 +828,7 @@ exports.projet = async (req, res, next) => {
 exports.mentionsLegales = async (req, res, next) => {
     //Création de la fonction de récupération de la navbar
     function requeteNavbarUser(cookie) {
-        return fetch(`http://eloi-site.alwaysdata.net/fichiers/navbar/html/${cookie}`, {
+        return fetch(`https://eloi-site.alwaysdata.net/fichiers/navbar/html/${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -845,12 +845,12 @@ exports.mentionsLegales = async (req, res, next) => {
         var navbar = await requeteNavbarUser(cookie);
     } else {
         var navbar = /*html*/ `
-            <a class="logo" href="http://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
+            <a class="logo" href="https://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
             <div class="navLinks">
                 <ul>
-                    <li><a href="http://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
-                    <li><a href="http://eloi-site.alwaysdata.net/login">Se connecter</a></li>
-                    <li><a href="http://eloi-site.alwaysdata.net/signup">Crée un compte</a></li>
+                    <li><a href="https://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
+                    <li><a href="https://eloi-site.alwaysdata.net/login">Se connecter</a></li>
+                    <li><a href="https://eloi-site.alwaysdata.net/signup">Crée un compte</a></li>
                 </ul>
             </div>
             <img class="menuHamburger" src="/fichiers/images/menu-hamburger" alt="Menu Hamburger">
@@ -896,9 +896,9 @@ exports.mentionsLegales = async (req, res, next) => {
     res.send(html);
 };
 exports.erreur404 = async (req, res, next) => {
-    console.log("Erreur 404 : http://eloi-site.alwaysdata.net"+req.url)
+    console.log("Erreur 404 : https://eloi-site.alwaysdata.net"+req.url)
     function requeteNavbarUser(cookie) {
-        return fetch(`http:/[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${cookie}`, {
+        return fetch(`https:/[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -916,12 +916,12 @@ exports.erreur404 = async (req, res, next) => {
         var navbar = await requeteNavbarUser(cookie);
     } else {
         var navbar = /*html*/ `
-            <a class="logo" href="http://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
+            <a class="logo" href="https://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
             <div class="navLinks">
                 <ul>
-                    <li><a href="http://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
-                    <li><a href="http://eloi-site.alwaysdata.net/login">Se connecter</a></li>
-                    <li><a href="http://eloi-site.alwaysdata.net/signup">Crée un compte</a></li>
+                    <li><a href="https://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
+                    <li><a href="https://eloi-site.alwaysdata.net/login">Se connecter</a></li>
+                    <li><a href="https://eloi-site.alwaysdata.net/signup">Crée un compte</a></li>
                 </ul>
             </div>
             <img class="menuHamburger" src="/fichiers/images/menu-hamburger" alt="Menu Hamburger">

@@ -1,7 +1,7 @@
 var resultatDiv = document.getElementById("resultatDiv");
 //Création de fonction qui permet d'obtenir la liste de tous les comptes
 function requeteProduit() {
-    return fetch(`http://eloi-site.alwaysdata.net/api/pepitocoin/ressource/recuperation`, {
+    return fetch(`https://eloi-site.alwaysdata.net/api/pepitocoin/ressource/recuperation`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -14,7 +14,7 @@ function requeteProduit() {
         .catch((error) => console.error(error));
 }
 function requeteCompte() {
-    return fetch(`http://eloi-site.alwaysdata.net/api/authentification/compte`, {
+    return fetch(`https://eloi-site.alwaysdata.net/api/authentification/compte`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -59,7 +59,7 @@ function affProduit() {
             supprButton.forEach((produit) => {
                 produit.addEventListener("click", () => {
                     var id = produit.parentNode.id;
-                    fetch(`http://eloi-site.alwaysdata.net/api/pepitocoin/ressource/suppression/${id}`, {
+                    fetch(`https://eloi-site.alwaysdata.net/api/pepitocoin/ressource/suppression/${id}`, {
                         method: "DELETE",
                         headers: {
                             "Content-Type": "application/json",
@@ -68,7 +68,7 @@ function affProduit() {
                         .then((reponse) => reponse.json())
                         .then((data) => {
                             suppression()
-                            // window.location = 'http://localhost:3000/accueil'
+                            // window.location = 'https://localhost:3000/accueil'
                         })
                         .catch((error) => console.error(error));
                 });
@@ -116,7 +116,7 @@ function affCompte() {
             allDivCompte.forEach((compte) => {
                 compte.addEventListener("click", () => {
                     var pseudoCompte = compte.parentNode.id;
-                    fetch(`http://eloi-site.alwaysdata.net/api/authentification/suppr/${pseudoCompte}`, {
+                    fetch(`https://eloi-site.alwaysdata.net/api/authentification/suppr/${pseudoCompte}`, {
                         method: "DELETE",
                         headers: {
                             "Content-Type": "application/json",
@@ -125,7 +125,7 @@ function affCompte() {
                         .then((reponse) => reponse.json())
                         .then((data) => {
                             suppression()
-                            // window.location = 'http://localhost:3000/accueil'
+                            // window.location = 'https://localhost:3000/accueil'
                         })
                         .catch((error) => console.error(error));
                 });
@@ -169,7 +169,7 @@ form.addEventListener("submit", (event) => {
         pseudo: pseudo.value,
         password: password.value,
     };
-    fetch(`http://eloi-site.alwaysdata.net/api/authentification/compte/login`, {
+    fetch(`https://eloi-site.alwaysdata.net/api/authentification/compte/login`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -180,7 +180,7 @@ form.addEventListener("submit", (event) => {
             if (reponse.status === 200) {
                 return reponse.json()
             } else {
-                window.location = `http://eloi-site.alwaysdata.net/accueil`
+                window.location = `https://eloi-site.alwaysdata.net/accueil`
             }
         })
         .then((data) => {

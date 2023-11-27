@@ -6,7 +6,7 @@ var supprProduit = document.getElementById("supprProduit");
 supprProduit.addEventListener("click", () => {
     var confirmation = confirm("Êtes-vous sûr de vouloir supprimer ce produit ?");
     if (confirmation) {
-        fetch(`http://eloi-site.alwaysdata.net/api/pepitocoin/ressource/suppression/${idProduit}`, {
+        fetch(`https://eloi-site.alwaysdata.net/api/pepitocoin/ressource/suppression/${idProduit}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -14,7 +14,7 @@ supprProduit.addEventListener("click", () => {
         })
             .then((reponse) => reponse.json())
             .then((data) => {
-                window.location = `http://eloi-site.alwaysdata.net/accueil`;
+                window.location = `https://eloi-site.alwaysdata.net/accueil`;
             })
             .catch((error) => console.error(error));
     }

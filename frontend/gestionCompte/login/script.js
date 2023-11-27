@@ -1,5 +1,5 @@
 function login(donnees) {
-    return fetch(`http://eloi-site.alwaysdata.net/api/authentification/login`, {
+    return fetch(`https://eloi-site.alwaysdata.net/api/authentification/login`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -26,7 +26,7 @@ form.addEventListener("submit", async (event) => {
     };
     var requete = await login(donneesLogin);
     if (requete == true) {
-        window.location = `http://eloi-site.alwaysdata.net/accueil`;
+        window.location = `https://eloi-site.alwaysdata.net/accueil`;
     } else {
         //Cela veut dire que les identifiants sont incorrect
         const loginErreur = document.getElementById("loginErreur");

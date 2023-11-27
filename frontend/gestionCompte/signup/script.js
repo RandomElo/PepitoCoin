@@ -1,5 +1,5 @@
 function dispoPseudo(pseudo) {
-    return fetch(`http://eloi-site.alwaysdata.net/api/authentification/verif-pseudo/${pseudo}`,{
+    return fetch(`https://eloi-site.alwaysdata.net/api/authentification/verif-pseudo/${pseudo}`,{
         method:'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -45,7 +45,7 @@ form.addEventListener('submit',(event)=>{
         'password': passwordValue 
     }
     //Envoie de la requete à l'api
-    fetch(`http://eloi-site.alwaysdata.net/api/authentification/signup`,{
+    fetch(`https://eloi-site.alwaysdata.net/api/authentification/signup`,{
         method:'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -54,6 +54,6 @@ form.addEventListener('submit',(event)=>{
     })
     .then(reponse => reponse.json())
     .then(data => {
-        window.location = `http://eloi-site.alwaysdata.net/accueil`
+        window.location = `https://eloi-site.alwaysdata.net/accueil`
     })
 })

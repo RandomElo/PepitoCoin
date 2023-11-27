@@ -10,7 +10,7 @@ var adresseFichier = window.location.pathname.split("/");
 var nomFichier = adresseFichier[adresseFichier.length - 2];
 
 function requeteGetOne(produitId) {
-    return fetch(`http://eloi-site.alwaysdata.net/api/pepitocoin/ressource/recuperation/${produitId}`, {
+    return fetch(`https://eloi-site.alwaysdata.net/api/pepitocoin/ressource/recuperation/${produitId}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -44,13 +44,13 @@ form.addEventListener("submit", (event) => {
         objet.append("description", descForm.value);
     }
     //Envoie de la requete à l'api
-    fetch(`http://eloi-site.alwaysdata.net/api/pepitocoin/ressource/modification/${nomFichier}`, {
+    fetch(`https://eloi-site.alwaysdata.net/api/pepitocoin/ressource/modification/${nomFichier}`, {
         method: "PUT",
         body: objet,
     })
         .then((reponse) => reponse.json())
         .then((data) => {
-            window.location = `http://eloi-site.alwaysdata.net/produit/${nomFichier}`;
+            window.location = `https://eloi-site.alwaysdata.net/produit/${nomFichier}`;
         })
         .catch((error) => console.error(error));
 });

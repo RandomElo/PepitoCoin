@@ -24,14 +24,14 @@ if (lienDeconnexion != null) {
     lienDeconnexion.addEventListener("click", () => {
         var confirmation = confirm("Étés vous sur vouloir, vous déconnecter ?");
         if (confirmation) {
-            fetch(`http://eloi-site.alwaysdata.net/api/authentification/deconnexion`, {
+            fetch(`https://eloi-site.alwaysdata.net/api/authentification/deconnexion`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
                 },
             })
                 .then(() => {
-                    window.location = `http://eloi-site.alwaysdata.net/accueil`;
+                    window.location = `https://eloi-site.alwaysdata.net/accueil`;
                 })
                 .catch((error) => console.error(error));
         }
@@ -43,14 +43,14 @@ if (lienSuppression != null) {
     lienSuppression.addEventListener("click", () => {
         var confirmation = confirm("Étés vous sur, vouloir, vous supprimer votre compte ?");
         if (confirmation) {
-            fetch(`http://eloi-site.alwaysdata.net/api/authentification/suppression`, {
+            fetch(`https://eloi-site.alwaysdata.net/api/authentification/suppression`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
                 },
             })
                 .then(() => {
-                    window.location = `http://eloi-site.alwaysdata.net/accueil`;
+                    window.location = `https://eloi-site.alwaysdata.net/accueil`;
                 })
                 .catch((error) => console.error(error));
         }

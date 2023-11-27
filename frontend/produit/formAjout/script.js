@@ -18,7 +18,7 @@ form.addEventListener("submit", (event) => {
     objet.append("description", descForm.value);
     objet.append("image", imgForm.files[0]);
     //Envoie de la requete à l'api
-    fetch(`http://eloi-site.alwaysdata.net/api/pepitocoin/ressource/publication`, {
+    fetch(`https://eloi-site.alwaysdata.net/api/pepitocoin/ressource/publication`, {
         method: "POST",
         body: objet,
     })
@@ -26,7 +26,7 @@ form.addEventListener("submit", (event) => {
             return reponse.json();
         })
         .then((data) => {
-            window.location = `http://eloi-site.alwaysdata.net/produit/${data.data._id}`;
+            window.location = `https://eloi-site.alwaysdata.net/produit/${data.data._id}`;
         })
         .catch((error) => console.error(error));
 });
