@@ -1,0 +1,28 @@
+*,
+::before,
+::after {
+    font-family: "Nunito", sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+header > h1 {
+    margin-bottom: 10px;
+}
+main > p {
+    margin-bottom: 10px;
+}
+#dernierPara {
+    margin-bottom: 25px;
+}
+#accueilLien {
+    color: white;
+    background-color: black;
+    border: 1px solid black;
+    padding: 10px;
+}
+#accueilLien:hover {
+    color: black;
+    background-color: white;
+}

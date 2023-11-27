@@ -217,3 +217,6 @@ exports.cssProjet = (req, res, next) => {
 exports.cssMentionsLegales = (req, res, next) => {
     res.sendFile(path.join(__dirname, "..", "..", "frontend", "mentionsLegales", "style.css"), { "Content-Type": "text/css" });
 };
+exports.cssErreur404 = (req, res, next) => {
+    res.sendFile(path.join(__dirname, "..", "..", "frontend", "erreur404", "style.css"), { "Content-Type": "text/css" });
+};

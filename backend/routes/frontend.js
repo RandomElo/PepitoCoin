@@ -29,8 +29,4 @@ router.get("/projet", frontCtrl.projet);
 //Route qui permet d'accéder aux mentions légales
 router.get("/mentionslegales", frontCtrl.mentionsLegales);
 
-// router.use((req, res, next) => {
-//     res.status(404).send("Page non trouvée");
-// });
-
 module.exports = router;

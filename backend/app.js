@@ -22,7 +22,8 @@ const resRoutes = require("./routes/ressource");
 const fichRoutes = require("./routes/fichiers");
 const frontRoutes = require("./routes/frontend");
 const userRoutes = require("./routes/user");
-
+//Récupération du controlleur frontend pour l'erreur 404
+const frontContrl = require("./controllers/frontend");
 //Connexion à la BDD
 mongoose
     .connect(process.env.BDDURL)
@@ -57,8 +58,10 @@ app.use("/api/pepitocoin/ressource", resRoutes);
 //Gére les routes d'authentification
 app.use("/api/authentification", userRoutes);
 
+//Si la requete n'est rentrée dans aucuns
 app.use((req, res, next) => {
-    res.status(404).send("Page non trouvée");
+    frontContrl.erreur404(req, res);
 });
+
 // Exporation du serveur pour la rendre disponible auprès du serveur
 module.exports = app;

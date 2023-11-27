@@ -45,4 +45,6 @@ router.get("/images/menu-hamburger", fichCtrl.imageMenuHamburger);
 router.get('/projet/style', fichCtrl.cssProjet)
 //Route pour le CSS de la page Mentions Légales
 router.get('/mentionslegales/style', fichCtrl.cssMentionsLegales)
+//Route pour le CSS de l'erreur 404
+router.get('/erreur404/style',fichCtrl.cssErreur404)
 module.exports = router;

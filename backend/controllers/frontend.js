@@ -18,7 +18,7 @@ exports.accueil = async (req, res, next) => {
         })
             .then((reponse) => reponse.json())
             .then((data) => {
-                console.log("Requete "+data)
+                console.log("Requete " + data);
                 return data;
             })
             .catch((error) => console.error(error));
@@ -76,7 +76,7 @@ exports.accueil = async (req, res, next) => {
     document.body.appendChild(header);
     //Définition des aperçu produit
     var recupGetAll = await requeteGetAll();
-    console.log(recupGetAll)
+    console.log(recupGetAll);
     var conteneurProduitsGet = document.createElement("div");
     conteneurProduitsGet.setAttribute("id", "AEproduitGet");
     if (recupGetAll.length == 0) {
@@ -898,4 +898,53 @@ exports.mentionsLegales = async (req, res, next) => {
         </html>
     `;
     res.send(html);
+};
+exports.erreur404 = async (req, res, next) => {
+    console.log("Erreur 404 : http://eloi-site.alwaysdata.net"+req.url)
+    function requeteNavbarUser(cookie) {
+        return fetch(`http:/[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${cookie}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((reponse) => reponse.json())
+            .then((data) => {
+                return data;
+            })
+            .catch((error) => console.error(error));
+    }
+    //Zone qui permet la récéption de la navbar
+    const cookie = req.cookies.auth;
+    if (cookie != null) {
+        var navbar = await requeteNavbarUser(cookie);
+    } else {
+        var navbar = /*html*/ `
+            <a class="logo" href="http://eloi-site.alwaysdata.net/accueil">PépitoCoin</a>
+            <div class="navLinks">
+                <ul>
+                    <li><a href="http://eloi-site.alwaysdata.net/accueil">Accueil</a></li>
+                    <li><a href="http://eloi-site.alwaysdata.net/login">Se connecter</a></li>
+                    <li><a href="http://eloi-site.alwaysdata.net/signup">Crée un compte</a></li>
+                </ul>
+            </div>
+            <img class="menuHamburger" src="/fichiers/images/menu-hamburger" alt="Menu Hamburger">
+        `;
+    }
+    const html = /*html*/ `
+    <!DOCTYPE html><html><head><meta charset="UTF-8" /><link rel="stylesheet" href="/fichiers/erreur404/style" /><link rel="stylesheet" href="/fichiers/navbar/style" /><!-- Définition de la favicon --><link rel="icon" href="/fichiers/favicon" type="image/png" /><!-- Définition de la police --><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>PépitoCoin - Erreur 404 </title></head><body>
+    <nav class="navbar">${navbar}</nav>
+    <main>
+        <header><h1>Erreur 404</h1></header>
+        <p>La page recherchée n'existe pas, veuillez vérifier l'URL.</p>
+        <p id="dernierPara">Si le problème est redondant, merci de contacter l'administrateur.</p>
+        <a id="accueilLien" href="/accueil">Retournez à l'accueil</a>
+    </main>
+    <footer>
+        <p>Ce site est fictif <a href="/projet">Le projet</a> | <a href="/mentionslegales">Mentions légales</a></p>
+    </footer>    
+    <script src="/fichiers/navbar/script"></script>
+    </body></html>
+    `;
+    res.status(404).send(html);
 };
