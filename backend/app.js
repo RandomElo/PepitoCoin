@@ -64,9 +64,19 @@ app.use((req, res, next) => {
     } else {
         console.log("La requete n'est pas émise depuis un navigateur bdd");
         console.log(req.url);
+
+        // Utilisation des routes en fonction de la condition
+        if (req.url.startsWith("/api/pepitocoin/ressource")) {
+            return resRoutes(req, res, next); // Utilisation de la route ressource
+        } else if (req.url.startsWith("/api/authentification")) {
+            return userRoutes(req, res, next); // Utilisation de la route d'authentification
+        } else {
+            // Si aucune des conditions précédentes n'est remplie, générer une erreur 404
+            frontContrl.erreur404(req, res);
+        }
     }
-    next();
 });
+
 
 //Géré les routes pour les ressources
 //Permet la gestion de l'API
