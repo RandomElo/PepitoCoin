@@ -3,34 +3,30 @@ const fs = require("fs");
 const path = require("path");
 const fetch = require("node-fetch");
 const Produit = require("../models/Produit");
+const frontContrl = require("../controllers/frontend");
 //Controleur qui est utiliser au chargement de la page
 exports.recupAllRes = (req, res, next) => {
-    console.log("recupAllRes")
     //Zone de test
-    const userAgent = req.headers['user-agent'];
-
+    const userAgent = req.headers["user-agent"];
     // Vérifie si l'en-tête User-Agent est présent et s'il contient "Mozilla" (un navigateur)
-    if (userAgent && userAgent.includes('Mozilla')) {
-        console.log('La requête est émise depuis un navigateur bdd');
-        // Ajoutez ici le comportement que vous souhaitez exécuter pour les requêtes du navigateur
+    if (userAgent && userAgent.includes("Mozilla")) {
+        console.log("La requête est émise depuis un navigateur bdd");
+        frontContrl.erreur404(req, res);
     } else {
-        console.log('La requête n\'est pas émise depuis un navigateur bdd');
-        // Ajoutez ici le comportement pour les requêtes qui ne sont pas du navigateur
+        //Si la requete n'est pas executer depuis un navigateur
+        Produit.find()
+            .then((produit) => {
+                res.status(200).json(produit);
+            })
+            .catch((error) => {
+                res.status(400).json({ error });
+            });
     }
     //Fin de la zone de test
-    Produit.find()
-        .then((produit) => {
-            console.log("test")
-            res.status(200).json(produit);
-        })
-        .catch((error) => {
-            res.status(400).json({ error });
-        });
 };
 
 // Controlleur qui est utiliser quand on clique sur une ressource spécifique
 exports.recupOneRes = (req, res, next) => {
-    console.log("recupOneRes")
     Produit.findOne({ _id: req.params.id }) //On cherche dans la BDD l'élément qui à le même id que le produit cliquer
         .then((produit) => res.status(200).json(produit))
         .catch((error) => res.status(404).json({ error }));
