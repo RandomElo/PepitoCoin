@@ -895,7 +895,7 @@ exports.mentionsLegales = async (req, res, next) => {
 exports.erreur404 = async (req, res, next) => {
     console.log("Erreur 404 : https://eloi-site.alwaysdata.net"+req.url)
     function requeteNavbarUser(cookie) {
-        return fetch(`https:/[${process.env.IP}]:${process.env.PORT}/fichiers/navbar/html/${cookie}`, {
+        return fetch(`https://eloi-site.alwaysdata.net/fichiers/navbar/html/${cookie}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
