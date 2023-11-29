@@ -6,15 +6,12 @@ const Produit = require("../models/Produit");
 const frontContrl = require("../controllers/frontend");
 //Controleur qui est utiliser au chargement de la page
 exports.recupAllRes = (req, res, next) => {
-    //Zone de test
     const userAgent = req.headers["user-agent"];
-    // Vérifie si l'en-tête User-Agent est présent et s'il contient "Mozilla" (un navigateur)
     if (userAgent && userAgent.includes("Mozilla")) {
         console.log("La requête est émise depuis un navigateur bdd");
         frontContrl.erreur404(req, res);
     } else {
         console.log("La requete n'est pas émise depuis un navigateur bdd")
-        //Si la requete n'est pas executer depuis un navigateur
         Produit.find()
             .then((produit) => {
                 res.status(200).json(produit);
@@ -23,7 +20,6 @@ exports.recupAllRes = (req, res, next) => {
                 res.status(400).json({ error });
             });
     }
-    //Fin de la zone de test
 };
 
 // Controlleur qui est utiliser quand on clique sur une ressource spécifique

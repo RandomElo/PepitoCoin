@@ -47,20 +47,6 @@ app.use(bodyParser.json({ limit: "200mb" })); // Vous pouvez ajuster la limite s
 app.use(bodyParser.urlencoded({ extended: true, limit: "200mb" }));
 //Permet d'utiliser les cookies dans mon site
 app.use(cookieParser());
-app.use((req, res, next) => {
-    //Zone de test
-    const userAgent = req.headers["user-agent"];
-    // Vérifie si l'en-tête User-Agent est présent et s'il contient "Mozilla" (un navigateur)
-    if (userAgent && userAgent.includes("Mozilla")) {
-        console.log("La requête est émise depuis un navigateur ");
-        console.log(req.url)
-        frontContrl.erreur404(req, res);
-    } else {
-        console.log("La requete n'est pas émise depuis un navigateur bdd");
-    }
-    //Fin de la zone de test
-    next();
-});
 
 //Gére les routes pour le front
 //Qui permet l'accès au fichier HTML
@@ -69,17 +55,30 @@ app.use("/", frontRoutes);
 //Permet la gestion des fichiers statiques (HTML, CSS & JS)
 app.use("/fichiers", fichRoutes);
 
+
+app.use((req, res, next)=>{
+    const userAgent = req.headers["user-agent"];
+    if (userAgent && userAgent.includes("Mozilla")) {
+        console.log("La requête est émise depuis un navigateur bdd");
+        frontContrl.erreur404(req, res);
+    } else {
+        console.log("La requete n'est pas émise depuis un navigateur bdd")
+
+    }
+    next()
+})
+
 //Géré les routes pour les ressources
 //Permet la gestion de l'API
 app.use("/api/pepitocoin/ressource", resRoutes);
 
 //Gére les routes d'authentification
 app.use("/api/authentification", userRoutes);
-
 //Si la requete n'est rentrée dans aucuns
 app.use((req, res, next) => {
     frontContrl.erreur404(req, res);
 });
+
 
 // Exporation du serveur pour la rendre disponible auprès du serveur
 module.exports = app;
