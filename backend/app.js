@@ -55,18 +55,18 @@ app.use("/", frontRoutes);
 //Permet la gestion des fichiers statiques (HTML, CSS & JS)
 app.use("/fichiers", fichRoutes);
 
-
-app.use((req, res, next)=>{
+app.use((req, res, next) => {
     const userAgent = req.headers["user-agent"];
     if (userAgent && userAgent.includes("Mozilla")) {
         console.log("La requête est émise depuis un navigateur bdd");
+        console.log(req.url);
         frontContrl.erreur404(req, res);
     } else {
-        console.log("La requete n'est pas émise depuis un navigateur bdd")
-
+        console.log("La requete n'est pas émise depuis un navigateur bdd");
+        console.log(req.url);
     }
-    next()
-})
+    next();
+});
 
 //Géré les routes pour les ressources
 //Permet la gestion de l'API
@@ -78,7 +78,6 @@ app.use("/api/authentification", userRoutes);
 app.use((req, res, next) => {
     frontContrl.erreur404(req, res);
 });
-
 
 // Exporation du serveur pour la rendre disponible auprès du serveur
 module.exports = app;
