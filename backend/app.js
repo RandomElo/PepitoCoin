@@ -47,6 +47,20 @@ app.use(bodyParser.json({ limit: "200mb" })); // Vous pouvez ajuster la limite s
 app.use(bodyParser.urlencoded({ extended: true, limit: "200mb" }));
 //Permet d'utiliser les cookies dans mon site
 app.use(cookieParser());
+app.use((req, res, next) => {
+    //Zone de test
+    const userAgent = req.headers["user-agent"];
+    // Vérifie si l'en-tête User-Agent est présent et s'il contient "Mozilla" (un navigateur)
+    if (userAgent && userAgent.includes("Mozilla")) {
+        console.log("La requête est émise depuis un navigateur ");
+        console.log(req.url)
+        frontContrl.erreur404(req, res);
+    } else {
+        console.log("La requete n'est pas émise depuis un navigateur bdd");
+    }
+    //Fin de la zone de test
+    next();
+});
 
 //Gére les routes pour le front
 //Qui permet l'accès au fichier HTML

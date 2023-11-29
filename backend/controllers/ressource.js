@@ -13,6 +13,7 @@ exports.recupAllRes = (req, res, next) => {
         console.log("La requête est émise depuis un navigateur bdd");
         frontContrl.erreur404(req, res);
     } else {
+        console.log("La requete n'est pas émise depuis un navigateur bdd")
         //Si la requete n'est pas executer depuis un navigateur
         Produit.find()
             .then((produit) => {
