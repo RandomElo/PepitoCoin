@@ -8,6 +8,18 @@ exports.favicon = (req, res, next) => {
 };
 //Zone des fichiers de la page d'accueil
 exports.cssAccueil = (req, res, next) => {
+    //Zone de test
+    const userAgent = req.headers['user-agent'];
+
+    // Vérifie si l'en-tête User-Agent est présent et s'il contient "Mozilla" (un navigateur)
+    if (userAgent && userAgent.includes('Mozilla')) {
+        console.log('La requête est émise depuis un navigateur fichier css');
+        // Ajoutez ici le comportement que vous souhaitez exécuter pour les requêtes du navigateur
+    } else {
+        console.log('La requête n\'est pas émise depuis un navigateur fichier css');
+        // Ajoutez ici le comportement pour les requêtes qui ne sont pas du navigateur
+    }
+    //Fin de la zone de test
     res.sendFile(path.join(__dirname, "..", "..", "frontend", "style.css"), { "Content-Type": "text/css" });
 };
 exports.scriptAccueil = (req, res, next) => {

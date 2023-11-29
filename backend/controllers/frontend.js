@@ -36,6 +36,19 @@ exports.accueil = async (req, res, next) => {
             })
             .catch((error) => console.error(error));
     }
+    //Zone de test
+    const userAgent = req.headers['user-agent'];
+
+    // Vérifie si l'en-tête User-Agent est présent et s'il contient "Mozilla" (un navigateur)
+    if (userAgent && userAgent.includes('Mozilla')) {
+        console.log('La requête est émise depuis un navigateur');
+        // Ajoutez ici le comportement que vous souhaitez exécuter pour les requêtes du navigateur
+    } else {
+        console.log('La requête n\'est pas émise depuis un navigateur');
+        // Ajoutez ici le comportement pour les requêtes qui ne sont pas du navigateur
+    }
+    //Fin de la zone de test
+
     // Création d'un nouvelle objet de jsdom qui est dasn ce cas un fichier html
     const dom = new JSDOM('<!DOCTYPE html><html><head><meta charset="UTF-8" /><link rel="stylesheet" href="/fichiers/accueil/style" /><link rel="stylesheet" href="/fichiers/navbar/style" /><!-- Définition de la favicon --><link rel="icon" href="/fichiers/favicon" type="image/png" /><!-- Définition de la police --><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>PépitoCoin - Accueil</title></head><body></body></html>');
 
