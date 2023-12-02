@@ -55,29 +55,6 @@ app.use("/", frontRoutes);
 //Permet la gestion des fichiers statiques (HTML, CSS & JS)
 app.use("/fichiers", fichRoutes);
 
-app.use((req, res, next) => {
-    const userAgent = req.headers["user-agent"];
-    if (userAgent && userAgent.includes("Mozilla")) {
-        console.log("La requête est émise depuis un navigateur bdd");
-        console.log(req.url);
-        frontContrl.erreur404(req, res);
-    } else {
-        console.log("La requete n'est pas émise depuis un navigateur bdd");
-        console.log(req.url);
-
-        // Utilisation des routes en fonction de la condition
-        if (req.url.startsWith("/api/pepitocoin/ressource")) {
-            return resRoutes(req, res, next); // Utilisation de la route ressource
-        } else if (req.url.startsWith("/api/authentification")) {
-            return userRoutes(req, res, next); // Utilisation de la route d'authentification
-        } else {
-            // Si aucune des conditions précédentes n'est remplie, générer une erreur 404
-            frontContrl.erreur404(req, res);
-        }
-    }
-});
-
-
 //Géré les routes pour les ressources
 //Permet la gestion de l'API
 app.use("/api/pepitocoin/ressource", resRoutes);

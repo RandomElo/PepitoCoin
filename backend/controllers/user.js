@@ -92,9 +92,7 @@ exports.cmptOne = (req, res, next) => {
             res.status(500).json({ error });
         });
 };
-
 // Rajouter la vérification de mdp
-
 exports.suppr = (req, res, next) => {
     //Permet de récupérer les infos du compte
     User.findOne({ pseudo: req.params.id })
@@ -172,7 +170,6 @@ exports.deconnexion = (req, res, next) => {
     res.clearCookie("auth");
     res.redirect(`https://eloi-site.alwaysdata.net/accueil`);
 };
-
 exports.suppressionCompte = (req, res, next) => {
     const cookie = req.cookies.auth;
     jwt.verify(cookie, process.env.CHAINETOKEN, (err, decoded) => {
