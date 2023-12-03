@@ -180,12 +180,13 @@ exports.suppressionCompte = (req, res, next) => {
                     for (let i = 0; i < data.length; i++) {
                         var element = data[i];
                         console.log(element);
+
                         //Suppression de l'élément
                         var image = element.image;
                         image = image.split("/");
                         image = image.pop();
-                        const imageChemin = path.join(__dirname, "..", "..", "frontend", "produit", "images", `${image}`);
-                        fs.unlink(cheminImage, (err) => {
+                        var imageChemin = path.join(__dirname, "..", "..", "frontend", "produit", "images", `${image}`);
+                        fs.unlink(imageChemin, (err) => {
                             if (!err) {
                                 Produit.deleteOne({ _id: element._id })
                                     .then(() => console.log("Produit supprimé"))
