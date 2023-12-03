@@ -1,4 +1,5 @@
 const path = require("path");
+const fs = require("fs");
 //Importation du package qui hash le mdp
 const bcrypt = require("bcrypt");
 //Importation du package qui permet de générer des tokens
