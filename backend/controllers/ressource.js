@@ -85,7 +85,7 @@ exports.modifRes = (req, res, next) => {
                         });
                     } else {
                         console.error("Problème lors de la suppresion du fichier : ", err);
-                        res.status(500).json({ message: "Problème loir de la suppression du fichier" });
+                        res.status(500).json({ message: "Problème lors de la suppression du fichier" });
                     }
                 });
             }

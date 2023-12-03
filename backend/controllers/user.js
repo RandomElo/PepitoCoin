@@ -179,10 +179,22 @@ exports.suppressionCompte = (req, res, next) => {
                 .then((data) => {
                     for (let i = 0; i < data.length; i++) {
                         var element = data[i];
-                        console.log(element)
-                        Produit.deleteOne({ _id: element._id })
-                            .then(() => console.log("Produit supprimé"))
-                            .catch(() => res.status(500).json({ error: "Erreur lors de la suppresssion d'un produit" }));
+                        console.log(element);
+                        //Suppression de l'élément
+                        var image = element.image;
+                        image = image.split("/");
+                        image = image.pop();
+                        const imageChemin = path.join(__dirname, "..", "..", "frontend", "produit", "images", `${image}`);
+                        fs.unlink(cheminImage, (err) => {
+                            if (!err) {
+                                Produit.deleteOne({ _id: element._id })
+                                    .then(() => console.log("Produit supprimé"))
+                                    .catch(() => res.status(500).json({ error: "Erreur lors de la suppresssion d'un produit" }));
+                            } else {
+                                console.error("Problème lors de la suppresion du fichier : ", err);
+                                res.status(500).json({ message: "Problème lors de la suppression du fichier" });
+                            }
+                        });
                     }
                     User.deleteOne({ _id: userId })
                         .then(() => {
@@ -195,7 +207,7 @@ exports.suppressionCompte = (req, res, next) => {
                         });
                 })
                 .catch(() => {
-                    console.log("Erreur lors de la récupération des produits")
+                    console.log("Erreur lors de la récupération des produits");
                     res.status(500).json({ error: "Erreur lors de la récupération des produits" });
                 });
         } else {
