@@ -104,21 +104,17 @@ exports.supprRes = (req, res, next) => {
             nomFichier = nomFichier.split("/");
             nomFichier = nomFichier.pop();
             const cheminImage = path.join(__dirname, "..", "..", "frontend", "produit", "images", `${nomFichier}`);
-            
-            Produit.deleteOne({ _id: req.params.id })
-                .then(res.status(201).json({ message: "Objet supprimé !" }))
-                .catch((error) => res.status(500).json({ error }));
 
-            // fs.unlink(cheminImage, (err) => {
-            //     if (!err) {
-            //         Produit.deleteOne({ _id: req.params.id })
-            //             .then(res.status(201).json({ message: "Objet supprimé !" }))
-            //             .catch((error) => res.status(500).json({ error }));
-            //     } else {
-            //         console.error("Problème lors de la suppresion du fichier : ", err);
-            //         res.status(500).json(err);
-            //     }
-            // });
+            fs.unlink(cheminImage, (err) => {
+                if (!err) {
+                    Produit.deleteOne({ _id: req.params.id })
+                        .then(res.status(201).json({ message: "Objet supprimé !" }))
+                        .catch((error) => res.status(500).json({ error }));
+                } else {
+                    console.error("Problème lors de la suppresion du fichier : ", err);
+                    res.status(500).json(err);
+                }
+            });
         })
         .catch((error) => res.status(500).json({ error }));
 };
