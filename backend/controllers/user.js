@@ -179,6 +179,7 @@ exports.suppressionCompte = (req, res, next) => {
                 .then((data) => {
                     for (let i = 0; i < data.length; i++) {
                         var element = data[i];
+                        console.log(element)
                         Produit.deleteOne({ _id: element._id })
                             .then(() => console.log("Produit supprimé"))
                             .catch(() => res.status(500).json({ error: "Erreur lors de la suppresssion d'un produit" }));
