@@ -179,19 +179,24 @@ exports.suppressionCompte = (req, res, next) => {
                 .then((data) => {
                     for (let i = 0; i < data.length; i++) {
                         var element = data[i];
-                        console.log(element);
+                        // console.log(element);
 
                         //Suppression de l'élément
                         var image = element.image;
                         image = image.split("/");
+                        console.log(image);
                         image = image.pop();
+                        console.log(image);
                         var imageChemin = path.join(__dirname, "..", "..", "frontend", "produit", "images", `${image}`);
+                        console.log(imageChemin);
                         fs.unlink(imageChemin, (err) => {
                             if (!err) {
+                                console.log("Fichier bien suppr");
                                 Produit.deleteOne({ _id: element._id })
                                     .then(() => console.log("Produit supprimé"))
                                     .catch(() => res.status(500).json({ error: "Erreur lors de la suppresssion d'un produit" }));
                             } else {
+                                console.log("err dans le suppr du fichier");
                                 console.error("Problème lors de la suppresion du fichier : ", err);
                                 res.status(500).json({ message: "Problème lors de la suppression du fichier" });
                             }
