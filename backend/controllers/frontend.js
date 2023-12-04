@@ -1,5 +1,6 @@
 //Zone d'installation des packages
 const jwt = require("jsonwebtoken");
+const path = require("path")
 const jsdom = require("jsdom");
 const fetch = require("node-fetch");
 require("dotenv").config();
