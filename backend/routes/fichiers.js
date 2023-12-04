@@ -47,4 +47,6 @@ router.get('/projet/style', fichCtrl.cssProjet)
 router.get('/mentionslegales/style', fichCtrl.cssMentionsLegales)
 //Route pour le CSS de l'erreur 404
 router.get('/erreur404/style',fichCtrl.cssErreur404)
+//Route pour le site map
+router.get('/sitemap.xml',fichCtrl.sitemap)
 module.exports = router;

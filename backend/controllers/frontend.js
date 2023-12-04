@@ -893,7 +893,7 @@ exports.mentionsLegales = async (req, res, next) => {
     res.send(html);
 };
 exports.erreur404 = async (req, res, next) => {
-    console.log("Erreur 404 : https://eloi-site.alwaysdata.net"+req.url)
+    console.log("Erreur 404 : https://eloi-site.alwaysdata.net" + req.url);
     function requeteNavbarUser(cookie) {
         return fetch(`https://eloi-site.alwaysdata.net/fichiers/navbar/html/${cookie}`, {
             method: "GET",
@@ -940,4 +940,7 @@ exports.erreur404 = async (req, res, next) => {
     </body></html>
     `;
     res.status(404).send(html);
+};
+exports.robotsTXT = (req, res, next) => {
+    res.sendFile(path.join(__dirname, "..", "..", "robots.txt"));
 };

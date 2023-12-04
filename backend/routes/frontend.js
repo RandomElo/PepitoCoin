@@ -28,5 +28,6 @@ router.get("/login", frontCtrl.login);
 router.get("/projet", frontCtrl.projet);
 //Route qui permet d'accéder aux mentions légales
 router.get("/mentionslegales", frontCtrl.mentionsLegales);
-
+//Routes poru robot txt
+router.get("/robots.txt", frontCtrl.robotsTXT);
 module.exports = router;

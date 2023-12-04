@@ -220,3 +220,6 @@ exports.cssMentionsLegales = (req, res, next) => {
 exports.cssErreur404 = (req, res, next) => {
     res.sendFile(path.join(__dirname, "..", "..", "frontend", "erreur404", "style.css"), { "Content-Type": "text/css" });
 };
+exports.sitemap = (req, res, next) => {
+    res.sendFile(path.join(__dirname,'..','..','sitemap.xml'))
+}
